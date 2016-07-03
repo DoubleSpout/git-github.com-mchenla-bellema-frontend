@@ -36,3 +36,5 @@ build/Release
 /node_modules/dotenv
 /node_modules/eslint
 /node_modules/bson
+/node_modules/keystone/node_modules
+/node_modules/.bin
