@@ -1,7 +1,7 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
 /**
- * PostCategory Model
+ * ProductCategory Model
  * ==================
  */
 
@@ -11,6 +11,7 @@ var ProductCategory = new keystone.List('ProductCategory', {
 
 ProductCategory.add({
 	name: { type: String, required: true },
+	desc: { type: String, default:'' },
 	image: { type: Types.CloudinaryImage },
 });
 

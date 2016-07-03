@@ -38,3 +38,4 @@ build/Release
 /node_modules/bson
 /node_modules/keystone/node_modules
 /node_modules/.bin
+/public/upload
