@@ -12,32 +12,102 @@ html
 			.container-fluid
 				.row
 					div(id="homeBanner", class="homeBanner")
+						div(class="swiper-container", id="banner-container")
+							div(class="swiper-wrapper")
+								div(class="swiper-slide")
+									img.bannerImg(src="/img/banner@2x.png")
+									div(class="textBox")
+										h2 Pumping Basics
+										p We understand that breastfeeding moms may also need to pump. We have all the information and products you need to successfully pump and store breastmilk, whether you’re an occasional, regular or exclusive pumper.
+										a.bannerBtn(href="#")
+
+								div(class="swiper-slide")
+									img.bannerImg(src="/img/banner@2x.png")
+									div(class="textBox")
+										h2 Pumping Basics
+										p We understand that breastfeeding moms may also need to pump. We have all the information and products you need to successfully pump and store breastmilk, whether you’re an occasional, regular or exclusive pumper.
+										a.bannerBtn(href="#")
+
+							div(class="swiper-pagination swiper-pagination-banner")
+							div(class="swiper-button-next swiper-button-next-banner")
+							div(class="swiper-button-prev swiper-button-prev-banner")
 
 			.container-fluid
 				.row
 					div(id="homeMatters", class="homeMatters")
-						.homeMattersBox
-							p.p1
-								|fsdfsdaasdfsdfsdfsd<br/>fdfsdfasdfasdfsd<br/>fsdfsdaasdfsdfsdfsd<br/>fdfsdfasdfasdfsd<br/>
-							p.p2
-								|fsdfsdaasdfsdfsdfsd<br/>fdfsdfasdfasdfsd<br/>fsdfsdaasdfsdfsdfsd<br/>fdfsdfasdfasdfsd<br/>
-							p.p3
-								|fsdfsdaasdfsdfsdfsd<br/>fdfsdfasdfasdfsd<br/>fsdfsdaasdfsdfsdfsd<br/>fdfsdfasdfasdfsd<br/>
-							p.p4
-								|fsdfsdaasdfsdfsdfsd<br/>fdfsdfasdfasdfsd<br/>fsdfsdaasdfsdfsdfsd<br/>fdfsdfasdfasdfsd<br/>
+						h2 what matters most for a breastpump
+						h3 most important things of a breastpump
+						.homeMattersBox.row
+							p(class="col-md-6 p1")
+								span Pump Power
+								|We’re also experts at finding the sweet spot between Google’s guidelines and what is commercially right for you. We have progressive theories on search as a tool for retention of customers, not just for acquisition. 
+							p(class="col-md-6 p2")
+								span BPA Free
+								|We’re also experts at finding the sweet spot between Google’s guidelines and what is commercially right for you. We have progressive theories on search as a tool for retention of customers, not just for acquisition. 
+							p(class="col-md-6 p3")
+								span Insurance Coverage
+								|We’re also experts at finding the sweet spot between Google’s guidelines and what is commercially right for you. We have progressive theories on search as a tool for retention of customers, not just for acquisition. 
+							p(class="col-md-6 p4")
+								span Size
+								|We’re also experts at finding the sweet spot between Google’s guidelines and what is commercially right for you. We have progressive theories on search as a tool for retention of customers, not just for acquisition. 
+							
 
 			.container-fluid
 				.row
 					div(id="homeProduct", class="homeProduct")
-						.homeProductBoxHead
+						h2 what matters most for a breastpump
+						h3 most important things of a breastpump
 						.homeProductWrap
+							div(class="swiper-container", id="homeProductContainer")
+								.swiper-wrapper.homeProductWrapper
+									.div(class="swiper-slide productSlide")
+										img(class="homeProductImg", src="/img/baby@2x.png")
+										span Bellema Mango Plus Single Electric Breast Pump
+										a(class="productBtn", href="#")
+									.div(class="swiper-slide productSlide")
+										img(class="homeProductImg", src="/img/baby@2x.png")
+										span Bellema Mango Plus Single Electric Breast Pump
+										a(class="productBtn", href="#")
+									.div(class="swiper-slide productSlide")
+										img(class="homeProductImg", src="/img/baby@2x.png")
+										span Bellema Mango Plus Single Electric Breast Pump
+										a(class="productBtn", href="#")
+									.div(class="swiper-slide productSlide")
+										img(class="homeProductImg", src="/img/baby@2x.png")
+										span Bellema Mango Plus Single Electric Breast Pump
+										a(class="productBtn", href="#")
+									.div(class="swiper-slide productSlide")
+										img(class="homeProductImg", src="/img/baby@2x.png")
+										span Bellema Mango Plus Single Electric Breast Pump
+										a(class="productBtn", href="#")
+
+						//div(class="swiper-pagination swiper-pagination-product")
+						div(class="swiper-button-next swiper-button-next-product")
+						div(class="swiper-button-prev swiper-button-prev-product")
+
+
 
 
 			.container-fluid
 				.row
 					div(id="homeCustom", class="homeCustom")
-						.homeCustomHead
+						.homeCustomTitle
+							span.CustomL
+							span.CustomT How Bellema be liked by the customer
+							span.CustomR
 						.homeCustomWrap
+
+							div(class="swiper-container", id="custom-container")
+								div(class="swiper-wrapper")
+									div(class="swiper-slide") 12312312312
+									div(class="swiper-slide") 12312312312
+									div(class="swiper-slide") 12312312312
+									div(class="swiper-slide") 12312312312
+
+							div(class="swiper-pagination swiper-pagination-custom")
+							div(class="swiper-button-next swiper-button-next-custom")
+							div(class="swiper-button-prev swiper-button-prev-custom")
+
 
 			.container-fluid
 				.row
@@ -64,3 +134,51 @@ html
 									a(href="#", class="gp")
 
 			include ../inc/foot.jade
+
+script.
+	$(function(){
+		window.screenW = $(window).width();
+
+		var swiper = new Swiper('#banner-container', {
+	        pagination: '.swiper-pagination-banner',
+	        slidesPerView: 1,
+	        paginationClickable: true,
+	        spaceBetween: 0,
+			nextButton: '.swiper-button-next-banner',
+			prevButton: '.swiper-button-prev-banner',
+	    });
+
+	    if(window.screenW > 767){
+	    	 var swiper = new Swiper('#homeProductContainer', {
+		        pagination: '.swiper-pagination-product',
+		        slidesPerView: 3,
+		        paginationClickable: true,
+		        spaceBetween: 0,
+				nextButton: '.swiper-button-next-product',
+				prevButton: '.swiper-button-prev-product',
+				spaceBetween: 30
+		    });
+	    }else{
+	    	var swiper = new Swiper('#homeProductContainer', {
+		        pagination: '.swiper-pagination-product',
+		        slidesPerView: 1,
+		        paginationClickable: true,
+		        spaceBetween: 0,
+				nextButton: '.swiper-button-next-product',
+				prevButton: '.swiper-button-prev-product',
+				spaceBetween: 30
+		    });
+	    }
+
+	    var swiper = new Swiper('#custom-container', {
+	        pagination: '.swiper-pagination-custom',
+	        slidesPerView: 1,
+	        paginationClickable: true,
+	        spaceBetween: 0,
+			nextButton: '.swiper-button-next-custom',
+			prevButton: '.swiper-button-prev-custom',
+	    });
+
+
+	   
+	})
