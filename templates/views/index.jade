@@ -96,42 +96,71 @@ html
 							span.CustomT How Bellema be liked by the customer
 							span.CustomR
 						.homeCustomWrap
-
-							div(class="swiper-container", id="custom-container")
+							div(class="swiper-container custom-container", id="custom-container")
 								div(class="swiper-wrapper")
-									div(class="swiper-slide") 12312312312
-									div(class="swiper-slide") 12312312312
-									div(class="swiper-slide") 12312312312
-									div(class="swiper-slide") 12312312312
+									div(class="swiper-slide")
+										p.customP 
+											i I didn‘t expect a good product coverd by my  insurance company, but Bellema gives me a big surprise, it didi quiet well !
+									div(class="swiper-slide")
+										p.customP 
+											i I didn‘t expect a good product coverd by my  insurance company, but Bellema gives me a big surprise, it didi quiet well !
+									div(class="swiper-slide")
+										p.customP 
+											i I didn‘t expect a good product coverd by my  insurance company, but Bellema gives me a big surprise, it didi quiet well !
 
-							div(class="swiper-pagination swiper-pagination-custom")
-							div(class="swiper-button-next swiper-button-next-custom")
-							div(class="swiper-button-prev swiper-button-prev-custom")
+								div(class="customPagenation")
+									
+									div(class="swiper-button-prev-custom")
+									div(class="swiper-pagination-customer", id="swiper-pagination-customer")
+									div(class="swiper-button-next-custom")
 
 
 			.container-fluid
 				.row
 					div(id="homePartners", class="homePartners")
-						.homePartnersHead
+						h2 Our  Partners
 						.homePartnersWrap
+							div(class="swiper-container partner-container", id="partner-container")
+								div(class="swiper-wrapper")
+									div(class="swiper-slide")
+										img(src="/img/3@2x.png")
+									div(class="swiper-slide")
+										img(src="/img/3@2x.png")
+									div(class="swiper-slide")
+										img(src="/img/3@2x.png")
+									div(class="swiper-slide")
+										img(src="/img/3@2x.png")
+									div(class="swiper-slide")
+										img(src="/img/3@2x.png")
+									div(class="swiper-slide")
+										img(src="/img/3@2x.png")
+									div(class="swiper-slide")
+										img(src="/img/3@2x.png")
+								div(class="swiper-pagination swiper-pagination-partner")
+
 							
 
 			.container-fluid
 				.row
 					div(id="homeSubscribe", class="homeSubscribe")
+						h2 
+							img(src="/img/bee@2x.png")
+							|win a $20 gift card
 						.homeSubscribeWrap
 							input(id="subInp", class="subInp")
 							a(id="subBtn", class="subBtn", href="#")
 							a(class="linkBtn")
-							ul
-								li
-									a(href="#", class="fb")
-								li
-									a(href="#", class="tw")
-								li
-									a(href="#", class="ln")
-								li
-									a(href="#", class="gp")
+
+						h3 Get bored by email?
+						.row
+							a(href="")
+								img(src="/img/fbBtn.png")
+							a(href="")
+								img(src="/img/gpBtn.png")
+							a(href="")
+								img(src="/img/lnBtn.png")
+							a(href="")
+								img(src="/img/twBtn.png")
 
 			include ../inc/foot.jade
 
@@ -170,8 +199,9 @@ script.
 		    });
 	    }
 
+
 	    var swiper = new Swiper('#custom-container', {
-	        pagination: '.swiper-pagination-custom',
+	        pagination: '.swiper-pagination-customer',
 	        slidesPerView: 1,
 	        paginationClickable: true,
 	        spaceBetween: 0,
@@ -179,6 +209,42 @@ script.
 			prevButton: '.swiper-button-prev-custom',
 	    });
 
+	    var homeCustomJson = [{
+	    	"img":"/img/ELLA@2x.png",
+	    	"title":"Ella"
+	    },{
+	    	"img":"/img/ELLA@2x.png",
+	    	"title":"Ella"
+	    },{
+	    	"img":"/img/ELLA@2x.png",
+	    	"title":"Ella"
+	    }];
 
+	    setTimeout(function(){
+	    	$('#swiper-pagination-customer .swiper-pagination-bullet').each(function(i){
+	    		$(this).html('<img src="'+homeCustomJson[i].img+'" /><span>'+homeCustomJson[i].title+'</span>')
+	    	})
+	    },0);
+
+
+
+
+	    if(window.screenW > 767){
+	    	 var swiper = new Swiper('#partner-container', {
+		        pagination: '.swiper-pagination-partner',
+		        slidesPerView: 5,
+		        paginationClickable: true,
+		        spaceBetween: 0,
+				spaceBetween: 30
+		    });
+	    }else{
+	    	var swiper = new Swiper('#partner-container', {
+		        pagination: '.swiper-pagination-partner',
+		        slidesPerView: 1,
+		        paginationClickable: true,
+		        spaceBetween: 0,
+				spaceBetween: 30
+		    });
+	    }
 	   
 	})
