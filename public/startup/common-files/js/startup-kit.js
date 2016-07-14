@@ -34,11 +34,16 @@ startupKit.hideCollapseMenu = function() {
 
 $(function () {
     $('.page-wrapper, .navbar-fixed-top, .navbar-collapse a, .navbar-collapse button, .navbar-collapse input[type=submit]').on('click', function(e) {
-        if($('html').hasClass('nav-visible')) {
-            setTimeout(function(){
-                startupKit.hideCollapseMenu();
-            }, 200)
-        }
+
+
+        
+            if($('html').hasClass('nav-visible') && !$(this).hasClass("dropdown") ) {
+
+                setTimeout(function(){
+                    startupKit.hideCollapseMenu();
+                }, 200)
+            }
+
     });
     $(window).resize(function() {
         if($(window).width() > 965) {
