@@ -1,0 +1,52 @@
+doctype html
+html
+
+	include ../inc/head.jade
+
+	body
+		.page-wrapper.page_wrapper.white_wrapper
+			//inc nav
+			include ../inc/nav.jade
+
+			.row
+				.dis-banner
+
+			.container
+				.page-bread-nav
+					a(href="") Home
+					span.blue_span / 
+					a(href="") Where to Buy
+					span / 
+					| Distributor Locator
+
+			.container.container_List
+				.row
+					.col-md-6.search-wrap
+
+						h2.dis-h2 Enter  Your  Zipcode
+						div.dis-inp-box
+							input(type="text", id="dis-search-inp")
+							a(href="#", class="dis-search")
+
+						.dis-content
+							h3 1.Walmart
+							p 1827 Walnut Grove Ave,Rosemead, CA
+							h3 1.Walmart
+							p 1827 Walnut Grove Ave,Rosemead, CA
+							h3 1.Walmart
+							p 1827 Walnut Grove Ave,Rosemead, CA
+							h3 1.Walmart
+							p 1827 Walnut Grove Ave,Rosemead, CA
+
+
+					.col-md-6.dis-map-wrap
+						img(class="dis-map",src="/img/map@2x.png")
+
+					
+
+
+
+
+			include ../inc/foot.jade
+
+

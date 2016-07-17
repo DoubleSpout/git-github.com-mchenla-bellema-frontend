@@ -1,0 +1,59 @@
+doctype html
+html
+
+	include ../inc/head.jade
+
+	body
+		.page-wrapper.page_wrapper.white_wrapper
+			//inc nav
+			include ../inc/nav.jade
+
+			.row
+				.support-banner
+
+			.container
+				.page-bread-nav
+					a(href="") Home
+					span / 
+					| Support
+
+			.container.container_List.container_List_wrap
+				.row
+					.col-md-5.support-box.support-box-l
+						h2 Enter  the  keyword  to  search  for  the  product. For example  "Mango"
+						.support-box-inp-wrap
+							input(type="text", id="dis-search-inp")
+							a(href="#", class="dis-search")
+
+					.col-md-5.support-box.support-box-r
+						h2 Browes for the product
+						a(href="#") 
+							span.glyphicon.glyphicon-chevron-right
+							| Browes  for the product
+						a(href="#")
+							span.glyphicon.glyphicon-chevron-right
+							| Browes  for the product
+
+
+
+			.container.container_List
+
+				h3.support-title
+					|Frequent  Asked  Questions
+
+				.support-blk 
+					h3 1.Weak Suction/No Suction
+					p 1.Check to make sure membrane & valve installed correctly, if not, please reinstall.
+					p 2.Check to make sure if the membrane fits on the valve body smoothly, if use frequently, or incorrect sterilization method will cause membrane aging which leads to leaks, you can replace and reinstall a new membrane in place.
+
+
+
+
+					
+
+
+
+
+			include ../inc/foot.jade
+
+
