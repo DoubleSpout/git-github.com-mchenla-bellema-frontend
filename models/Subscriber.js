@@ -9,7 +9,7 @@ var Types = keystone.Field.Types;
 var Subscriber = new keystone.List('Subscriber', {});
 
 Subscriber.add({
-	email: { type: String, default:'' },
+	email: { type: String, default:'', index:true, unique:true },
 	sourceIp: { type: String, default:'' },
 	userAgent: { type: String, default:'' },
 	publishedDate: { type: Date},

@@ -33,6 +33,8 @@ var routes = {
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
+
+	app.set('trust proxy', 'loopback') // 指定唯一子网
 	// Views
 	app.get('/', routes.views.index);
 	app.get('/blog/list', routes.views.blogList);
@@ -43,10 +45,14 @@ exports = module.exports = function (app) {
 	app.get('/product/list', routes.views.productList);
 	app.get('/product/info', routes.views.productInfo);
 
+	app.post('/sub/post', routes.views.sub);
+
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
 	app.all('/contact', routes.views.contact);
+
+
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

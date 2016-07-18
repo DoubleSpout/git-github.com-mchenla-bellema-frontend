@@ -14,19 +14,20 @@ html
 					div(id="homeBanner", class="homeBanner")
 						div(class="swiper-container", id="banner-container")
 							div(class="swiper-wrapper")
-								div(class="swiper-slide")
-									img.bannerImg(src="/img/banner@2x.png")
-									div(class="textBox")
-										h2 Pumping Basics
-										p We understand that breastfeeding moms may also need to pump. We have all the information and products you need to successfully pump and store breastmilk, whether you’re an occasional, regular or exclusive pumper.
-										a.bannerBtn(href="#")
 
-								div(class="swiper-slide")
-									img.bannerImg(src="/img/banner@2x.png")
-									div(class="textBox")
-										h2 Pumping Basics
-										p We understand that breastfeeding moms may also need to pump. We have all the information and products you need to successfully pump and store breastmilk, whether you’re an occasional, regular or exclusive pumper.
-										a.bannerBtn(href="#")
+
+								- data.banners.forEach(function(item){
+									- item.images[0] = item.images[0] || {}
+
+									div(class="swiper-slide")
+										img.bannerImg(src="/upload/#{item.images[0]['filename']}")
+										div(class="textBox")
+											h2 #{item.title}
+											p #{item.content}
+											a.bannerBtn(href="#{item.linkUrl}")
+
+								- })
+								
 
 							div(class="swiper-pagination swiper-pagination-banner")
 							div(class="swiper-button-next swiper-button-next-banner")
@@ -60,26 +61,15 @@ html
 						.homeProductWrap
 							div(class="swiper-container", id="homeProductContainer")
 								.swiper-wrapper.homeProductWrapper
-									.div(class="swiper-slide productSlide")
-										img(class="homeProductImg", src="/img/baby@2x.png")
-										span Bellema Mango Plus Single Electric Breast Pump
-										a(class="productBtn", href="#")
-									.div(class="swiper-slide productSlide")
-										img(class="homeProductImg", src="/img/baby@2x.png")
-										span Bellema Mango Plus Single Electric Breast Pump
-										a(class="productBtn", href="#")
-									.div(class="swiper-slide productSlide")
-										img(class="homeProductImg", src="/img/baby@2x.png")
-										span Bellema Mango Plus Single Electric Breast Pump
-										a(class="productBtn", href="#")
-									.div(class="swiper-slide productSlide")
-										img(class="homeProductImg", src="/img/baby@2x.png")
-										span Bellema Mango Plus Single Electric Breast Pump
-										a(class="productBtn", href="#")
-									.div(class="swiper-slide productSlide")
-										img(class="homeProductImg", src="/img/baby@2x.png")
-										span Bellema Mango Plus Single Electric Breast Pump
-										a(class="productBtn", href="#")
+
+									- data.products.forEach(function(item){
+										- item.cover[0] = item.cover[0] || {}
+
+										div(class="swiper-slide productSlide")
+											img(class="homeProductImg", src="/upload/#{item.cover[0]['filename']}")
+											span item.name
+											a(class="productBtn", href="/product/info?pid=#{item._id}")
+									- })
 
 						//div(class="swiper-pagination swiper-pagination-product")
 						div(class="swiper-button-next swiper-button-next-product")
@@ -98,16 +88,15 @@ html
 						.homeCustomWrap
 							div(class="swiper-container custom-container", id="custom-container")
 								div(class="swiper-wrapper")
-									div(class="swiper-slide")
-										p.customP 
-											i I didn‘t expect a good product coverd by my  insurance company, but Bellema gives me a big surprise, it didi quiet well !
-									div(class="swiper-slide")
-										p.customP 
-											i I didn‘t expect a good product coverd by my  insurance company, but Bellema gives me a big surprise, it didi quiet well !
-									div(class="swiper-slide")
-										p.customP 
-											i I didn‘t expect a good product coverd by my  insurance company, but Bellema gives me a big surprise, it didi quiet well !
 
+									- data.customers.forEach(function(item){
+										- item.images[0] = item.images[0] || {}
+										div(class="swiper-slide")
+											p.customP 
+												i #{item.content}
+
+									- })
+									
 								div(class="customPagenation")
 									
 									div(class="swiper-button-prev-custom")
@@ -122,20 +111,16 @@ html
 						.homePartnersWrap
 							div(class="swiper-container partner-container", id="partner-container")
 								div(class="swiper-wrapper")
-									div(class="swiper-slide")
-										img(src="/img/3@2x.png")
-									div(class="swiper-slide")
-										img(src="/img/3@2x.png")
-									div(class="swiper-slide")
-										img(src="/img/3@2x.png")
-									div(class="swiper-slide")
-										img(src="/img/3@2x.png")
-									div(class="swiper-slide")
-										img(src="/img/3@2x.png")
-									div(class="swiper-slide")
-										img(src="/img/3@2x.png")
-									div(class="swiper-slide")
-										img(src="/img/3@2x.png")
+
+									- data.partners.forEach(function(item){
+										- item.logo[0] = item.logo[0] || {}
+
+										div(class="swiper-slide")
+											a(href="#{item.linkUrl}")
+												img(src="/upload/#{item.logo[0]['filename']}")
+
+									- })
+									
 								div(class="swiper-pagination swiper-pagination-partner")
 
 							
@@ -147,7 +132,7 @@ html
 							img(src="/img/bee@2x.png")
 							|win a $20 gift card
 						.homeSubscribeWrap
-							input(id="subInp", class="subInp")
+							input(id="subInp", class="subInp", type="email")
 							a(id="subBtn", class="subBtn", href="#")
 							a(class="linkBtn")
 
@@ -163,6 +148,12 @@ html
 								img(src="/img/twBtn.png")
 
 			include ../inc/foot.jade
+
+- var customDataList = []
+- data.customers.forEach(function(item){
+	- item.images[0] = item.images[0] || {}
+	- customDataList.push({'img':'/upload/'+item.images[0]['filename'] || '','title':item.reviewName,})
+-})
 
 script.
 	$(function(){
@@ -209,16 +200,9 @@ script.
 			prevButton: '.swiper-button-prev-custom',
 	    });
 
-	    var homeCustomJson = [{
-	    	"img":"/img/ELLA@2x.png",
-	    	"title":"Ella"
-	    },{
-	    	"img":"/img/ELLA@2x.png",
-	    	"title":"Ella"
-	    },{
-	    	"img":"/img/ELLA@2x.png",
-	    	"title":"Ella"
-	    }];
+	    
+	    var homeCustomJson = !{JSON.stringify(customDataList)}
+
 
 	    setTimeout(function(){
 	    	$('#swiper-pagination-customer .swiper-pagination-bullet').each(function(i){
@@ -246,5 +230,27 @@ script.
 				spaceBetween: 30
 		    });
 	    }
+
+	    var emailReg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
+	    $('#subBtn').click(function(){
+	    	var email = $('#subInp').val().trim();
+	    	if(!emailReg.test(email)){
+	    		sweetAlert("Oops...", "Invalid email format", "error");
+	    		return false;
+	    	}
+
+	    	$.post('/sub/post', {'email':email}, function(d){
+	    		if(d.error){
+	    			sweetAlert("Oops...", d.error, "error");
+	    			return false;
+	    		}
+
+	    		sweetAlert("Success");
+	    		return false;	
+
+	    	}, 'json')
+
+	    	return false;
+	    })
 	   
 	})

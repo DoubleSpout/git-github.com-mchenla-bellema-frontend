@@ -26,7 +26,7 @@ Product.add({
 	featureTitle:  { type: String,  default:'' },
 	featureContent :  { type: String,  default:'' },
 
-	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
+	state: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 
@@ -40,6 +40,7 @@ Product.add({
 	supportHtml:{ type: String,  default:'' },
 	supportPdfUrl:{ type: Types.LocalFiles, dest:global.localFilePath },
 	categories: { type: Types.Relationship, ref: 'ProductCategory', many: true },
+	sort:{ type: Number, default:1 },
 });
 
 Product.schema.virtual('content.full').get(function () {

@@ -13,7 +13,7 @@ banner.add({
 	content:{ type: String, default:''},
 	isShow: { type: Types.Select, options: 'yes, no', default: 'no', index: true },
 	images: { type: Types.LocalFiles, dest:global.localFilePath },
-	linkUrl: { type: String, default:'' },
+	linkUrl: { type: String, default:'', index: true},
 	sort:{ type: Number, default:1 },
 	publishedDate: { type: Date},
 });
