@@ -17,8 +17,10 @@ Blog.add({
 
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	putOnSide: { type: Types.Select, options: 'no, yes', default: 'no', index: true }, //0 is not
+	sideImg: { type: Types.LocalFiles, dest:global.localFilePath },
 	
-	author: { type: Types.Relationship, ref: 'User', index: true },
+	//author: { type: Types.Relationship, ref: 'User', index: true },
+	autorName:{type: String, default:'Bellema'},
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 
 	cover: { type: Types.LocalFiles, dest:global.localFilePath },
@@ -29,6 +31,7 @@ Blog.add({
 		//brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 },
 	},
+	sort:{ type: Number, default:1 },
 	categories: { type: Types.Relationship, ref: 'BlogCategory', many: true },
 });
 

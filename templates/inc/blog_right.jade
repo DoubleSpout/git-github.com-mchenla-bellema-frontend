@@ -2,57 +2,32 @@
 	div.blog_right_box
 		h2 Recent  Posts
 		ul.list-unstyled
-			li
-				.row
-					.col-xs-4
-						img(src="/img/Featured-3@2x.png")
-					.col-xs-8
-						| 11 Benefits of Breastfeeding for Baby
-						i 31st July 2015
-
-			li
-				.row
-					.col-xs-4
-						img(src="/img/Featured-3@2x.png")
-					.col-xs-8
-						| 11 Benefits of Breastfeeding for Baby
-						i 31st July 2015
-
-			li
-				.row
-					.col-xs-4
-						img(src="/img/Featured-3@2x.png")
-					.col-xs-8
-						| 11 Benefits of Breastfeeding for Baby
-						i 31st July 2015
-
+			- data.recentData.forEach(function(item){
+				li
+					a.row(href="/blog/info?id=#{item._id}")
+						.col-xs-4
+							img(src="/upload/#{item.sideImg[0]['filename']}")
+						.col-xs-8
+							| #{item.title}
+							i #{item.publishedDate}
+			- })
 
 	div.blog_right_box
-		h2 Recent  Posts
+		h2 Popular  Posts
 		ul.list-unstyled
-			li
-				.row
-					.col-xs-4
-						img(src="/img/Featured-3@2x.png")
-					.col-xs-8
-						| 11 Benefits of Breastfeeding for Baby
-						i 31st July 2015
+			- data.sideData.forEach(function(item){
+				li
+					a.row(href="/blog/info?id=#{item._id}")
+						.col-xs-4
+							img(src="/upload/#{item.sideImg[0]['filename']}")
+						.col-xs-8
+							| #{item.title}
+							i #{item.publishedDate}
+			- })
 
-			li
-				.row
-					.col-xs-4
-						img(src="/img/Featured-3@2x.png")
-					.col-xs-8
-						| 11 Benefits of Breastfeeding for Baby
-						i 31st July 2015
 
-			li
-				.row
-					.col-xs-4
-						img(src="/img/Featured-3@2x.png")
-					.col-xs-8
-						| 11 Benefits of Breastfeeding for Baby
-						i 31st July 2015
 
-	a(href="/", class="blog_link")
-		img(src="/img/Recent-posts@2x.png")
+	- data.adv.forEach(function(item){	
+		a(href="#{item.linkUrl}", class="blog_link")
+			img(src="/upload/#{item.images[0]['filename']}")
+	-})

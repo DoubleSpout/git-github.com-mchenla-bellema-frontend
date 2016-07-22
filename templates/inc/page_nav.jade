@@ -1,5 +1,29 @@
 .page_nav
-	a(href="#") 1
-	a(href="#").sel 2
-	a(href="#") 3
-	a(href="#") >
+	- if(page.PageList.length>1){
+		-if(page.Prev){
+			a(href="#{page.link}?page=#{page.curPage-1}") <
+		-}
+		-page.PageList.forEach(function(p){
+			-if(p==page.curPage){
+				a(href="#{page.link}?page=#{p}").sel #{p}
+			-}else{
+				a(href="#{page.link}?page=#{p}") #{p}
+			-}
+			
+		-})
+		-if(page.dots){
+			span ...
+		-}
+		-if(page.LastPage){
+			a(href="#{page.link}?page=#{page.LastPage}") #{page.LastPage}
+		-}
+		-if(page.Next){
+			a(href="#{page.link}?page=#{page.curPage+1}") >
+		-}
+
+	-}else{
+
+		a(href="javascript:;").sel  1
+
+	-}
+

@@ -17,18 +17,22 @@ html
 					span.blue_span / 
 					a(href="") Blog
 					span / 
-					| reastfeeding Twins Solo
+					| #{data.data[0].title}
 
 			.container.container_List
 				.row
 					.col-md-8.blog_list_wrap
-						h2.blog_info_title Breastfeeding Twins Solo
-						div.blog_info_date Posted on: 31st July 2015 By Joanna Venditti
-						img(src="/img/PIC@2x.png", class="blog_info_img")
+						h2.blog_info_title #{data.data[0].title}
+						div.blog_info_date Posted on: #{data.data[0].publishedDate} By #{data.data[0].autorName}
+
+						- data.data[0].images.forEach(function(item){
+							img(src="/upload/#{item['filename']}", class="blog_info_img")
+						-})
+						
 						div.blog_info_intro 
-							| Breastfeeding twins without help or solo can seem like a daunting task, butif you have a plan and are well prepared, it can be done!
+							| #{data.data[0].intro}
 						div.blog_info_content
-							| Don’t rush yourself, especially if these are your first children and you are still figuring out breastfeeding. Also, when you are establishing breastfeeding with your twins use any of the help you might have available to get off to a good start. Once you have conquered breastfeeding twins with help, it’s time to fly solo.
+							| !{data.data[0].content.extended}
 
 
 
