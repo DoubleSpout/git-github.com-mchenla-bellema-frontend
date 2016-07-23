@@ -1,24 +1,30 @@
 .col-md-3
 	div.product-left-box
 		h3 Categories
-		a.product-l-link.sel(href="#") Series 1 (12)
-		a.product-l-link(href="#") Series 1 (12)
-		a.product-l-link(href="#") Series 1 (12)
-		a.product-l-link(href="#") Series 1 (12)
-		a.product-l-link(href="#") Series 1 (12)
-		a.product-l-link(href="#") Series 1 (12)
-		a.product-l-link(href="#") Series 1 (12)
+		- data.catData.forEach(function(item){
+			- if(item.sel){
+				a.product-l-link.sel(href="/product/list?cat=#{item.name}") #{item.name} (#{item.count})
+			- }else{
+				a.product-l-link(href="/product/list?cat=#{item.name}") #{item.name} (#{item.count})
+			- }
+			
+		-})
 
 
 	div.product-left-box
 		h3 Featured Products
-		.row
-			.col-xs-5.product-img-wrap
-				img(src="/img/product@2x.png")
-			.col-xs-7
-				p Bellema Mango Plus Single Electric Breast Pump
-				.price $99
+
+			- data.sideProduct.forEach(function(item){	
+				.row
+					.col-xs-5.product-img-wrap
+						img(src="/upload/#{item.images[0]['filename']}")
+					.col-xs-7.product-left-xs-7
+						p.product-left-p #{item.name}
+						.price $#{item.msrp}
+			-})
 
 
-	a(href="/", class="product-link-img")
-		img(src="/img/SliderAD@2x.png")
+	- data.adv.forEach(function(item){	
+		a(href="#{item.linkUrl}", class="blog_link")
+			img(src="/upload/#{item.images[0]['filename']}")
+	-})

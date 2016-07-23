@@ -1,67 +1,42 @@
 .product-row
 	.product-d-btn.sel Description
-	.product-d-btn Reviews (120)
+	.product-d-btn Reviews (#{reviewsCount})
 .product-d-wrap
 	
 	.pro-box.hide
-		p
-			b BELLEMA Effective Double Electric Breast Pump - FDA Approved!
-		p
-			| 2-phase pumping: stimulation & expression, 9 adjustable vaccum power up to 320 mbar
-		p
-			| 2-phase pumping: stimulation & expression, 9 adjustable vaccum power up to 320 mbar
-		p
-			| 2-phase pumping: stimulation & expression, 9 adjustable vaccum power up to 320 mbar
-		p
-			| 2-phase pumping: stimulation & expression, 9 adjustable vaccum power up to 320 mbar
-		p
-			| 2-phase pumping: stimulation & expression, 9 adjustable vaccum power up to 320 mbar
+		!{data.data[0].content.extended}
 
 
 	.pro-box
 
-		.pro-box-title Showing 1 - 04 of 12 Reviews
-
-		.row.review-line
-			.col-md-1
-				img(src="/img/head@2x.png")
-			.col-md-11
-				p.name
-					| BySally Rosson
-					span.gray September 13, 2015
-				p.title
-					| Most comfortable one I have tried!
-				p.content
-					| For last few weeks, I was looking for a double pump and was initially hesitant as this is half the price of other double pumps on the market. I've been using this for a week so far and I'm very impressed - it's quiet and efficient. There are numerous combinations of setting to get the best setting for you and it comes with different sizes pump heads to get a good fit for your nipple. It comes apart easily for sterilization and is a closed system so no risk of the pump becoming contaminated. I would definitely recommend this product.
+		//.pro-box-title Showing 1 - 04 of 12 Reviews
 
 
-		.row.review-line
-			.col-md-1
-				img(src="/img/head@2x.png")
-			.col-md-11
-				p.name
-					| BySally Rosson
-					span.gray September 13, 2015
-				p.title
-					| Most comfortable one I have tried!
-				p.content
-					| For last few weeks, I was looking for a double pump and was initially hesitant as this is half the price of other double pumps on the market. I've been using this for a week so far and I'm very impressed - it's quiet and efficient. There are numerous combinations of setting to get the best setting for you and it comes with different sizes pump heads to get a good fit for your nipple. It comes apart easily for sterilization and is a closed system so no risk of the pump becoming contaminated. I would definitely recommend this product.
 
+		- data.reviews.forEach(function(item,i){
 
-		.row.review-line
-			.col-md-1
-				img(src="/img/head@2x.png")
-			.col-md-11
-				p.name
-					| BySally Rosson
-					span.gray September 13, 2015
-				p.title
-					| Most comfortable one I have tried!
-				p.content
-					| For last few weeks, I was looking for a double pump and was initially hesitant as this is half the price of other double pumps on the market. I've been using this for a week so far and I'm very impressed - it's quiet and efficient. There are numerous combinations of setting to get the best setting for you and it comes with different sizes pump heads to get a good fit for your nipple. It comes apart easily for sterilization and is a closed system so no risk of the pump becoming contaminated. I would definitely recommend this product.
+			- if(i<10){
+				- var hide = ""
+			-}else{
+				- var hide = "hide"
+			-}
+
+			.row.review-line(class="#{hide}")
+				.col-md-1
+					img(src="/img/head@2x.png")
+				.col-md-11
+					p.name
+						| By #{item.source}
+						span.gray #{item.publishedDate}
+					p.title
+						| #{item.title}
+					.content
+						!{item.content.extended}
+			
+		-})
 
 
 		.row.review-line
 			.col-md-1
 			.col-md-11
-				include ../inc/page_nav
+				a(href="javascript:;").product-reviews-more read more

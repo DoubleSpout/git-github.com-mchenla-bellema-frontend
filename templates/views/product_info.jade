@@ -12,64 +12,56 @@ html
 
 			.container
 				.page-bread-nav
-					a(href="") Home
+					a(href="/") Home
 					span.blue_span / 
-					a(href="") Products
+					a(href="/product/list?cat=#{data.catObj[0].name}") Products
 					span / 
-					| Bellema Professional Care Effective Double Electric Breast Pump
+					| #{data.data[0].name}
 
 			.container.container_List
 				.row
 					.col-md-6
 						.product-info-img-box
 							.product-info-img-innerbox
-							img(src="/img/product-PIC@2x.png", class="product-info-img")
+							img(src="/upload/#{data.data[0].images[0]['filename']}", class="product-info-img")
 						.product-info-img-box-bottom
 							.row
-								.col-xs-2
-									a(href="javascript:;", class="product-img-sm")
-										img(src="/img/product-PIC@2x.png")
-								.col-xs-2
-									a(href="javascript:;", class="product-img-sm")
-										img(src="/img/product-PIC@2x.png")
-								.col-xs-2
-									a(href="javascript:;", class="product-img-sm")
-										img(src="/img/product-PIC@2x.png")
-								.col-xs-2
-									a(href="javascript:;", class="product-img-sm")
-										img(src="/img/product-PIC@2x.png")
-								.col-xs-2
-									a(href="javascript:;", class="product-img-sm")
-										img(src="/img/product-PIC@2x.png")
+								- data.data[0].images && data.data[0].images.forEach(function(item){
+
+									.col-xs-2
+										a(href="javascript:;", class="product-img-sm")
+											img(src="/upload/#{item['filename']}")
+
+								- })
 
 					.col-md-6
 						h2.product-info-title 
-							| Bellema Professional Care Effective Double Electric Breast Pump
+							| #{data.data[0].name}
 						h3.product-info-tips
-							| Product Code: 2210M2
+							| Product Code: #{data.data[0].code}
 
 
 						.product-info-p
 							| Availability: 
-							span.red In Stock
+							span.red #{data.data[0].availability}
 
 						.product-info-price
-							| $199.99
+							| $#{data.data[0].msrp}
 
 						.product-info-p
 							| WHERE  TO  BUY:
 
-						a(href="#", class="product-info-buy-btn")
+						a(href="#{data.data[0].amazonBuyUrl}", class="product-info-buy-btn")
 							| Buy From<br/>Amazon.com
 
 						.row.product-social
-							a(href="")
+							a(href="javascript:;")
 								img(src="/img/fbBtn.png")
-							a(href="")
+							a(href="javascript:;")
 								img(src="/img/gpBtn.png")
-							a(href="")
+							a(href="javascript:;")
 								img(src="/img/lnBtn.png")
-							a(href="")
+							a(href="javascript:;")
 								img(src="/img/twBtn.png")
 
 

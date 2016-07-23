@@ -1,6 +1,15 @@
 exports.getPageObj = function(curPage, perPage, totalCount,link){
 	var maxPage = Math.ceil(totalCount/perPage);
 	var dots = false;
+	var gap = '?';
+	if(link.indexOf('?') != -1){
+		gap = '&'
+	}
+
+	var useJump = true;
+	if(link.indexOf('javascript:;') != -1){
+		useJump = false;
+	}
 
 	if(maxPage<=1){
 
@@ -12,6 +21,9 @@ exports.getPageObj = function(curPage, perPage, totalCount,link){
 			curPage:1,
 			link:link,
 			dots:false,
+			pageSize:perPage,
+			gap:gap,
+			useJump:useJump,
 		}
 
 	}
@@ -33,6 +45,9 @@ exports.getPageObj = function(curPage, perPage, totalCount,link){
 			curPage:curPage,
 			link:link,
 			dots:false,
+			pageSize:perPage,
+			gap:gap,
+			useJump:useJump,
 		}
 	}
 
@@ -45,6 +60,9 @@ exports.getPageObj = function(curPage, perPage, totalCount,link){
 			curPage:curPage,
 			link:link,
 			dots:true,
+			pageSize:perPage,
+			gap:gap,
+			useJump:useJump,
 		}
 	}
 
@@ -58,6 +76,9 @@ exports.getPageObj = function(curPage, perPage, totalCount,link){
 			curPage:curPage,
 			link:link,
 			dots:false,
+			pageSize:perPage,
+			gap:gap,
+			useJump:useJump,
 		}
 	}
 
@@ -70,6 +91,9 @@ exports.getPageObj = function(curPage, perPage, totalCount,link){
 			curPage:curPage,
 			link:link,
 			dots:true,
+			pageSize:perPage,
+			gap:gap,
+			useJump:useJump,
 		}
 
 }

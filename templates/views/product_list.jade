@@ -13,7 +13,7 @@ html
 
 			.container
 				.page-bread-nav
-					a(href="") Home
+					a(href="/") Home
 					span / 
 					| Products
 
@@ -29,50 +29,17 @@ html
 
 						.row.product-list-wrap
 
-							.col-md-4.product-list-blk
-								.product-list-inner-blk
-									img(src="/img/product3@2x.png")
-									p Bellema Professional Care Effective Double Electric Breast Pump
-									.price $199.99
-									a.buy(href="#") Buy
+							- data.productData.forEach(function(item){
 
-							.col-md-4.product-list-blk
-								.product-list-inner-blk
-									img(src="/img/product3@2x.png")
-									p Bellema Professional Care Effective Double Electric Breast Pump
-									.price $199.99
-									a.buy(href="#") Buy
-
-							.col-md-4.product-list-blk
-								.product-list-inner-blk
-									img(src="/img/product3@2x.png")
-									p Bellema Professional Care Effective Double Electric Breast Pump
-									.price $199.99
-									a.buy(href="#") Buy
-
-							.col-md-4.product-list-blk
-								.product-list-inner-blk
-									img(src="/img/product3@2x.png")
-									p Bellema Professional Care Effective Double Electric Breast Pump
-									.price $199.99
-									a.buy(href="#") Buy
-
-							.col-md-4.product-list-blk
-								.product-list-inner-blk
-									img(src="/img/product3@2x.png")
-									p Bellema Professional Care Effective Double Electric Breast Pump
-									.price $199.99
-									a.buy(href="#") Buy
-
-							.col-md-4.product-list-blk
-								.product-list-inner-blk
-									img(src="/img/product3@2x.png")
-									p Bellema Professional Care Effective Double Electric Breast Pump
-									.price $199.99
-									a.buy(href="#") Buy
-
-
-
+								.col-md-4.product-list-blk
+									.product-list-inner-blk
+										img(src="/upload/#{item.images[0]['filename']}")
+										p #{item.name}
+										.price $#{item.msrp}
+										a.buy(href="/product/info?id=#{item._id}") Buy
+								
+							-})
+							
 						include ../inc/product_list_filter.jade
 
 
@@ -83,9 +50,39 @@ script.
 	
 	$(function(){
 
+		var sortMap = {
+			'Auto':'sort',
+			'Date':'publishedDate',
+			'Price':'msrp',
+			'Name':'name',
+
+			'sort':'Auto',
+			'publishedDate':'Date',
+			'msrp':'Price',
+			'name':'Name',
+
+		}
+
+
+		$('.page-sort-choose').html('Sort by ' + sortMap['#{sortObj.sort}'])
 
 
 
+		$('.dropdown').on('hidden.bs.dropdown', function () {
+			
+		  	if(!window.sort){
+				return false;
+			}
+
+			location.href = '/product/list?page=#{sortObj.page}&cat=#{sortObj.cat}&sort='+window.sort;
+
+		})
+
+
+		$('.product-sort-a').click(function(){
+			//alert($(this).html().trim())
+			window.sort = sortMap[$(this).html().trim()];
+		})
 
 
 	})

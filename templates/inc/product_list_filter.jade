@@ -2,18 +2,20 @@
 	.col-md-3
 
 		div(class="dropdown product-filter-dropdown")
-			a.filterBtn(href="javascript:;", id="dLabel", type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
-				| Sort by Date
+			a.filterBtn(href="javascript:;", class="dLabel", type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+				font.page-sort-choose Sort by Auto
 				span(class="glyphicon glyphicon-chevron-down")
 			ul(class="dropdown-menu", aria-labelledby="dLabel")
+				li
+					a(href="javascript:;").product-sort-a Auto
 				li 
-					a(href="javascript:;") Date
+					a(href="javascript:;").product-sort-a Date
 				li
-					a(href="javascript:;") Price
+					a(href="javascript:;").product-sort-a Price
 				li
-					a(href="javascript:;") Name
+					a(href="javascript:;").product-sort-a Name
 
 	.col-md-4.page-tips
-		| Showing 1 - 09 of 12 Products
+		| Showing 1 - #{page.pageSize} of #{data.countData} Products
 	.col-md-5
-		| page nav
+		include page_nav.jade

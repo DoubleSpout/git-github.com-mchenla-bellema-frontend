@@ -9,7 +9,7 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 	var asyncList = [];
 	var page = (req.query.page || 1)-0;
-	var perPage = 1;
+	var perPage = 10;
 
 	if(isNaN(page)){
 		return res.status(400).end('invalid page');
@@ -33,7 +33,7 @@ exports = module.exports = function (req, res) {
 				 return item
 			})
 			//console.log(results)
-			callback()
+			callback();
 		});
 	});
 
