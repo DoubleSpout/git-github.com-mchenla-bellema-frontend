@@ -23,6 +23,7 @@ Distributor.add({
 		//brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 },
 	},
+	sort:{ type: Number, default:1 },
 	publishedDate: { type: Date},
 });
 

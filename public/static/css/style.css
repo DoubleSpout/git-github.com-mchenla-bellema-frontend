@@ -3769,7 +3769,7 @@ border-bottom: none;
   color:#b9b9b9;
 }
 
-.review-line{
+.review-line, .review-line2{
   margin: 20px 0;
 }
 
@@ -3819,4 +3819,29 @@ border-bottom: none;
   color: #fff;
   text-align: center;
   padding:10px;
+}
+
+.support-content{
+  padding: 10px 0;
+}
+.empty-search{
+    text-align: center;
+    padding: 20px;
+}
+
+.support-show-all{
+  
+  padding: 0 15px;
+  color: #84d8d1;
+}
+
+.review-line:last-child .content {
+    border-bottom: none;
+
+}
+.redBorder {
+  border: #ffb4b1 1px solid !important;
+}
+.noBottomBorder .content{
+  border-bottom: none !important;
 }

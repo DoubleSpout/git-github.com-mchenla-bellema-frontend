@@ -12,14 +12,17 @@ header(class="header-11")
 									a(href="javascript:;", id="drop1", class="dropdown-toggle", data-toggle="dropdown",role="button",class="dropdown open",aria-expanded="true")
 										|Products
 										span(class="glyphicon glyphicon-chevron-down")
+
 									ul(class="dropdown-menu", aria-labelledby="drop1")
-										li
-											a(href="") Breast Pump
-										li
-											a(href="") Accessories
+
+										- productMenu.forEach(function(item){
+											li
+												a(href="/product/list?cat=#{item.name}") #{item.name}
+										- })
+
 
 								li
-									a(href="javascript:;", id="drop2")
+									a(href="/support")
 										|Support
 				
 								li.dropdown
@@ -28,12 +31,12 @@ header(class="header-11")
 										span(class="glyphicon glyphicon-chevron-down")
 									ul(class="dropdown-menu", aria-labelledby="drop1")
 										li
-											a(href="") Distributor Locator
+											a(href="/distributor") Distributor Locator
 										li
 											a(href="") Buy from Amazon
 
 								li
-									a(href="javascript:;", id="drop2")
+									a(href="/blog/list")
 										|Blog
 
 								li.dropdown

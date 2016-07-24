@@ -13,9 +13,9 @@ html
 
 			.container
 				.page-bread-nav
-					a(href="") Home
+					a(href="/") Home
 					span.blue_span / 
-					a(href="") Where to Buy
+					a(href="/distributor") Where to Buy
 					span / 
 					| Distributor Locator
 
@@ -29,16 +29,13 @@ html
 							a(href="#", class="dis-search")
 
 						.dis-content
-							h3 1.Walmart
-							p 1827 Walnut Grove Ave,Rosemead, CA
-							h3 1.Walmart
-							p 1827 Walnut Grove Ave,Rosemead, CA
-							h3 1.Walmart
-							p 1827 Walnut Grove Ave,Rosemead, CA
-							h3 1.Walmart
-							p 1827 Walnut Grove Ave,Rosemead, CA
+							- data.data.forEach(function(item, i){
+								h3 #{i+1}. #{item.name}
+								p #{item.zipcode} item.address
 
 
+							- })
+							
 					.col-md-6.dis-map-wrap
 						img(class="dis-map",src="/img/map@2x.png")
 
@@ -50,3 +47,10 @@ html
 			include ../inc/foot.jade
 
 
+script.
+
+	$(function(){
+
+		var allAddress = !{JSON.stringify(data.data)}
+
+	})

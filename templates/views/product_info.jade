@@ -23,13 +23,16 @@ html
 					.col-md-6
 						.product-info-img-box
 							.product-info-img-innerbox
-							img(src="/upload/#{data.data[0].images[0]['filename']}", class="product-info-img")
+							img(src="/upload/#{data.data[0].images[0]['filename']}", class="product-info-img",id="product-big-pic")
 						.product-info-img-box-bottom
 							.row
-								- data.data[0].images && data.data[0].images.forEach(function(item){
-
+								- data.data[0].images && data.data[0].images.forEach(function(item,i){
+									- var redBorder = ''
+									- if(i==0){
+										- redBorder = 'redBorder'
+									-}
 									.col-xs-2
-										a(href="javascript:;", class="product-img-sm")
+										a(href="javascript:;", class="product-img-sm #{redBorder}")
 											img(src="/upload/#{item['filename']}")
 
 								- })
@@ -76,7 +79,15 @@ script.
 	$(function(){
 
 
+		$('.product-img-sm').click(function(){
 
+			$('.product-img-sm').removeClass('redBorder')
+			$(this).addClass('redBorder');
+			var imgSrc = $(this).find('img').eq(0).attr('src');
+			$('#product-big-pic').attr('src', imgSrc)
+
+
+		})
 
 
 

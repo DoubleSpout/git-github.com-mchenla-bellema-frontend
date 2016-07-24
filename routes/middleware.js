@@ -8,7 +8,9 @@
  * modules in your project's /lib directory.
  */
 var _ = require('lodash');
-
+var keystone = require('keystone');
+var async = require('async');
+var moment= require('moment');
 
 /**
 	Initialises the standard view locals
@@ -24,8 +26,21 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'Gallery', key: 'gallery', href: '/gallery' },
 		{ label: 'Contact', key: 'contact', href: '/contact' },
 	];
-	res.locals.user = req.user;
-	next();
+
+
+	keystone.list('ProductCategory').model.find().sort({'sort':-1}).limit(50).exec(function (err, results) {
+
+			if (err) {
+				return next(err);
+			}
+
+			res.locals.productMenu = results;
+			res.locals.user = req.user;
+			next();
+
+	})
+
+	
 };
 
 

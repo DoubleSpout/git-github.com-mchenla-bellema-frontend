@@ -15,7 +15,7 @@ Blog.add({
 	title: { type: String, required: true, index: true },
 	intro: { type: String, default:'' },
 
-	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
+	state: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
 	putOnSide: { type: Types.Select, options: 'no, yes', default: 'no', index: true }, //0 is not
 	sideImg: { type: Types.LocalFiles, dest:global.localFilePath },
 	

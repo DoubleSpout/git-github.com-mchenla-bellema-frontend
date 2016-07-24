@@ -12,11 +12,13 @@ var Support = new keystone.List('Support', {
 
 Support.add({
 	name: { type: String, required: true, index:true, default:'' },
-	images: { type: Types.CloudinaryImages },
+	images: { type: Types.LocalFiles, dest:global.localFilePath },
 	content: {
 		answer: { type: Types.Html, wysiwyg: true, height: 150 },
 	},
-	publishedDate: { type: Date, default: Date.now },
+	state: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
+	sort:{ type: Number, default:1 },
+	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 });
 
 Support.defaultColumns = 'name, publishedDate|20%';

@@ -13,7 +13,7 @@ html
 
 			.container
 				.page-bread-nav
-					a(href="") Home
+					a(href="/") Home
 					span / 
 					| Support
 
@@ -22,18 +22,20 @@ html
 					.col-md-5.support-box.support-box-l
 						h2 Enter  the  keyword  to  search  for  the  product. For example  "Mango"
 						.support-box-inp-wrap
-							input(type="text", id="dis-search-inp")
-							a(href="#", class="dis-search")
+							input(type="text", id="support-search-inp")
+							a(href="javascript:;", class="dis-search", id="support-search")
 
 					.col-md-5.support-box.support-box-r
 						h2 Browes for the product
-						a(href="#") 
-							span.glyphicon.glyphicon-chevron-right
-							| Browes  for the product
-						a(href="#")
-							span.glyphicon.glyphicon-chevron-right
-							| Browes  for the product
 
+						- productMenu.forEach(function(item,i){
+							-if(i>=5){
+							-	return
+							-}
+							a(href="/product/list?cat=#{item.name}") 
+								span.glyphicon.glyphicon-chevron-right
+								| #{item.name}
+						- })
 
 
 			.container.container_List
@@ -41,19 +43,83 @@ html
 				h3.support-title
 					|Frequent  Asked  Questions
 
-				.support-blk 
-					h3 1.Weak Suction/No Suction
-					p 1.Check to make sure membrane & valve installed correctly, if not, please reinstall.
-					p 2.Check to make sure if the membrane fits on the valve body smoothly, if use frequently, or incorrect sterilization method will cause membrane aging which leads to leaks, you can replace and reinstall a new membrane in place.
+				- data.data.forEach(function(item, i){
+					.support-blk(id="#{item.name}")
+						h3 #{i+1}.#{item.name}
 
+						- if(item.images && item.images.length>0){
+							.support-pic
 
+								-item.images.forEach(function(image){
+									img(src="/upload/#{image['filename']}")
+								-})
+							
+						-}
 
-
-					
-
+						.support-content
+							!{item.content.answer}
+				-})
+				
+				.empty-search(style="display:none;")
+					h3 Sorry, not found any results
+						a.support-show-all(href="/support") show all
 
 
 
 			include ../inc/foot.jade
 
 
+script.
+	$(function(){
+
+		var supportBlk = $('.support-blk');
+		var supportBlkLen = supportBlk.length;
+
+		$('#support-search').click(function(){
+			
+
+			var v = $('#support-search-inp').val().trim();
+			if(!v){
+				sweetAlert("Please enter the keywords.");
+				return false
+			}
+
+			$('.empty-search').hide();
+
+			swal({   
+				title: "Searching",   
+				text: "please wait ...",   
+				timer: 300,  
+				showConfirmButton: false,
+			});
+
+			var count = 0;
+			for(var i=0;i<supportBlkLen;i++){
+				var that = supportBlk.eq(i);
+				var title = that.find('h3').html();
+				var content = that.find('.support-content').html();
+
+				var isHide = true;
+				if(title.indexOf(v) != -1 || content.indexOf(v) != -1){
+					isHide = false;
+					count++;
+				}
+
+				if(isHide){
+					that.hide();
+				}else{
+					that.show();
+				}
+
+			}
+
+
+			if(count == 0 ){
+				$('.empty-search').show();
+			}
+
+
+		})
+
+
+	})

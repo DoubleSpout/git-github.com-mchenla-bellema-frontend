@@ -1,42 +1,101 @@
+- var reviewPageSize = 10;
+- var reviewMax = reviewsCount;
+
 .product-row
 	.product-d-btn.sel Description
 	.product-d-btn Reviews (#{reviewsCount})
 .product-d-wrap
 	
-	.pro-box.hide
+	.pro-box
 		!{data.data[0].content.extended}
 
 
-	.pro-box
+	.pro-box(style="display:none;")
 
 		//.pro-box-title Showing 1 - 04 of 12 Reviews
 
+		-if(reviewsCount == 0){
 
-
-		- data.reviews.forEach(function(item,i){
-
-			- if(i<10){
-				- var hide = ""
-			-}else{
-				- var hide = "hide"
-			-}
-
-			.row.review-line(class="#{hide}")
+			.row.review-line
 				.col-md-1
-					img(src="/img/head@2x.png")
 				.col-md-11
-					p.name
-						| By #{item.source}
-						span.gray #{item.publishedDate}
-					p.title
-						| #{item.title}
-					.content
-						!{item.content.extended}
+					p.name empty reviews for this product
+
+		-}else{
+
+
+			- data.reviews.forEach(function(item,i){
+				- var nobb = ''
+				- if(i<reviewPageSize){
+					- var hide = ""
+				-}else{
+					- var hide = "display:none"
+				-}
+
+				- if(i==(reviewsCount-1)){
+					- nobb = 'noBottomBorder'
+				- }
+
+				.row.review-line(style="#{hide}", class="#{nobb}")
+					.col-md-1
+						img(src="/img/head@2x.png")
+					.col-md-11
+						p.name
+							| By #{item.source}
+							span.gray #{item.publishedDate}
+						p.title
+							| #{item.title}
+						.content
+							!{item.content.extended}
+				
+			-})
+
+			- if(reviewsCount>reviewPageSize){
+
+				.row.review-line2
+					.col-md-1
+					.col-md-11
+						a(href="javascript:;", id="view-read-more").product-reviews-more read more
+
+			-}
 			
-		-})
+		-}
+
+		
+
+script.
+	$(function(){
+		var pageSise = #{reviewPageSize};
+		var pageNum = 1;
+		var pageCount = #{reviewMax};
+		var reviewLine = $('.review-line');
+
+		$('.product-d-btn').click(function(){
+			var that = $(this);
+			var index = that.index();
+			$('.product-d-btn').removeClass('sel').eq(index).addClass('sel');
+			
+			$('.pro-box').hide().eq(index).show();
+			return false;
+
+		});
 
 
-		.row.review-line
-			.col-md-1
-			.col-md-11
-				a(href="javascript:;").product-reviews-more read more
+		$('#view-read-more').click(function(){
+			var start = pageNum * pageSise;
+			var end = start + pageSise;
+
+			for(var i=0;i<end;i++){
+				reviewLine.eq(i).show();
+			}
+
+			pageNum++;
+			if(pageNum*pageSise>=pageCount){
+				$('#view-read-more').hide();
+			}
+			return false;
+		})
+
+
+
+	})
