@@ -10,10 +10,11 @@
 					a.ftLink(href="#")|xxxxx
 				.col-md-2
 					h2| Products
-					a.ftLink(href="#")|xxxxx
-					a.ftLink(href="#")|xxxxx
-					a.ftLink(href="#")|xxxxx
-					a.ftLink(href="#")|xxxxx
+					- productMenu.forEach(function(item,i){
+						- if(i>=4) return
+						a.ftLink(href="/product/list?cat=#{item.name}") #{item.name}
+					- })
+
 				.col-md-2
 					h2| Follow Us
 					a.ftLink(href="#")|xxxxx
