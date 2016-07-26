@@ -10,8 +10,8 @@ var keystone = require('keystone');
 // and documentation.
 
 keystone.init({
-	'name': 'My Site',
-	'brand': 'My Site',
+	'name': 'Bellema',
+	'brand': 'Bellema',
 
 	'less': 'public',
 	'static': 'public',
@@ -73,5 +73,8 @@ keystone.set('nav', {
 });
 
 // Start Keystone to connect to your database and initialise the web server
+if(process.env.NODE_ENV == 'production'){
+	keystone.set('port',80)
+}
 
 keystone.start();
