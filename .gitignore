@@ -36,9 +36,9 @@ build/Release
 #/node_modules/dotenv
 #/node_modules/eslint
 #/node_modules/bson
-/node_modules/keystone/node_modules
+#/node_modules/keystone/node_modules
 #/node_modules/.bin
 /public/upload
-/node_modules/azure
-/node_modules/babel-preset-es2015
-/node_modules/babel-preset-react
+#/node_modules/azure
+#/node_modules/babel-preset-es2015
+#/node_modules/babel-preset-react
