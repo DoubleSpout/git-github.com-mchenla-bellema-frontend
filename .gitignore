@@ -42,3 +42,7 @@ build/Release
 #/node_modules/azure
 #/node_modules/babel-preset-es2015
 #/node_modules/babel-preset-react
+/node_modules/bson
+/node_modules/generator-keystone
+/node_modules/mongodb
+/node_modules/keystone/node_modules

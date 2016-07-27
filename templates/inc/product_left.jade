@@ -17,14 +17,22 @@
 			- data.sideProduct.forEach(function(item){	
 				.row
 					.col-xs-5.product-img-wrap
-						img(src="/upload/#{item.images[0]['filename']}")
+						- if(item.images && item.images.length > 0){
+							img(src="/upload/#{item.images[0]['filename']}")
+						-} else{
+							img(src="")
+						-}
+						
 					.col-xs-7.product-left-xs-7
 						p.product-left-p #{item.name}
 						.price $#{item.msrp}
 			-})
 
 
-	- data.adv.forEach(function(item){	
-		a(href="#{item.linkUrl}", class="blog_link")
-			img(src="/upload/#{item.images[0]['filename']}")
+	- data.adv.forEach(function(item){
+		- if(item.images && item.images.length > 0){
+			a(href="#{item.linkUrl}", class="blog_link")
+				img(src="/upload/#{item.images[0]['filename']}")
+		-}
+		
 	-})

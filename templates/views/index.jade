@@ -67,7 +67,7 @@ html
 
 										div(class="swiper-slide productSlide")
 											img(class="homeProductImg", src="/upload/#{item.cover[0]['filename']}")
-											span item.name
+											span #{item.name}
 											a(class="productBtn", href="/product/info?pid=#{item._id}")
 									- })
 

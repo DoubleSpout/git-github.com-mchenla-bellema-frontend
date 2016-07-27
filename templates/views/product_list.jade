@@ -33,7 +33,13 @@ html
 
 								.col-md-4.product-list-blk
 									.product-list-inner-blk
-										img(src="/upload/#{item.images[0]['filename']}")
+									
+										- if(item.images && item.images.length > 0){
+											img(src="/upload/#{item.images[0]['filename']}")
+										- } else{
+											img(src="")
+										- }
+								
 										p #{item.name}
 										.price $#{item.msrp}
 										a.buy(href="/product/info?id=#{item._id}") Buy
