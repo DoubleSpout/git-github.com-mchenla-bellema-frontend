@@ -1,0 +1,20 @@
+extends ../layout/base
+
+block js
+	- var getListMeta = function(list) { return _.pick(list, ['key', 'label', 'path']); }
+	script.
+		Keystone.nav = !{JSON.stringify(nav)};
+		Keystone.lists = !{JSON.stringify(_.map(lists, getListMeta))};
+		Keystone.orphanedLists = !{JSON.stringify(orphanedLists.map(getListMeta))};
+	script(src='/keystone/js/packages.js')
+
+block content
+	.container-fluid
+		.row
+			div(class="panel panel-default", style="visibility: visible; line-height: 20px; margin: 20px;")
+				.panel-heading
+					h2(style="font-size:24px;")| Welcome to Bellema Web Site Manager
+					div(class="panel-ctrls", data-actions-container="")
+				.panel-body
+					p(class="m0",style="font-size:18px;")
+						|Welcome to Bellema Web Site Manager

@@ -1,0 +1,258 @@
+include ../mixins/flashMessages
+
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width")
+
+		title= title
+
+		//include some css
+		include ./base_css
+		//- Common
+		script(src="/keystone/js/lib/underscore/underscore-1.5.1.min.js")
+		script(src="/keystone/js/lib/jquery/jquery-1.10.2.min.js")
+		script(src="/keystone/js/lib/async/async.js")
+
+		block css
+		block head
+
+	body(id='page-' + page, class="animated-content")
+
+		header(id="topnav", class="navbar navbar-bluegray navbar-fixed-top")
+				div(class="logo-area")
+					span(id="trigger-sidebar", class="toolbar-trigger toolbar-icon-bg")
+						a(data-toggle="tooltips",data-placement="right",title="Toggle Sidebar")
+							span(class="icon-bg")
+								i(class="ti ti-shift-left")
+		
+					a(class="navbar-brand",href="/")|Bellema
+
+				div(class="yamm navbar-left navbar-collapse collapse in")
+					ul(class="nav navbar-nav")
+
+						li(class="dropdown")
+							a(href="#",class="dropdown-toggle",data-toggle="dropdown")
+								|HOME PAGE
+								span(class="caret")
+							ul(class="dropdown-menu",role="menu")
+								li
+									a(href="/keystone/banners")|Banner
+								li(class="divider")
+								li
+									a(href="/keystone/home-customs")|HomeCustom
+								li(class="divider")
+								li
+									a(href="/keystone/partners")|Partners
+								li(class="divider")
+								li
+									a(href="/keystone/advs")|Advs
+
+						li(class="dropdown")
+							a(href="#",class="dropdown-toggle",data-toggle="dropdown")
+								|PRODUCTS
+								span(class="caret")
+							ul(class="dropdown-menu",role="menu")
+								li
+									a(href="/keystone/products")|Products
+								li(class="divider")
+								li
+									a(href="/keystone/product-categories")|Product Category
+								li(class="divider")
+								li
+									a(href="/keystone/reviews")|Review
+
+						li(class="dropdown")
+							a(href="#",class="dropdown-toggle",data-toggle="dropdown")
+								|DISTRIBUTORS
+								span(class="caret")
+							ul(class="dropdown-menu",role="menu")
+								li
+									a(href="/keystone/distributors")|Distributor
+
+
+						li(class="dropdown")
+							a(href="#",class="dropdown-toggle",data-toggle="dropdown")
+								|BLOGS
+								span(class="caret")
+							ul(class="dropdown-menu",role="menu")
+								li
+									a(href="/keystone/blogs")|Blog
+								li(class="divider")
+								li
+									a(href="/keystone/blog-categories")|Blog Categories
+
+						li(class="dropdown")
+							a(href="#",class="dropdown-toggle",data-toggle="dropdown")
+								|SUBSCRIBERS
+								span(class="caret")
+							ul(class="dropdown-menu",role="menu")
+								li
+									a(href="/keystone/subscribers")|Subscribers
+
+						li(class="dropdown")
+							a(href="#",class="dropdown-toggle",data-toggle="dropdown")
+								|SUPPORTS 
+								span(class="caret")
+							ul(class="dropdown-menu",role="menu")
+								li
+									a(href="/keystone/supports")|Supports
+
+
+						li(class="dropdown")
+							a(href="#",class="dropdown-toggle",data-toggle="dropdown")
+								|SETTINGS
+								span(class="caret")
+							ul(class="dropdown-menu",role="menu")
+								li
+									a(href="/keystone/socials")|Socials
+
+
+						li(class="dropdown")
+							a(href="#",class="dropdown-toggle",data-toggle="dropdown")
+								|USERS
+								span(class="caret")
+							ul(class="dropdown-menu",role="menu")
+								li
+									a(href="/keystone/users")|Users
+
+
+				ul(class="nav navbar-nav toolbar pull-right")
+					li(class="toolbar-icon-bg hidden-xs", id="trigger-extrabar")
+						a(href="#")
+							span(class="icon-bg")
+								i(class="ti ti-view-grid")
+					li(class="toolbar-icon-bg hidden-xs", id="trigger-fullscreen")
+						a(href="#", class="toggle-fullscreen")
+							span(class="icon-bg")
+								i(class="ti ti-fullscreen")
+
+					li(class="dropdown toolbar-icon-bg")
+						a(href="#",class="dropdown-toggle", data-toggle="dropdown", aria-expanded="false")
+							span(class="icon-bg")
+								i(class="ti ti-user")
+						ul(class="dropdown-menu userinfo",role="menu")
+							li
+								a(href="/keystone/users")
+									i(class="ti ti-settings")
+									span Settings
+							li(class="divider")
+							li
+								a(href="/keystone/signout")
+									i(class="ti ti-shift-right")
+									span Sign Out
+
+		#wrapper
+			#layout-static
+
+				div(class="static-sidebar-wrapper sidebar-bluegray")
+					div(class="static-sidebar",style="top: 56px;")
+						div(class="widget stay-on-collapse", id="widget-sidebar")
+							.sidebar
+								nav(class="widget-body")
+									ul(class="acc-menu")
+
+										li(class="nav-separator")
+											span|MENU
+
+										li
+											a(href="/keystone/")
+												i(class="ti ti-home")
+												span|INDEX
+
+										li(class="hasChild")
+											a(href="javascript:;")
+												i(class="fa fa-file-code-o")</i>
+													span|HOME PAGE
+											ul(class="acc-menu")
+												li
+													a(href="/keystone/banners")|Banner
+												li
+													a(href="/keystone/home-customs")|HomeCustom
+												li
+													a(href="/keystone/partners")|Partners
+												li
+													a(href="/keystone/advs")|Advs
+
+
+										li(class="hasChild")
+											a(href="javascript:;")
+												i(class="fa fa-shopping-cart")</i>
+													span|PRODUCTS
+											ul(class="acc-menu")
+												li
+													a(href="/keystone/products")|Products
+												li
+													a(href="/keystone/product-categories")|Product Category
+												li
+													a(href="/keystone/reviews")|Review
+
+										li(class="hasChild")
+											a(href="javascript:;")
+												i(class="fa fa-users")</i>
+													span|DISTRIBUTORS
+											ul(class="acc-menu")
+												li
+													a(href="/keystone/distributors")|Distributor
+												
+
+										li(class="hasChild")
+											a(href="javascript:;")
+												i(class="ti ti-file")</i>
+													span|BLOGS
+											ul(class="acc-menu")
+												li
+													a(href="/keystone/blogs")|Blogs
+												li
+													a(href="/keystone/blog-categories")|BlogCategories
+
+										li(class="hasChild")
+											a(href="javascript:;")
+												i(class="fa fa-rss")</i>
+													span|SUBSCRIBERS
+											ul(class="acc-menu")
+												li
+													a(href="/keystone/subscribers")|Subscribers
+
+										li(class="hasChild")
+											a(href="javascript:;")
+												i(class="fa fa-info-circle")</i>
+													span|SUPPORTS
+											ul(class="acc-menu")
+												li
+													a(href="/keystone/supports")|Supports
+
+										li(class="hasChild")
+											a(href="javascript:;")
+												i(class="fa fa-gear")</i>
+													span|SETTINGS
+											ul(class="acc-menu")
+												li
+													a(href="/keystone/socials")|Socials
+
+										li(class="hasChild")
+											a(href="javascript:;")
+												i(class="ti ti-user")</i>
+													span|USERS
+											ul(class="acc-menu")
+												li
+													a(href="/keystone/users")|Users
+
+										li(class="nav-separator")
+											span|&nbsp;
+
+				.static-content-wrapper
+					.static-content
+						.page-content
+							include ./base_bread
+							block intro
+							+flash-messages(messages)
+							block content
+
+					include ./base_foot
+		
+		//include js
+		include ./base_js
+		//- Page Scripts
+		block js
