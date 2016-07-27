@@ -8,10 +8,15 @@ var keystone = require('keystone');
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
+if(process.env.NODE_ENV == 'production'){
+	var name = 'Bellema'
+}else{
+	var name = 'my-site'
+}
 
 keystone.init({
-	'name': 'Bellema',
-	'brand': 'Bellema',
+	'name': name,
+	'brand': name,
 
 	'less': 'public',
 	'static': 'public',

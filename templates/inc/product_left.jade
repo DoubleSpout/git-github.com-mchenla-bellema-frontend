@@ -17,7 +17,7 @@
 			- data.sideProduct.forEach(function(item){	
 				.row
 					.col-xs-5.product-img-wrap
-						- if(item.images && item.images.length > 0){
+						- if(item.images && item.images[0]){
 							img(src="/upload/#{item.images[0]['filename']}")
 						-} else{
 							img(src="")
@@ -30,7 +30,7 @@
 
 
 	- data.adv.forEach(function(item){
-		- if(item.images && item.images.length > 0){
+		- if(item.images && item.images[0]){
 			a(href="#{item.linkUrl}", class="blog_link")
 				img(src="/upload/#{item.images[0]['filename']}")
 		-}

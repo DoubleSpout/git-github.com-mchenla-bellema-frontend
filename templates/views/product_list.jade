@@ -34,7 +34,7 @@ html
 								.col-md-4.product-list-blk
 									.product-list-inner-blk
 									
-										- if(item.images && item.images.length > 0){
+										- if(item.images && item.images[0]){
 											img(src="/upload/#{item.images[0]['filename']}")
 										- } else{
 											img(src="")
