@@ -834,7 +834,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   width: 100%;
   padding-top: 0;
   padding-bottom: 0;
-  height: 90px;
+  height: 100px;
 }
 .header-11 .header-background {
   background: #fff;
@@ -2153,7 +2153,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .homeBanner{
   width: 100%;
   height: auto;
-  background-color: #c6cad7;
+  background-color: #c4cbd3;
   overflow: hidden;
 }
 .homeBanner .swiper-slide{
@@ -2167,6 +2167,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .bannerImg{
   display: block;
   height: auto;
+  margin: 0 auto;
 }
 
 @media (max-width: 767px) {
@@ -2200,12 +2201,12 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
     height: auto;
     background: url(/img/matterBg.png) center center no-repeat;
     position: relative;
-    margin: 0 auto;
+    margin: 90px auto 0;
 }
 
 .homeMatters h2, .homeProduct h2 {
   color: #84d8d1;
-  font-size: 32px;
+  font-size: 30px;
   padding-bottom: 15px;
   text-align: center;
 }
@@ -2218,18 +2219,21 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 .homeMattersBox{
     width:930px;
-    margin: 40px auto;
+    margin: 55px auto;
   }
 .homeMattersBox p {
-   padding: 20px 0 0 60px;
+   padding: 20px 30px 0 75px;
    display: inline-block;
    text-align: left;
    margin: 20px 0;
+   font-size: 14px;
+   line-height: 24px;
 }
 .homeMattersBox p span{
   display: block;
   font-size: 24px;
   color: #84d8d1;
+  padding-bottom: 25px;
 }
 .homeMattersBox .p1{
   background: url('/img/pump@2x.png')  12px 5px no-repeat;
@@ -2303,7 +2307,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .homeCustomWrap{
   width: 100%;
   height: auto;
-  background-color: #fcfcfb;
+
 }
 
 
@@ -2311,6 +2315,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .homePartners{
   height: auto;
   background-color: #fff;
+  margin-top: 110px;
 }
 .homePartnersHead{
   width: 744px;
@@ -2322,14 +2327,16 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   width: 100%;
   height:  240px;
   background-color: #fff;
+  margin-top: 60px;
 }
 
 .homeSubscribe{
   width: 100%;
   height: auto;
-  padding-bottom: 80px;
+  padding-bottom: 148px;
   background-color: #fcfcfb;
   background: url(/images/homeSubBg.png) center center no-repeat;
+  background-color: #fcfcfb;
 }
 
 
@@ -2366,12 +2373,12 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .footBox{
   padding: 0 40px;
   height: auto;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
   border-top: #84d8d1 10px solid;
   background: url('/img/footBg.png') top center no-repeat;
 }
 .topLogo{
-  margin-top: 20px;
+  margin-top: 33px;
 }
 .navbar-nav{
   margin-top: 30px;
@@ -2380,13 +2387,16 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 .navbar-nav li a {
     color: #84d8d1;
-    font-size:20px;
-    padding: 20px 30px;
+    font-size:18px;
+    padding: 20px 25px;
+}
+.dropdown-menu li {
+  line-height: 25px;
 }
 
 .footBox .col-md-2 {
      border-right:#84d8d1 1px solid;
-     margin: 70px 30px 0;
+     margin: 45px 30px 0;
 }
 .footBox .col-md-2:nth-child(3){
   border: none;
@@ -2470,8 +2480,9 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   background:#84d8d1 !important;
 }
 .homeBanner .swiper-pagination-bullet{
-  width: 13px;
-  height: 13px;
+  width: 10px;
+  height: 10px;
+      margin: 0 8px;
 }
 
 
@@ -2494,17 +2505,18 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
     width: 450px;
     height: auto;
     position: absolute;
-    left: 45%;
+    left: 50%;
+    margin-left: 50px;
     color: #fff;
 }
 .homeBanner .textBox h2 {
-    font-size: 32px;
+    font-size: 48px;
     padding-bottom: 10px;
     color: #fff;
 }
 
 .homeBanner .textBox p {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 26px;
     padding-bottom: 10px;
 }
@@ -2562,7 +2574,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .homeProductWrap{
     padding: 30px 0;
     width: 930px;
-    margin: 0 auto;
+    margin: 60px auto 0;
 }
 
 @media (max-width: 767px) {
@@ -2625,7 +2637,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   display: block;
   width: 146px;
   height: 45px;
-  margin: 10px auto;
+  margin: 40px auto 0;
 
   background: url('/img/button-red@2x.png') 0 0 no-repeat;
 }
@@ -2635,7 +2647,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 
 .homeCustomTitle{
-  margin: 50px 0 30px 0;
+  margin: 75px 0 70px 0;
   height: 123px;
   width: 100%;
   text-align: center !important;
@@ -2695,6 +2707,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   height: auto;
   padding: 20px 0;
   background: url('/img/homeCustom.png') center top no-repeat;
+    background-color: #fcfcfc;
   position: relative;
 }
 
@@ -2718,7 +2731,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 .customP i {
   color: #ffb4b1 !important;
-  font-size: 22px;
+  font-size: 18px;
+  line-height: 30px;
 }
 
 .custom-container{
@@ -2742,7 +2756,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .customPagenation .swiper-pagination-customer  {
   width: auto;
   height: 120px;
-  margin: 0 50px;
+  margin: 0 10px;
   display: inline-block;
 }
 
@@ -2752,7 +2766,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   margin: 0px 0px 0;
   background: none;
   color:#ff9580;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
 }
 .customPagenation .swiper-pagination-bullet span {
@@ -2814,7 +2828,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 #homePartners h2 {
   color: #84d8d1;
-    font-size: 32px;
+    font-size: 30px;
     font-weight: bold;
     text-align: center;
     padding-top: 30px;
@@ -2823,6 +2837,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   width: 1000px;
   padding-top: 30px;
   margin:0 auto;
+  min-height: 200px;
 }
 #partner-container .swiper-slide{
   height: 140px;
@@ -2840,9 +2855,9 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 
 #partner-container .swiper-pagination-bullet {
-    width: 12px;
-    height: 12px;
-    margin: 0 5px;
+    width: 10px;
+    height: 10px;
+    margin: 0 8px;
     background-color: #fff;
     border: #ff8e89 2px solid;
 }
@@ -2869,6 +2884,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
     text-align: center;
     padding-top: 60px;
     line-height: 34px;
+    margin-top: 80px;
 }
 
 .homeSubscribe h3 {
@@ -2876,12 +2892,12 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
     font-size: 24px;
     font-weight: bold;
     text-align: center;
-    padding: 40px 0;
+    padding: 70px 0 40px;
     line-height: 24px;
 }
 
 .homeSubscribe h2 img{
-  height: 32px;
+  height: 30px;
   margin-top: -7px;
 }
 
@@ -2889,7 +2905,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   margin: 0 auto;
   position: relative;
   text-align: center;
-  padding-top: 40px;
+  padding-top: 70px;
 }
 
 .subInp{
@@ -2936,7 +2952,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 
 .footBox .col-md-4 {
-  margin-top: 60px;
+  margin-top: 30px;
   background: url('/img/footRBg.png') 0 0 no-repeat;
 }
 .footBox .col-md-6 {
@@ -2949,8 +2965,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 .foot-r p {
   color:#9cdfd9;
-  font-size: 16px;
-  line-height: 18px;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 
@@ -2975,25 +2991,35 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .dropdown-menu li:last-child > a {
   padding-bottom: 0;
   border-radius: 0 !important;
-  padding: 10px 20px;
+  padding: 10px 30px;
 }
 .dropdown-menu li:first-child > a{
   border-radius :0 !important;
   padding-top:0; 
-  padding: 10px 20px;
+  padding: 10px 30px;
 }
 .dropdown-menu li a {
-  padding: 10px 20px;
+  padding: 10px 30px;
   font-size: 14px;
   position: relative;
 }
 
 .nav_fb_a{
-  padding: 10px 20px 10px 50px !important;  
+  padding: 10px 20px 10px 60px !important;  
 }
 
 .nav_fb {
   background: url('/img/facebook@2x.png') 0 0 no-repeat;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top:10px;
+  left: 20px;
+}
+
+.nav_ins {
+  background: url('/img/ins.png') 0 0 no-repeat;
   display: inline-block;
   width: 30px;
   height: 30px;
@@ -3014,7 +3040,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 
 .nav_gp {
-  background: url('/img/G+@2x.png') 0 0 no-repeat;
+  background: url('/img/G+@2x.png') 5px 0 no-repeat;
   display: inline-block;
   width: 30px;
   height: 30px;
@@ -3076,9 +3102,9 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 
 .page-bread-nav{
-    font-size: 20px;
+    font-size: 18px;
     color: #d7d7d7;
-    padding: 20px 0 20px;
+    padding: 0px 0 10px;
 }
 
 .page-bread-nav a {
@@ -3113,6 +3139,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .blog_right_box ul li {
   padding: 15px 0;
   border-bottom: #84d8d1 1px solid;
+  font-size: 14px;
+  line-height: 18px;
 }
 
 .blog_right_box ul li:last-child{
@@ -3136,13 +3164,13 @@ border-bottom: none;
 
 
 .blog_list_wrap{
-  padding: 20px;
+  padding: 0 20px;
 
 }
 
 .blog_list_wrap li {
   border-bottom: #84d8d1 1px solid;
-  padding: 40px 0;
+  padding: 45px 0;
 }
 .blog_list_wrap li:last-child {
   /*border-bottom: none;*/
@@ -3150,15 +3178,15 @@ border-bottom: none;
 
 
 .blog_list_wrap h2 {
-    font-size: 28px;
+    font-size: 30px;
     color: #84d8d1;
-    line-height: 28px;
+    line-height: 36px;
     margin: 0;
 }
 
-.blog_list_wrap  i {
+.blog_list_wrap i {
   display: block;
-  padding: 10px 0;
+  padding: 25px 0;
   color: #333;
   font-size:16px;
 }
@@ -3169,7 +3197,7 @@ border-bottom: none;
 }
 
 .blog_list_wrap p {
-  padding: 15px 0;
+  padding: 25px 0;
   font-size: 16px;
   line-height: 30px;
 
@@ -3193,20 +3221,26 @@ border-bottom: none;
     margin: 0;
 }
 .blog_info_date {
-    font-size: 16px;
+    font-size: 14px;
     color: #84d8d1;
     line-height: 16px;
     margin: 0;
-    padding: 25px 0;
+    padding: 25px 0 35px;
 }
-
+.blog_info_date i {
+  font-size: 14px;
+  color: #84d8d1;
+  line-height: 16px;
+  display: inline;
+  padding-right: 10px;
+}
 .blog_info_img {
   width: 100%;
   display: block;
 }
 
  .blog_info_intro{
-    padding: 15px 0;
+    padding: 25px 0 10px;
     font-weight: bold;
     color: #1f1f1f;
     font-size: 20px;
@@ -3228,6 +3262,7 @@ border-bottom: none;
     color: #84d8d1;
     font-size: 18px;
     line-height: 18px;
+    padding-bottom: 15px;
  }
 
 .dis-inp-box{
@@ -3274,13 +3309,13 @@ border-bottom: none;
   color: #5c5c5c;
   font-weight: bold;
   font-size: 18px;
-  line-height: 24px;
+  line-height: 40px;
   padding: 5px 0;
 }
 .dis-content p {
   color: #5c5c5c;
   font-size: 18px;
-  line-height: 24px;
+  line-height: 40px;
   padding: 5px 0;
 }
 
@@ -3291,7 +3326,7 @@ border-bottom: none;
 .support-box{
   margin-top: 30px;
   min-height: 280px;
-  padding: 30px 50px;
+  padding: 15px 50px 40px;
   border: #84d8d1 1px solid;
 }
 .support-box-l {
@@ -3347,6 +3382,7 @@ border-bottom: none;
   color: #84d8d1;
   font-size: 18px;
   padding: 5px 0;
+  line-height: 30px;
 }
 
 .support-box a span {
@@ -3362,6 +3398,7 @@ border-bottom: none;
   color: #5c5c5c;
   font-size: 24px;
   padding-left: 60px;
+  padding-bottom: 60px;
 }
 
 .support-blk {
@@ -3377,7 +3414,8 @@ border-bottom: none;
 }
 
 .support-blk p{
-  font-size: 16px !important;
+  font-size: 14px !important;
+  line-height: 30px;
   padding: 0;
 }
 .container_List_wrap {
@@ -3391,7 +3429,7 @@ border-bottom: none;
 }
 
 .product-left-box h3 {
-  font-size: 16px;
+  font-size: 18px;
   padding: 5px 20px;
   color: #84d8d1;
   font-weight: bolder;
@@ -3401,6 +3439,7 @@ border-bottom: none;
     padding: 10px 20px;
     display: block;
     color: #84d8d1;
+    font-size: 14px;
 }
 
 .product-left-box a.product-l-link.sel {
@@ -3662,14 +3701,14 @@ border-bottom: none;
 }
 
 .product-info-title {
-    font-size: 32px;
+    font-size: 24px;
     color: #84d8d1;
     font-weight: bold;
-    margin:0 0 10px 0;
+    margin:0 0 15px 0;
 }
 
 .product-info-tips {
-    font-size: 16px;
+    font-size: 14px;
     color: #84d8d1;
     font-weight: normal;
     margin:0 0 80px 0;
@@ -3684,7 +3723,7 @@ border-bottom: none;
 }
 .product-info-price {
   color: #ffb4b1;
-  font-size: 32px;
+  font-size: 30px;
   padding: 10px 0;
   font-weight: bolder;
 }
@@ -3706,11 +3745,11 @@ border-bottom: none;
 
 .product-social {
   clear: both;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
 .product-social a img {
-  margin: 0 10px 0 0;
+  margin: 0 18px 0 0;
   width: 45px;
   height: 45px;
 }
@@ -3729,6 +3768,7 @@ border-bottom: none;
   display: block;
   float: left;
   color: #84d8d1;
+  font-size: 18px;
 
 }
 .product-d-btn.sel {
@@ -3737,7 +3777,7 @@ border-bottom: none;
 }
 .product-d-wrap {
      border:#84d8d1 1px solid;
-     padding: 30px 50px;
+     padding: 30px 40px;
      z-index: 10;
      position: relative;
      margin-top: -1px;
@@ -3748,7 +3788,8 @@ border-bottom: none;
 }
 
 .product-d-wrap p {
-    line-height: 30px;
+  font-size: 14px;
+    line-height: 24px;
     color: #414141;
 }
 
@@ -3760,7 +3801,7 @@ border-bottom: none;
 .pro-box p.name{
   color:#414141;
   margin-bottom: 5px;
-  font-size: 16px;
+  font-size: 14px;
 }
 .pro-box p.name span {
   padding-left: 30px;
@@ -3770,11 +3811,11 @@ border-bottom: none;
 }
 
 .review-line, .review-line2{
-  margin: 20px 0;
+  margin: 25px 0;
 }
 
 .pro-box p.title {
-  font-size: 20px;
+  font-size: 18px;
   color: #1f1f1f;
   font-weight: bolder;
 }
@@ -3783,7 +3824,7 @@ border-bottom: none;
     color:#1f1f1f;
     font-size: 14px;
     line-height: 28px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     border-bottom:#84d8d1 1px solid;
 }
 
@@ -3844,4 +3885,33 @@ border-bottom: none;
 }
 .noBottomBorder .content{
   border-bottom: none !important;
+}
+
+#homeProductContainer .productSlide span {
+  color: #84d8d1;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.footBox a.ftLink {
+  font-size: 14px;
+  line-height: 24px;
+}
+.container_blog{
+  margin-top: 30px;
+  padding: 0 20px 50px 20px;
+}
+.container_info_blog{
+  margin-top: 50px;
+  padding: 0 20px 50px 20px;
+}
+.dis-container-list{
+        padding: 20px 30px 50px 30px;
+}
+.swiper-wrapper{
+  max-width: 1300px !important;
+}
+.foot-fluid{
+  margin: 0 auto;
+  max-width: 1300px;
 }

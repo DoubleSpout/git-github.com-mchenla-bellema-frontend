@@ -19,11 +19,13 @@ html
 					span / 
 					| #{data.data[0].title}
 
-			.container.container_List
+			.container.container_List.container_info_blog
 				.row
 					.col-md-8.blog_list_wrap
 						h2.blog_info_title #{data.data[0].title}
-						div.blog_info_date Posted on: #{data.data[0].publishedDate} By #{data.data[0].autorName}
+						div.blog_info_date 
+							i Posted on: #{data.data[0].publishedDate} 
+							| By #{data.data[0].autorName}
 
 						- data.data[0].images.forEach(function(item){
 							img(src="/upload/#{item['filename']}", class="blog_info_img")
