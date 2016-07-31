@@ -102,6 +102,24 @@ exports = module.exports = function (req, res) {
 		});
 	});
 
+
+	//get cat other productions
+	asyncList.push(function(callback){
+		
+		keystone.list('Product').model.find({'state':'published', 'categories':{'$all':[catId]}, "_id":{"$ne":productId} }).sort({'sort':-1}).skip(0).limit(12).exec(function (err, results) {
+
+			if (err) {
+				return callback(err);
+			}
+
+			locals.data.otherProds = results;
+			callback()
+
+		});
+	});
+
+
+
 	//exec async
 	async.series(asyncList, function(err){
 		if(err){

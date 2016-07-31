@@ -12,20 +12,14 @@ var Distributor = new keystone.List('Distributor', {
 
 Distributor.add({
 	name: { type: String, required: true },
-	branchName:{ type: String, default:''},
-	shopName:{ type: String, default:''},
-	address :{ type: String, default:''},
-	zipcode:{ type: String, default:''},
-	phone:{ type: String, default:''},
 	website :{ type: String, default:''},
-	images: { type: Types.LocalFiles, dest:global.localFilePath },
-	content: {
-		//brief: { type: Types.Html, wysiwyg: true, height: 150 },
-		extended: { type: Types.Html, wysiwyg: true, height: 400 },
-	},
+	logo: { type: Types.LocalFiles, dest:global.localFilePath },
+	phone:{ type: String, default:''},
 	sort:{ type: Number, default:1 },
 	publishedDate: { type: Date},
 });
 
-Distributor.defaultColumns = 'name, branchName|20%, phone|20%, website|20%';
+Distributor.relationship({ ref: 'Shop', path: 'distributor' });
+
+Distributor.defaultColumns = 'name, website|20%, phone|20%, publishedDate|20%';
 Distributor.register();
