@@ -3,7 +3,8 @@
 
 .product-row
 	.product-d-btn.sel Description
-	.product-d-btn Reviews (#{reviewsCount})
+	.product-d-btn.mr Reviews (#{reviewsCount})
+	.product-d-btn.mr Support
 .product-d-wrap
 	
 	.pro-box
@@ -61,7 +62,10 @@
 			
 		-}
 
-		
+	.pro-box(style="display:none;")
+		p
+			a.pdfBtn(href="#{data.data[0].supportPdfUrl}") download pdf
+		!{data.data[0].supportHtml}
 
 script.
 	$(function(){

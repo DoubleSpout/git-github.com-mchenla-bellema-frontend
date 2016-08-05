@@ -23,7 +23,7 @@ Blog.add({
 	autorName:{type: String, default:'Bellema'},
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 
-	cover: { type: Types.LocalFiles, dest:global.localFilePath },
+	cover: { type: Types.LocalFiles, dest:global.localFilePath, imgSize:"1000*1000" },
 	images: { type: Types.LocalFiles, dest:global.localFilePath },
 	
 
