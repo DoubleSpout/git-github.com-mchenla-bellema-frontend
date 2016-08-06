@@ -12,12 +12,12 @@ var Adv = new keystone.List('Adv', {
 
 Adv.add({
 	name: { type: String, required: true },
-	images: { type: Types.LocalFiles, dest:global.localFilePath },
+	images: { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'150*200' },
 	linkUrl: { type: String, default:'' },
-	showOnHomePage:{ type: Types.Select, options: 'yes, no', default: 'no', index: true },
+	//showOnHomePage:{ type: Types.Select, options: 'yes, no', default: 'no', index: true },
 	showOnBlog: { type: Types.Select, options: 'yes, no', default: 'no', index: true },
 	showOnProductList: { type: Types.Select, options: 'yes, no', default: 'no', index: true },
-	showOnProductDetail: { type: Types.Select, options: 'yes, no', default: 'no', index: true },
+	//showOnProductDetail: { type: Types.Select, options: 'yes, no', default: 'no', index: true },
 	sort: {type:Number, index:true},
 	publishedDate: { type: Date},
 	//heroImage: { type: Types.LocalFile, dest:global.localFilePath },

@@ -12,7 +12,7 @@ homeCustom.add({
 	title: { type: String, default:'' },
 	content:{ type: String, default:''},
 	reviewName:{ type: String, default:''},
-	images: { type: Types.LocalFiles, dest:global.localFilePath },
+	images: { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'60*60' },
 	sort:{ type: Number, default:1 },
 	publishedDate: { type: Date},
 });

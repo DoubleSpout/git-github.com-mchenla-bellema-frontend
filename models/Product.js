@@ -30,14 +30,14 @@ Product.add({
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 
-	cover:  { type: Types.LocalFiles, dest:global.localFilePath },
-	images: { type: Types.LocalFiles, dest:global.localFilePath },
+	cover:  { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'150*150' },
+	images: { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'600*600' },
 
 	content: {
 		//brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 },
 	},
-	supportHtml:{ type: String,  default:'' },
+	supportHtml:{type: Types.Html, wysiwyg: true, height: 400,  default:'' },
 	supportPdfUrl:{ type: Types.LocalFiles, dest:global.localFilePath },
 	categories: { type: Types.Relationship, ref: 'ProductCategory', many: true },
 	sort:{ type: Number, default:1 },

@@ -13,7 +13,7 @@ var Distributor = new keystone.List('Distributor', {
 Distributor.add({
 	name: { type: String, required: true },
 	website :{ type: String, default:''},
-	logo: { type: Types.LocalFiles, dest:global.localFilePath },
+	logo: { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'130*60' },
 	phone:{ type: String, default:''},
 	sort:{ type: Number, default:1 },
 	publishedDate: { type: Date},

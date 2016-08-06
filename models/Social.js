@@ -13,7 +13,7 @@ var Social = new keystone.List('Social', {
 Social.add({
 	title:{ type: String, default:''},
 	linkUrl :{ type: String, default:''},
-	icon: { type: Types.LocalFiles, dest:global.localFilePath },
+	icon: { type: Types.LocalFiles, dest:global.localFilePath, imgSize:'80*80' },
 	publishedDate: { type: Date},
 });
 

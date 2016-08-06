@@ -2159,7 +2159,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .homeBanner{
   width: 100%;
   height: auto;
-  background-color: #c4cbd3;
+  background-color: #fcfcfb ;
   overflow: hidden;
 }
 .homeBanner .swiper-slide{
@@ -3053,19 +3053,19 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   width: 30px;
   height: 30px;
   position: absolute;
-  top:12px;
-  left: 17px;
+  top:10px;
+  left: 20px;
 }
 
 
 .nav_gp {
-  background: url('/img/G+@2x.png') 5px 0 no-repeat;
+  background: url('/img/G+@2x.png') 0 0 no-repeat;
   display: inline-block;
   width: 30px;
   height: 30px;
   position: absolute;
-  top:12px;
-  left: 16px;
+  top:10px;
+  left: 20px;
 }
 
 .pull-right .dropdown{

@@ -17,14 +17,14 @@ Blog.add({
 
 	state: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
 	putOnSide: { type: Types.Select, options: 'no, yes', default: 'no', index: true }, //0 is not
-	sideImg: { type: Types.LocalFiles, dest:global.localFilePath },
+	sideImg: { type: Types.LocalFiles, dest:global.localFilePath, imgSize:'80*80' },
 	
 	//author: { type: Types.Relationship, ref: 'User', index: true },
 	autorName:{type: String, default:'Bellema'},
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 
-	cover: { type: Types.LocalFiles, dest:global.localFilePath, imgSize:"1000*1000" },
-	images: { type: Types.LocalFiles, dest:global.localFilePath },
+	cover: { type: Types.LocalFiles, dest:global.localFilePath, imgSize:'690*200' },
+	images: { type: Types.LocalFiles, dest:global.localFilePath, imgSize:'690*200' },
 	
 
 	content: {

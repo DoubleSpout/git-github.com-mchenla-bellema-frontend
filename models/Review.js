@@ -10,7 +10,7 @@ var Review = new keystone.List('Review', {});
 
 Review.add({
 	source : { type: String,  default:'' },
-	star:{type:Number},
+	//star:{type:Number},
 	title : { type: String,  default:'' },
 	content: {
 		//brief: { type: Types.Html, wysiwyg: true, height: 150 },

@@ -12,7 +12,7 @@ var ProductCategory = new keystone.List('ProductCategory', {
 ProductCategory.add({
 	name: { type: String, required: true },
 	desc: { type: String, default:'' },
-	image: { type: Types.CloudinaryImage },
+	//image: { type: Types.CloudinaryImage },
 	sort:{ type: Number, default:1 },
 });
 

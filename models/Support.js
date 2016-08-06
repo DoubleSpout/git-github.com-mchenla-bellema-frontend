@@ -12,7 +12,7 @@ var Support = new keystone.List('Support', {
 
 Support.add({
 	name: { type: String, required: true, index:true, default:'' },
-	images: { type: Types.LocalFiles, dest:global.localFilePath },
+	//images: { type: Types.LocalFiles, dest:global.localFilePath, imgSize:'*80' },
 	content: {
 		answer: { type: Types.Html, wysiwyg: true, height: 150 },
 	},
