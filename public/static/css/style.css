@@ -3908,6 +3908,7 @@ border-bottom: none;
   line-height: 30px;
   height: 60px;
   overflow: hidden;
+  display: block;
 }
 
 .footBox a.ftLink {
