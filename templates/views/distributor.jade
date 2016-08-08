@@ -23,21 +23,19 @@ html
 				.row
 					.col-md-6.search-wrap
 
-						h2.dis-h2 Enter  Your  Zipcode
+						h2.dis-h2 Enter  Your  Address
 						div.dis-inp-box
-							input(type="text", id="dis-search-inp")
+							input(type="text", id="autocomplete")
 							a(href="#", class="dis-search")
 
-						.dis-content
+						.dis-content#dis-content
 							- data.data.forEach(function(item, i){
 								h3 #{i+1}. #{item.name}
-								p #{item.zipcode} #{item.address}
-
-
+								p #{item.zipcode} #{item.address} #{item.phone}
 							- })
 							
 					.col-md-6.dis-map-wrap
-						img(class="dis-map",src="/img/map@2x.png")
+						div#map
 
 					
 
@@ -46,11 +44,148 @@ html
 
 			include ../inc/foot.jade
 
+script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxoHn2ExXBMjvV522DUrL-5jeFZ3im_PU&signed_in=true&libraries=places&callback=initAutocomplete",async,defer)
 
 script.
 
-	$(function(){
+	
+	var allAddress = !{JSON.stringify(data.data)}
 
-		var allAddress = !{JSON.stringify(data.data)}
 
-	})
+	var placeSearch, autocomplete;
+	var componentForm = {
+		street_number: 'short_name',
+		route: 'long_name',
+		locality: 'long_name',
+		administrative_area_level_1: 'short_name',
+		country: 'long_name',
+		postal_code: 'short_name'
+	};
+
+	function initAutocomplete() {
+		// Create the autocomplete object, restricting the search to geographical
+		// location types.
+		autocomplete = new google.maps.places.Autocomplete(
+		/** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+		{types: ['geocode']});
+
+		// When the user selects an address from the dropdown, populate the address
+		// fields in the form.
+		autocomplete.addListener('place_changed', fillInAddress);
+		drawMap(37.09024,-95.712891,[]);
+	}
+
+	function fillInAddress() {
+		// Get the place details from the autocomplete object.
+		var place = autocomplete.getPlace();
+		if(!place || !place.name) return
+		//console.log(place)
+		var lat = place.geometry.location.lat()
+		var lng = place.geometry.location.lng()
+
+		//cal all address distance
+		var disRes = [];
+		allAddress.forEach(function(item){
+			var obj = item
+			item.dis = getDistance(lat, lng, item.lat, item.lng)
+
+			disRes.push(obj)
+		});
+
+		disRes = disRes.sort(function(a,b){
+			if(a<=b) return -1
+			else return 1
+		})
+
+		var str = '';
+		for(var i=0;i<10;i++){
+			if(!disRes[i]) break;
+			str += '<h3>'+(i+1)+'. '+ disRes[i]['name']+'</h3><p>'+
+			disRes[i]['zipcode']+' '+
+			disRes[i]['address']+' '+
+			disRes[i]['phone']+' '+
+			'</p>';
+		}
+
+		$('#dis-content').html(str);
+
+		drawMap(lat, lng, disRes)
+		//console.log(disRes)
+	}
+
+	// Bias the autocomplete object to the user's geographical location,
+	// as supplied by the browser's 'navigator.geolocation' object.
+	function geolocate() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+				var geolocation = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				};
+				var circle = new google.maps.Circle({
+					center: geolocation,
+					radius: position.coords.accuracy
+				});
+
+				autocomplete.setBounds(circle.getBounds());
+			});
+		}
+	}
+
+
+	function getDistance(lat1, lng1, lat2, lng2) { 
+		var dis = 0;
+		var radLat1 = toRadians(lat1);
+		var radLat2 = toRadians(lat2);
+		var deltaLat = radLat1 - radLat2;
+		var deltaLng = toRadians(lng1) - toRadians(lng2);
+		var dis = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(deltaLat / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(deltaLng / 2), 2)));
+		return dis * 6378137;
+
+		function toRadians(d) {  return d * Math.PI / 180;}
+	} 
+
+
+
+	function drawMap(lat, lng, disRes) {
+		var myLatLng = {lat: lat, lng: lng};
+
+		var locations = [
+			['My Place', lat, lng, 1],
+		]
+
+		disRes.forEach(function(item, i){
+			if(i>=10) return
+			locations.push([item.name+' '+item.address+ ' '+item.phone, item.lat, item.lng, (i+2)])
+		})
+
+
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 10,
+			center: new google.maps.LatLng(lat, lng),
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		});
+
+		var infowindow = new google.maps.InfoWindow();
+
+		var marker, i;
+
+		for (i = 0; i < locations.length; i++) {  
+			marker = new google.maps.Marker({
+			position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+				map: map
+			});
+
+			google.maps.event.addListener(marker, 'click', (function(marker, i) {
+				return function() {
+						infowindow.setContent(locations[i][0]);
+						infowindow.open(map, marker);
+					}
+			})(marker, i));
+		}
+
+	}
+
+	
+
+	
