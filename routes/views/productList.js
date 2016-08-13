@@ -50,6 +50,7 @@ exports = module.exports = function (req, res) {
 				if(item.name == catName){
 					sel = true;
 					CatId = item._id;
+					locals.selCatName = item.name;
 				}
 
 				catAsyncList.push(function(asyncCb){
