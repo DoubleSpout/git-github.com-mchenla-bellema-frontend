@@ -14,6 +14,8 @@ if(process.env.NODE_ENV == 'production'){
 	var name = 'my-site'
 }
 
+console.log('app run in '+ name)
+
 keystone.init({
 	'name': name,
 	'brand': name,
