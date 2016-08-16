@@ -3,10 +3,13 @@
   border-top-color: #34495e !important;
 }
 
-@importurl("/fonts/style.css");
+@import url("/fonts/style.css");
+
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,300,600);
 
 @import url(https://fonts.googleapis.com/css?family=Nunito:400,300,700);
+
+
 
 /* styles from flat-ui-free2.0.0-fix.less files */
 body {
@@ -2234,6 +2237,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
    margin: 20px 0;
    font-size: 14px;
    line-height: 24px;
+   font-family: 'Avenir Next LT Pro Regular';
 }
 .homeMattersBox p span{
   display: block;
@@ -2464,6 +2468,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   color:#666f6e;
   font-size: 14px;
   margin-bottom: 3px;
+  font-family: 'Avenir Next LT Pro Italic';
 }
 .ftBottom .al {
   text-align: right;
@@ -2739,6 +2744,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   height: 140px;
   text-align: center;
   z-index: 20;
+   font-family: 'Avenir Next LT Pro Italic';
+
 }
 .customP{
   width: 680px;
@@ -2747,6 +2754,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-style: italic;
   margin: 120px auto 0;
   line-height: 32px;
+    font-family: 'Avenir Next LT Pro Italic';
 }
 .customP i {
   color: #f6bbb7 !important;
@@ -2973,6 +2981,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .footBox .col-md-4 {
   margin-top: 30px;
   background: url('/img/footRBg.png') 0 0 no-repeat;
+  font-family: 'Avenir Next LT Pro Italic';
 }
 .footBox .col-md-6 {
   min-height: 215px;
@@ -3006,6 +3015,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   border-radius: 0 !important;
   background-color: #fff;
   padding-top: 10px;
+  font-family: 'Avenir Next LT Pro Regular';
 }
 .dropdown-menu li:last-child > a {
   padding-bottom: 0;
@@ -3123,13 +3133,16 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 .page-bread-nav{
     font-size: 18px;
     padding: 0px 0 10px;
+    font-family: "Avenir Next LT Pro Regular";
 }
 
 .page-bread-nav a {
    color:#94d1cc;
+   font-family: "Avenir Next LT Pro Regular";
 }
 .blue_span{
   color:#94d1cc;
+  font-family: "Avenir Next LT Pro Regular";
 }
 
 .page-bread-nav span {
@@ -3144,7 +3157,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   padding: 0px 30px;
   border: #94d1cc 1px solid;
   margin-bottom: 40px;
-      margin-top: 40px;
+  margin-top: 40px;
+  font-family: 'Avenir Next LT Pro Demi';
 
 }
 
@@ -3169,6 +3183,7 @@ border-bottom: none;
 .blog_right_box i {
   padding: 5px 0;
   display: block;
+  font-family: 'Avenir Next LT Pro Regular';
 }
 
 .blog_link {
@@ -3206,6 +3221,7 @@ border-bottom: none;
   display: block;
   padding: 25px 0;
   font-size:16px;
+  font-family: 'Avenir Next LT Pro Italic';
 }
 
 .blog_list_wrap img {
@@ -3217,7 +3233,7 @@ border-bottom: none;
   padding: 25px 0;
   font-size: 16px;
   line-height: 30px;
-
+  font-family: 'Avenir Next LT Pro Regular';
 }
 
 .blog_btn {
@@ -3243,6 +3259,7 @@ border-bottom: none;
     line-height: 16px;
     margin: 0;
     padding: 25px 0 35px;
+    font-family: 'Avenir Next LT Pro Italic';
 }
 .blog_info_date i {
   font-size: 14px;
@@ -3250,6 +3267,7 @@ border-bottom: none;
   line-height: 16px;
   display: inline;
   padding-right: 10px;
+  font-family: 'Avenir Next LT Pro Italic';
 }
 .blog_info_img {
   width: 100%;
@@ -3442,6 +3460,7 @@ border-bottom: none;
   padding: 20px 0;
   border: #94d1cc 1px solid;
   margin-bottom: 30px;
+  font-family: 'Avenir Next LT Pro Regular' !important;
 }
 
 .product-left-box h3 {
@@ -3511,6 +3530,7 @@ border-bottom: none;
 }
 .product-list-title-tip {
   font-size: 16px !important;
+  font-family: 'Avenir Next LT Pro Regular';
 }
 
 .product-filter-dropdown .filterBtn{
@@ -3559,10 +3579,11 @@ border-bottom: none;
    padding: 10px;
    color: #94d1cc !important;
    line-height: 16px;
+   font-family: 'Avenir Next LT Pro Regular';
 }
 
 .product-list-wrap{
-    margin: 25px 0;
+    margin: 25px 0 30px;
 }
 
 
@@ -3587,6 +3608,8 @@ border-bottom: none;
   font-size:16px;
   line-height: 22px;
   padding: 0;
+  font-weight: bold;
+  font-family: 'Avenir Next LT Pro Demi';
 }
 .product-list-inner-blk .price {
   font-size: 20px;
@@ -3728,20 +3751,24 @@ border-bottom: none;
     color: #94d1cc;
     font-weight: normal;
     margin:0 0 80px 0;
+    font-family: 'MyriadPro Regular' !important;
 }
 
 .product-info-p {
   color: #000;
   font-size: 18px;
+   font-family: 'Avenir Next LT Pro Demi';
 }
 .product-info-p .red {
   color: #f6bbb7;
+  font-family: 'Avenir Next LT Pro Demi';
 }
 .product-info-price {
   color: #f6bbb7;
   font-size: 30px;
   padding: 10px 0;
   font-weight: bolder;
+  font-family: 'Avenir Next LT Pro Demi';
 }
 
 .product-info-buy-btn {
@@ -3785,6 +3812,7 @@ border-bottom: none;
   float: left;
   color: #94d1cc;
   font-size: 18px;
+  font-family: 'Avenir Next LT Pro Demi';
 
 }
 .product-d-btn.sel {
@@ -3801,12 +3829,14 @@ border-bottom: none;
      min-height: 100px;
      clear: both;
      margin-bottom: 100px;
+     font-family: 'Avenir Next LT Pro Demi' !important;
 }
 
 .product-d-wrap p {
   font-size: 14px;
     line-height: 36px;
     color: #666f6e;
+    font-family: 'Avenir Next LT Pro Regular' !important;
 }
 
 .pro-box-title{
@@ -3818,9 +3848,11 @@ border-bottom: none;
   color:#666f6e;
   margin-bottom: 5px;
   font-size: 14px;
+  font-family: 'Avenir Next LT Pro Regular' !important;
 }
 .pro-box p.name span {
   padding-left: 30px;
+
 }
 .gray {
   color:#b9b9b9;
@@ -3833,6 +3865,7 @@ border-bottom: none;
 .pro-box p.title {
   font-size: 18px;
   font-weight: bolder;
+  font-family: 'Avenir Next LT Pro Demi';
 }
 
 .pro-box .content {
@@ -3914,6 +3947,7 @@ border-bottom: none;
 .footBox a.ftLink {
   font-size: 14px;
   line-height: 24px;
+  font-family: 'Avenir Next LT Pro Italic';
 }
 .container_blog{
   margin-top: 30px;
@@ -3971,4 +4005,11 @@ border-bottom: none;
   width: 100%;
   height: 100%;
   min-height: 600px;
+}
+.downArrow{
+  display: inline-block;
+  width: 25px;
+  height: 12px;
+
+  background: url('/img/downArrow.png') 6px 3px no-repeat;
 }
