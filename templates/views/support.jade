@@ -19,23 +19,25 @@ html
 
 			.container.container_List.container_List_wrap
 				.row
-					.col-md-5.support-box.support-box-l
-						h2 Enter  the  keyword  to  search  for  the  product. For example  "Mango"
-						.support-box-inp-wrap
-							input(type="text", id="support-search-inp")
-							a(href="javascript:;", class="dis-search", id="support-search")
+					.col-md-6.support-box-l
+						.support-box
+							h2 Enter  the  keyword  to  search  for  the  product. For example  "Mango"
+							.support-box-inp-wrap
+								input(type="text", id="support-search-inp")
+								a(href="javascript:;", class="dis-search", id="support-search")
 
-					.col-md-5.support-box.support-box-r
-						h2 Browes for the product
+					.col-md-6.support-box-r
+						.support-box
+							h2 Browse for the product
 
-						- productMenu.forEach(function(item,i){
-							-if(i>=5){
-							-	return
-							-}
-							a(href="/product/list?cat=#{item.name}") 
-								span.glyphicon.glyphicon-chevron-right
-								| #{item.name}
-						- })
+							- productMenu.forEach(function(item,i){
+								-if(i>=5){
+								-	return
+								-}
+								a(href="/product/list?cat=#{item.name}") 
+									span.glyphicon.glyphicon-chevron-right
+									| #{item.name}
+							- })
 
 
 			.container.container_List

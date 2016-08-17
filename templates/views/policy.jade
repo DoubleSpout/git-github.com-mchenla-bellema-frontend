@@ -1,0 +1,16 @@
+doctype html
+html
+
+	include ../inc/head.jade
+
+	body
+		.page-wrapper
+			//inc nav
+			include ../inc/nav.jade
+
+			.container
+				!{data.data.content.extended}
+
+			include ../inc/foot.jade
+
+

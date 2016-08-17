@@ -3338,7 +3338,9 @@ border-bottom: none;
    display: block;
    margin-bottom: 40px;
 }
-
+.dis-content{
+  font-family: 'Avenir Next LT Pro Regular' !important;
+}
 .dis-content h3{
   color: #666f6e;
   font-weight: bold;
@@ -3364,11 +3366,18 @@ border-bottom: none;
   border: #94d1cc 1px solid;
 }
 .support-box-l {
-  margin-right: 60px;
+  padding: 0 30px;
+  /*margin-right: 60px;*/
 }
 .support-box-r {
-  margin-left: 60px;
-  background: url('/img/Product-@2x.png') right bottom no-repeat;
+   padding: 0 30px;
+  /*margin-left: 60px;*/
+  
+}
+
+.support-box-r  .support-box{
+
+background: url('/img/Product-@2x.png') right bottom no-repeat;
 }
 
 .support-box h2 {
@@ -3485,6 +3494,7 @@ border-bottom: none;
   font-size: 12px;
   color: #94d1cc;
   display: block;
+  font-family: "Avenir Next LT Pro Regular";
 }
 
 .product-left-box .price {
@@ -3493,6 +3503,7 @@ border-bottom: none;
   font-size: 18px;
   display: block;
   margin-top: 8px;
+  font-family: 'Avenir Next LT Pro Demi';
 }
 
 .product-left-box .product-img-wrap {

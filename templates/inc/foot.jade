@@ -6,15 +6,20 @@
 					.col-md-2
 						h2| About
 						a.ftLink(href="/blog/list")|Blog
-						a.ftLink(href="/support")|Support
-						a.ftLink(href="/distributor")|Distributor
-						a.ftLink(href="https://www.amazon.com/Bellema/b/ref=bl_dp_s_web_12076842011?ie=UTF8&;node=12076842011&field-lbr_brands_browse-bin=Bellema")|Buy from Amazon
+						a.ftLink(href="mailto:Bellema@gmail.com")|Contact Us
+						a.ftLink(href="/policy")|Privacy Policy
+						
 					.col-md-2
 						h2| Products
 						- productMenu.forEach(function(item,i){
 							- if(i>=4) return
 							a.ftLink(href="/product/list?cat=#{item.name}") #{item.name}
 						- })
+
+						a.ftLink(href="/support")|Support
+						a.ftLink(href="/distributor")|Distributor
+
+						a.ftLink(href="https://www.amazon.com/Bellema/b/ref=bl_dp_s_web_12076842011?ie=UTF8&;node=12076842011&field-lbr_brands_browse-bin=Bellema")|Buy from Amazon
 
 					.col-md-2
 						h2| Follow Us
@@ -24,9 +29,9 @@
 						a.ftLink(href="https://plus.google.com/101362370657508329799")|Google+
 					.col-md-4.foot-r-wrap
 						.row.foot-r
-							p +1(800) 385 6819
+							p 1 (800) 385 6819
 							p Email:Bellema@gmail.com
-							p Los Angeles BekSt 115
+							p Walnut, CA USA
 						.row
 							p.ftSocial
 								a(class="ftFb", href="https://www.facebook.com/BellemaUSA")
@@ -40,7 +45,7 @@
 			.col-md-6.al
 				span
 					i(class="glyphicon glyphicon-earphone" aria-hidden="true")
-					|1 (800) 3856819
+					|1 (800) 385 6819
 				span
 					i(class="glyphicon glyphicon-envelope" aria-hidden="true")
 					|bellema@gmail.com
