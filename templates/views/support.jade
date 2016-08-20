@@ -2,6 +2,8 @@ doctype html
 html
 
 	include ../inc/head.jade
+	link(rel="stylesheet", href="/static/css/jquery-ui.min.css")
+	script(src="/js/jquery-ui.min.js")
 
 	body
 		.page-wrapper.page_wrapper.white_wrapper
@@ -22,9 +24,10 @@ html
 					.col-md-6.support-box-l
 						.support-box
 							h2 Enter  the  keyword  to  search  for  the  product. For example  "Mango"
-							.support-box-inp-wrap
-								input(type="text", id="support-search-inp")
-								a(href="javascript:;", class="dis-search", id="support-search")
+							.ui-widget
+								.support-box-inp-wrap
+									input(type="text", id="support-search-inp")
+									a(href="javascript:;", class="dis-search", id="support-search")
 
 					.col-md-6.support-box-r
 						.support-box
@@ -77,6 +80,23 @@ script.
 		var supportBlk = $('.support-blk');
 		var supportBlkLen = supportBlk.length;
 
+		window.product = !{JSON.stringify(data.products)}
+
+		var productNames = [];
+		var productMap = {};
+
+		window.product.forEach(function(item){
+			productNames.push(item.name);
+			productMap[item.name] = item._id;
+		})
+
+
+		$("#support-search-inp").autocomplete({
+	      source: productNames
+	    });
+
+
+	    
 		$('#support-search').click(function(){
 			
 
@@ -86,42 +106,17 @@ script.
 				return false
 			}
 
-			$('.empty-search').hide();
-
-			swal({   
-				title: "Searching",   
-				text: "please wait ...",   
-				timer: 300,  
-				showConfirmButton: false,
-			});
-
-			var count = 0;
-			for(var i=0;i<supportBlkLen;i++){
-				var that = supportBlk.eq(i);
-				var title = that.find('h3').html();
-				var content = that.find('.support-content').html();
-
-				var isHide = true;
-				if(title.indexOf(v) != -1 || content.indexOf(v) != -1){
-					isHide = false;
-					count++;
-				}
-
-				if(isHide){
-					that.hide();
-				}else{
-					that.show();
-				}
-
+			var prodId = productMap[v];
+			if(!prodId){
+				sweetAlert("Not found such product.");
+				return false;
 			}
 
+			location.href = '/product/info?id='+prodId;
 
-			if(count == 0 ){
-				$('.empty-search').show();
-			}
-
-
+			return false;
 		})
+		
 
 
 	})

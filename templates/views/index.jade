@@ -126,30 +126,14 @@ html
 
 							
 
-			.container-fluid
-				.row
-					div(id="homeSubscribe", class="homeSubscribe")
-						h2 
-							img(src="/img/bee@2x.png")
-							|win a $20 gift card
-						.homeSubscribeWrap
-							input(id="subInp", class="subInp", type="email")
-							a(id="subBtn", class="subBtn", href="#")
-							a(class="linkBtn")
-
-						h3 Get bored by email?
-						.row
-							a(href="https://www.facebook.com/BellemaUSA")
-								img(src="/img/fbBtn.png")
-							a(href="https://plus.google.com/101362370657508329799")
-								img(src="/img/gpBtn.png")
-							a(href="https://www.instagram.com/bellemausa/")
-								img(src="/img/lnBtn.png")
-							a(href="https://twitter.com/BellemaUSA")
-								img(src="/img/twBtn.png")
+			include ../inc/index_card.jade
 
 			include ../inc/foot.jade
 
+		#myModal.modal.fade.bs-example-modal-lg(role="dialog")
+			div(class="modal-dialog modal-lg", role="document")
+				include ../inc/index_card.jade
+					
 - var customDataList = []
 - data.customers.forEach(function(item){
 	- item.images[0] = item.images[0] || {}
@@ -158,6 +142,11 @@ html
 
 script.
 	$(function(){
+
+		if(!$.cookie('bellema_visit')){
+			$('#myModal').modal({});
+		}
+		
 		window.screenW = $(window).width();
 
 		var swiper = new Swiper('#banner-container', {
@@ -233,8 +222,11 @@ script.
 	    }
 
 	    var emailReg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
-	    $('#subBtn').click(function(){
-	    	var email = $('#subInp').val().trim();
+	    $('.subBtn').click(function(){
+
+	    	var inp = $(this).parent().find('.subInp').eq(0);
+
+	    	var email = inp.val().trim();
 	    	if(!emailReg.test(email)){
 	    		sweetAlert("Oops...", "Invalid email format", "error");
 	    		return false;
@@ -247,6 +239,11 @@ script.
 	    		}
 
 	    		sweetAlert("Success");
+
+
+	    		$.cookie('bellema_visit', 'email', { expires: 365*10, path: '/' });
+	    		$('#myModal').modal('hide');
+
 	    		return false;	
 
 	    	}, 'json')

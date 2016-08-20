@@ -31,6 +31,7 @@ var routes = {
 	views: importRoutes('./views'),
 };
 
+var syncfb = require('./syncfb.js');
 // Setup Route Bindings
 exports = module.exports = function (app) {
 
@@ -52,6 +53,9 @@ exports = module.exports = function (app) {
 	app.get('/gallery', routes.views.gallery);
 	app.get('/policy', routes.views.policy);
 	app.all('/contact', routes.views.contact);
+
+
+	app.post('/sync/fb/fd6c3f5ad15338e4a3c6b79fca2c8468', syncfb.syncfb)
 
 
 

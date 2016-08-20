@@ -4024,3 +4024,25 @@ background: url('/img/Product-@2x.png') right bottom no-repeat;
 
   background: url('/img/downArrow.png') 6px 3px no-repeat;
 }
+
+
+.card-close {
+    width: 46px;
+    height: 46px;
+    background: url('/img/card-close.png') 0 0 no-repeat;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: 0.8;
+}
+
+
+#myModal .homeSubscribe {
+    padding-bottom: 50px;
+    background:#fff;
+    position: relative;
+}
+
+#myModal  .homeSubscribe h2 {
+      margin-top: 0px;
+}

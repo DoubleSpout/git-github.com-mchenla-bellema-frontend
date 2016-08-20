@@ -68,3 +68,5 @@ build/Release
 /node_modules/express-session
 /node_modules/grappling-hook
 /node_modules/jade
+/node_modules/fb
+/node_modules/fbgraph
