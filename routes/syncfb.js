@@ -10,7 +10,7 @@ var moment = require('moment');
 exports.syncfb = function(req, res){
 
 	var lastFaceBookTime = new Date('1970/1/1');
-
+	var asyncList = [];
 	asyncList.push(function(callback){
 
 		keystone.list('Blog').model.find({'isFacebook':'yes'}).sort({'publishedDate':-1}).limit(1).exec(function (err, results) {
@@ -35,8 +35,8 @@ exports.syncfb = function(req, res){
 
 		// extending static access token
 	    graph.extendAccessToken({
-	        "client_id":      conf.client_id
-	      , "client_secret":  conf.client_secret
+	        "client_id":      'conf.client_id',
+	        "client_secret":  'conf.client_secret',
 	    }, function (err, facebookRes) {
 	       	
 	       	if(err){
@@ -63,7 +63,7 @@ exports.syncfb = function(req, res){
 	async.series(asyncList, function(err){
 		if(err){
 			console.log('index.js| async.parallel error', err);
-			res.json({'error':1, 'data':err})
+			res.json({'error':1, 'data':JSON.stringify(err)})
 			return
 		}
 
