@@ -85,6 +85,11 @@ script.
 		});
 
 
+		var tab = "#{query.tab}" - 0;
+		if(tab>0){
+			$('.product-d-btn').eq(tab).click();
+		}
+
 		$('#view-read-more').click(function(){
 			var start = pageNum * pageSise;
 			var end = start + pageSise;

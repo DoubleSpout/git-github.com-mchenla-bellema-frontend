@@ -9,6 +9,7 @@ exports = module.exports = function (req, res) {
 	var asyncList = [];
 	var locals = res.locals;
 	locals.data = {};
+	locals.query = req.query;
 	var id = req.query.id || '';
 	var perPage = 10;
 
