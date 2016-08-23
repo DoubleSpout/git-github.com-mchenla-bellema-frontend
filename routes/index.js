@@ -35,6 +35,11 @@ var syncfb = require('./syncfb.js');
 // Setup Route Bindings
 exports = module.exports = function (app) {
 
+
+	app.get('/bellema-admin', function(req, res){
+			res.redirect('/keystone')
+	}); //process.env.PREFIX = /my/subdirectory
+
 	app.set('trust proxy', 'loopback') // 指定唯一子网
 	// Views
 	app.get('/', routes.views.index);

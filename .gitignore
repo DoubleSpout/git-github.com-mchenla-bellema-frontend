@@ -70,3 +70,4 @@ build/Release
 /node_modules/jade
 /node_modules/fb
 /node_modules/fbgraph
+/node_modules/keystone-admin-routes
