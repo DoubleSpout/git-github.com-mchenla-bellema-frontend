@@ -89,20 +89,26 @@ html
 						.homeCustomWrap
 							div(class="swiper-container custom-container", id="custom-container")
 								div(class="swiper-wrapper")
-
-									- data.customers.forEach(function(item){
-										- item.images[0] = item.images[0] || {}
-										div(class="swiper-slide")
-											p.customP 
-												i #{item.content}
-
-									- })
+									div(class="swiper-slide")
+										p.customP 
+											i(id="cf_content")
 									
 								div(class="customPagenation")
 									
-									div(class="swiper-button-prev-custom")
-									div(class="swiper-pagination-customer", id="swiper-pagination-customer")
-									div(class="swiper-button-next-custom")
+									div(class="swiper-button-prev-custom", id="cfprev")
+									.showcase-wrap
+										div#showcase
+
+											- data.customers.forEach(function(item){
+												- item.images[0] = item.images[0] || {}
+												div.swiper-pagination-bullet.cloud9-item
+													img(src="/upload/#{item.images[0].filename}")
+													i #{item.reviewName}
+											- })
+
+									div(class="swiper-button-next-custom", id="cfnext")
+
+									
 
 
 			.container-fluid
@@ -181,24 +187,37 @@ script.
 	    }
 
 
-	    var swiper = new Swiper('#custom-container', {
-	        pagination: '.swiper-pagination-customer',
-	        slidesPerView: 1,
-	        paginationClickable: true,
-	        spaceBetween: 0,
-			nextButton: '.swiper-button-next-custom',
-			prevButton: '.swiper-button-prev-custom',
-	    });
-
 	    
-	    var homeCustomJson = !{JSON.stringify(customDataList)}
+	    var homecf = !{JSON.stringify(data.customers)}
+	    var cloud9 = $('.cloud9-item')
 
+	    var showcase = $("#showcase");
+	    window.cfpos = -1;
 
-	    setTimeout(function(){
-	    	$('#swiper-pagination-customer .swiper-pagination-bullet').each(function(i){
-	    		$(this).html('<img src="'+homeCustomJson[i].img+'" /><i>'+homeCustomJson[i].title+'</i>')
-	    	})
-	    },0);
+		showcase.Cloud9Carousel( {
+			yOrigin: 5,
+			yRadius: -5,
+			farScale:0.7,
+			buttonLeft: $("#cfprev"),
+			buttonRight: $("#cfnext"),
+			autoPlay: 0,
+			bringToFront: true,
+
+			onLoaded: function() {
+			  showcase.css( 'visibility', 'visible' )
+			  showcase.css( 'display', 'none' )
+			  showcase.fadeIn( 1500 )
+			},
+			onRendered:function(c){
+				var pos = c.nearestIndex();
+				if(pos == window.cfpos) return;
+				window.cfpos = pos;
+				//console.log(homecf[pos])
+				$('#cf_content').html(homecf[pos].content||'');
+				cloud9.removeClass('btm').addClass('tm');
+				cloud9.eq(pos).removeClass('tm').addClass('btm');
+			}
+		})
 
 
 

@@ -12,7 +12,7 @@ exports = module.exports = function (req, res) {
 	var page = (req.query.page || 1)-0;
 	var catName = (req.query.cat || '');
 	var sort = req.query.sort || 'sort';
-	var perPage = 10;
+	var perPage = 12;
 
 	if(isNaN(page)){
 		return res.status(400).end('invalid page');
@@ -28,7 +28,7 @@ exports = module.exports = function (req, res) {
 	var defaultCat = '';
 	var CatId= '';
 	asyncList.push(function(callback){
-		keystone.list('ProductCategory').model.find().sort({'sort':-1}).exec(function (err, results) {
+		keystone.list('ProductCategory').model.find().sort({'sort':1}).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -82,7 +82,7 @@ exports = module.exports = function (req, res) {
 	//adv List 
 	asyncList.push(function(callback){
 		var skipNum = perPage * (page-1)
-		keystone.list('Adv').model.find({'showOnProductList':'yes'}).sort({'sort':-1}).limit(3).exec(function (err, results) {
+		keystone.list('Adv').model.find({'showOnProductList':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -99,7 +99,7 @@ exports = module.exports = function (req, res) {
 	//side product
 	asyncList.push(function(callback){
 
-		keystone.list('Product').model.find({'state':'published', 'putOnSide':'yes'}).sort({'sort':-1}).limit(3).exec(function (err, results) {
+		keystone.list('Product').model.find({'state':'published', 'putOnSide':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);

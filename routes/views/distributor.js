@@ -14,7 +14,7 @@ exports = module.exports = function (req, res) {
 
 	//data List 
 	asyncList.push(function(callback){
-		keystone.list('Shop').model.find({}).sort({'sort':-1}).limit(1000).exec(function (err, results) {
+		keystone.list('Shop').model.find({}).sort({'sort':1}).limit(1000).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);

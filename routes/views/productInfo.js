@@ -79,7 +79,7 @@ exports = module.exports = function (req, res) {
 	//get reviews
 	asyncList.push(function(callback){
 		
-		keystone.list('Review').model.find({'product':productId}).sort({'sort':-1}).skip(0).limit(10000).exec(function (err, results) {
+		keystone.list('Review').model.find({'product':productId}).sort({'sort':1}).skip(0).limit(10000).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -107,7 +107,8 @@ exports = module.exports = function (req, res) {
 	//get cat other productions
 	asyncList.push(function(callback){
 		
-		keystone.list('Product').model.find({'state':'published', 'categories':{'$all':[catId]}, "_id":{"$ne":productId} }).sort({'sort':-1}).skip(0).limit(12).exec(function (err, results) {
+		keystone.list('Product').model.find({'state':'published', 'categories':{'$all':[catId]}, "_id":{"$ne":productId} })
+		.sort({'sort':1}).skip(0).limit(12).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);

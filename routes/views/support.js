@@ -12,7 +12,7 @@ exports = module.exports = function (req, res) {
 
 	//data List 
 	asyncList.push(function(callback){
-		keystone.list('Support').model.find({'state':'published'}).sort({'sort':-1}).limit(1000).exec(function (err, results) {
+		keystone.list('FAQs').model.find({'state':'published'}).sort({'sort':1}).limit(1000).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -32,7 +32,7 @@ exports = module.exports = function (req, res) {
 
 	//data List 
 	asyncList.push(function(callback){
-		keystone.list('Product').model.find({'state':'published'}).sort({'sort':-1}).limit(1000).exec(function (err, results) {
+		keystone.list('Product').model.find({'state':'published'}).sort({'sort':1}).limit(1000).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);

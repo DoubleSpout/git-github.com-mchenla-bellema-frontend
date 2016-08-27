@@ -14,7 +14,7 @@ exports = module.exports = function (req, res) {
 
 	//get picture
 	asyncList.push(function(callback){
-		keystone.list('banner').model.find({'isShow':'yes'}).sort({'sort':-1}).exec(function (err, results) {
+		keystone.list('banner').model.find({'isShow':'yes'}).sort({'sort':1}).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -28,7 +28,7 @@ exports = module.exports = function (req, res) {
 
 	//get product
 	asyncList.push(function(callback){
-		keystone.list('Product').model.find({'putOnHome':'yes', 'state':'published'}).sort({'sort':-1}).exec(function (err, results) {
+		keystone.list('Product').model.find({'putOnHome':'yes', 'state':'published'}).sort({'sort':1}).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -43,7 +43,7 @@ exports = module.exports = function (req, res) {
 
 	//get customer
 	asyncList.push(function(callback){
-		keystone.list('homeCustom').model.find({}).sort({'sort':-1}).exec(function (err, results) {
+		keystone.list('CustomerFeedback').model.find({}).sort({'sort':1}).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -58,7 +58,7 @@ exports = module.exports = function (req, res) {
 
 	//get partner
 	asyncList.push(function(callback){
-		keystone.list('partner').model.find({}).sort({'sort':-1}).exec(function (err, results) {
+		keystone.list('partner').model.find({}).sort({'sort':1}).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);

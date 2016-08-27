@@ -22,7 +22,7 @@ exports = module.exports = function (req, res) {
 	
 	//get side
 	asyncList.push(function(callback){
-		keystone.list('Blog').model.find({'state':'published', 'putOnSide':'yes'}).sort({'sort':-1}).limit(3).exec(function (err, results) {
+		keystone.list('Blog').model.find({'state':'published', 'putOnSide':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -103,7 +103,7 @@ exports = module.exports = function (req, res) {
 	//data List 
 	asyncList.push(function(callback){
 
-		keystone.list('Adv').model.find({'showOnBlog':'yes'}).sort({'sort':-1}).limit(3).exec(function (err, results) {
+		keystone.list('Adv').model.find({'showOnBlog':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);

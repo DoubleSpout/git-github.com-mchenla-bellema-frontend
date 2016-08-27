@@ -6,7 +6,7 @@ var Types = keystone.Field.Types;
  * =============
  */
 
-var Support = new keystone.List('Support', {
+var Support = new keystone.List('FAQs', {
 	autokey: { from: 'name', path: 'key', unique: true },
 });
 

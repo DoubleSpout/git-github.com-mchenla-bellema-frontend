@@ -6,7 +6,7 @@ var Types = keystone.Field.Types;
  * =============
  */
 
-var homeCustom = new keystone.List('homeCustom', {});
+var homeCustom = new keystone.List('CustomerFeedback', {});
 
 homeCustom.add({
 	title: { type: String, default:'' },

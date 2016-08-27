@@ -82,7 +82,7 @@ html
 									.swiper-wrapper.homeProductWrapper
 
 										- data.otherProds.forEach(function(item){
-											.product-list-inner-blk
+											.product-list-inner-blk.swiper-slide
 
 												- if(item.images && item.images[0]){
 													a(href="/product/info?id=#{item._id}")
@@ -126,11 +126,11 @@ script.
 
 
 		 if(window.screenW > 767){
+		 
 	    	 var swiper = new Swiper('#homeProductContainer', {
 		        pagination: '.swiper-pagination-product',
 		        slidesPerView: 3,
 		        paginationClickable: true,
-		        spaceBetween: 0,
 				nextButton: '.swiper-button-next-product',
 				prevButton: '.swiper-button-prev-product',
 				spaceBetween: 30
@@ -140,7 +140,6 @@ script.
 		        pagination: '.swiper-pagination-product',
 		        slidesPerView: 1,
 		        paginationClickable: true,
-		        spaceBetween: 0,
 				nextButton: '.swiper-button-next-product',
 				prevButton: '.swiper-button-prev-product',
 				spaceBetween: 30
