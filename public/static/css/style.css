@@ -2736,10 +2736,9 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 
 .customPagenation{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: relative;
+  display: block;
+  clear: both;
   width: 100%;
   height: 100px;
   text-align: center;
@@ -2747,14 +2746,25 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
    font-family: 'Avenir Next LT Pro Italic';
 
 }
+
+.custompWrap{
+  width: 800px;
+  height: auto;
+  margin: 80px auto 20px;
+  background: rgba(255, 255, 255, 0.8)
+}
 .customP{
   width: 680px;
-  height: 80px;
+  min-height: 160px;
+  height: auto;
+  display: block;
   color: #f6bbb7;
   font-style: italic;
-  margin: 120px auto 0;
+  padding: 50px 0 10px 80px;
   line-height: 32px;
-    font-family: 'Avenir Next LT Pro Italic';
+  font-family: 'Avenir Next LT Pro Italic';
+  background: url(/img/homecustom_p_bg.png) 30px 20px no-repeat;
+
 }
 .customP i {
   color: #f6bbb7 !important;
@@ -2764,8 +2774,9 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 .custom-container{
   width: 1000px;
-  height: 400px;
-  position: relative;  
+  height: auto;
+  min-height: 400px;
+  position: relative;
 }
 .customPagenation .swiper-button-next-custom, .customPagenation .swiper-button-prev-custom{
   display: inline-block;
@@ -2822,35 +2833,17 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 
 @media (max-width: 767px) {
-
+      .custom-container .custompWrap{
+        width: 100% !important;
+      }
       .custom-container, .customP{
         width: 100%;
         padding: 0 10px;
+        background: none !important;
       }
 
-  .customPagenation .swiper-pagination-bullet img {
-        opacity: 0.6;
-         width: 30px;
-        height: 30px;
-        border-radius: 30px;
-        display: block;
 
-    }
 
-    .customPagenation .swiper-pagination-bullet-active img {
-        width: 45px;
-        height: 45px;
-        border-radius: 45px;
-
-    }
-
-    .customPagenation .swiper-pagination-bullet{
-        width: 50px;
-        font-size: 16px;
-      }
-    .customPagenation .swiper-pagination-customer {
-
-    }
 }
 
 
@@ -4078,4 +4071,14 @@ background: url('/img/Product-@2x.png') right bottom no-repeat;
 }
 .tm i {
   display: none !important;
+}
+@media (max-width: 480px) {
+  .customPagenation .swiper-button-next-custom{
+   display: none !important;
+  }
+
+    .customPagenation .swiper-button-prev-custom{
+   display: none !important;
+  }
+
 }
