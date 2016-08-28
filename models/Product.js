@@ -26,7 +26,7 @@ Product.add({
 	featureTitle:  { type: String,  default:'' },
 	featureContent :  { type: String,  default:'' },
 
-	state: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
+	status: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 
@@ -49,5 +49,5 @@ Product.schema.virtual('content.full').get(function () {
 
 Product.relationship({ ref: 'Review', path: 'product' });
 
-Product.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
+Product.defaultColumns = 'name, status|20%, publishedDate|20%, code|10%, sort|10%, msrp|20%';
 Product.register();

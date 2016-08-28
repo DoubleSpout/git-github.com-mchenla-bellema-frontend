@@ -132,7 +132,12 @@ exports = module.exports = function (req, res) {
 
 		var skipNum = perPage * (page-1);
 		var sortObj = {};
-		sortObj[sort] = -1;
+		if(sort == 'sort'){
+			sortObj[sort] = 1;
+		}else{
+			sortObj[sort] = -1;
+		}
+		
 
 		//console.log(CatId)
 
