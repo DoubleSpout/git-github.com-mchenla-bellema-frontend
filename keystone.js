@@ -3,7 +3,7 @@
 
 var path = require('path');
 var fs = require('fs');
-var moduleRoot = (function(_rootPath) {
+global.moduleRoot = (function(_rootPath) {
 	var parts = _rootPath.split(path.sep);
 	parts.pop(); //get rid of /node_modules from the end of the path
 	return parts.join(path.sep);
