@@ -1,5 +1,23 @@
 // Simulate config options from your production environment by
 // customising the .env file in your project's root folder.
+
+var path = require('path');
+var fs = require('fs');
+var moduleRoot = (function(_rootPath) {
+	var parts = _rootPath.split(path.sep);
+	parts.pop(); //get rid of /node_modules from the end of the path
+	return parts.join(path.sep);
+})(module.parent ? module.parent.paths[0] : module.paths[0]);
+
+
+//create upload path
+global.localFilePath = path.join(moduleRoot, 'public', 'upload');
+if(!fs.existsSync(global.localFilePath)){
+	fs.mkdirSync(global.localFilePath)
+}
+
+
+
 require('dotenv').config();
 
 // Require keystone
