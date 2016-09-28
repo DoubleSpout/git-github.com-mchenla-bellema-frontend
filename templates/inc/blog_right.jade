@@ -1,5 +1,18 @@
 .col-md-4
 	div.blog_right_box
+		h2 Popular  Posts
+		ul.list-unstyled
+			- data.sideData.forEach(function(item){
+				li
+					a.row(href="/blog/info?id=#{item._id}")
+						.col-xs-4
+							img(src="/upload/#{item.sideImg[0]['filename']}")
+						.col-xs-8
+							| #{item.title}
+							i #{item.publishedDate}
+			- })
+			
+	div.blog_right_box
 		h2 Recent  Posts
 		ul.list-unstyled
 			- data.recentData.forEach(function(item){
@@ -12,18 +25,7 @@
 							i #{item.publishedDate}
 			- })
 
-	div.blog_right_box
-		h2 Popular  Posts
-		ul.list-unstyled
-			- data.sideData.forEach(function(item){
-				li
-					a.row(href="/blog/info?id=#{item._id}")
-						.col-xs-4
-							img(src="/upload/#{item.sideImg[0]['filename']}")
-						.col-xs-8
-							| #{item.title}
-							i #{item.publishedDate}
-			- })
+
 
 
 

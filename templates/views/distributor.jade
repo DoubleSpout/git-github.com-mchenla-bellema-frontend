@@ -14,8 +14,6 @@ html
 			.container
 				.page-bread-nav
 					a(href="/") Home
-					span.blue_span / 
-					a(href="/distributor") Where to Buy
 					span / 
 					| Distributor Locator
 
@@ -26,7 +24,7 @@ html
 						h2.dis-h2 Enter Your Address  
 						div.dis-inp-box
 							input(type="text", id="autocomplete",placeholder="Please enter your address or zip code")
-							a(href="#", class="dis-search")
+							a(href="javascript:;", class="dis-search")
 
 						.dis-content#dis-content
 							- data.data.forEach(function(item, i){
@@ -156,7 +154,7 @@ script.
 
 		disRes.forEach(function(item, i){
 			if(i>=10) return
-			locations.push([item.name+' '+item.address+ ' '+item.phone, item.lat, item.lng, (i+2)])
+			locations.push([item.name+'<br/>'+item.address+ '<br/>'+item.phone, item.lat, item.lng, (i+2)])
 		})
 
 

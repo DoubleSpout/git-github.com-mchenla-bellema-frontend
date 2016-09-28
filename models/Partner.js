@@ -11,7 +11,7 @@ var partner = new keystone.List('partner',{});
 partner.add({
 	title: { type: String, default:'' },
 	partnerName: { type: String, default:''},
-	logo: { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'130*70' },
+	logo: { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'390 * 210' },
 	sort:{ type: Number, default:1 },
 	linkUrl: { type: String, default:'' },
 	publishedDate: { type: Date},

@@ -15,7 +15,7 @@ Product.add({
 	name: { type: String, required: true, index: true},
 	
 	intro: { type: String, default:'' },
-	code:  { type: String,  default:'' },
+	code:  { type: String,  default:'', label:'Product NO.'},
 	availability:{ type: Types.Select, options: 'in stock, not sell', default: 'in stock',},	//1 is in stock, 2 is not sell
 	stars: { type: Types.Select, options: '1, 2, 3, 4, 5', default: '5',},
 	msrp: { type: Number,  default:0 },
@@ -30,8 +30,8 @@ Product.add({
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 
-	cover:  { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'150*150' },
-	images: { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'600*600' },
+	cover:  { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'600 * 600' },
+	images: { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'600 * 600' },
 
 	content: {
 		//brief: { type: Types.Html, wysiwyg: true, height: 150 },

@@ -27,9 +27,9 @@ exports = module.exports = function (req, res) {
 				return callback(err);
 			}
 
-			locals.data.sideData = results;
+			locals.data.sideData = JSON.parse(JSON.stringify(results));
 			locals.data.sideData.map(function(item){
-				 item.publishedDate = moment(item.publishedDate).format('LL')
+				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
 				 return item
 			})
 			//console.log(results)
@@ -47,9 +47,9 @@ exports = module.exports = function (req, res) {
 			}
 
 
-			locals.data.recentData = results;
+			locals.data.recentData = JSON.parse(JSON.stringify(results));;
 			locals.data.recentData.map(function(item){
-				 item.publishedDate = moment(item.publishedDate).format('LL')
+				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
 				 return item
 			})
 			//console.log(results)
@@ -82,10 +82,10 @@ exports = module.exports = function (req, res) {
 				return callback(err);
 			}
 
-			locals.data.data = results;
+			locals.data.data = JSON.parse(JSON.stringify(results));
 
 			locals.data.data.map(function(item){
-				 item.publishedDate = moment(item.publishedDate).format('LL')
+				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
 				 return item
 			})
 			//console.log(results)

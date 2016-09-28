@@ -151,6 +151,7 @@ script.
 
 		if(!$.cookie('bellema_visit')){
 			$('#myModal').modal({});
+			$.cookie('bellema_visit', 'email', { expires: 7, path: '/' });
 		}
 		
 		window.screenW = $(window).width();

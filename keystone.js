@@ -50,6 +50,15 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
+	//'wysiwyg menubar': true,
+	'wysiwyg skin': 'lightgray',
+	'wysiwyg additional options':{
+		'fullpage_default_font_family':"'Times New Roman', Georgia, Serif;",
+		'fontFamilySelection':true,
+		'fontFamilyDefaultSelection':'Font',
+	},
+	'wysiwyg additional buttons':'forecolor fontsizeselect fontselect',
+	'wysiwyg additional plugins':'textcolor,fullpage',
 });
 
 // Load your project's Models
