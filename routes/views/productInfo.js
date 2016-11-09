@@ -34,13 +34,18 @@ exports = module.exports = function (req, res) {
 				return callback(err);
 			}
 
-			locals.data.data = results;
+			locals.data.data = JSON.parse(JSON.stringify(results));
 			if(locals.data.data.length == 0){
 				return callback('not found product');
 			}
 
+			locals.data.pdfUrl = '';
+			if(locals.data.data[0].supportPdfUrl && locals.data.data[0].supportPdfUrl[0] && locals.data.data[0].supportPdfUrl[0].filename){
+				locals.data.pdfUrl = locals.data.data[0].supportPdfUrl[0].filename;
+			}
+
 			locals.data.data.map(function(item){
-				 item.publishedDate = moment(item.publishedDate).format('LL')
+				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
 				 return item
 			})
 
@@ -85,7 +90,11 @@ exports = module.exports = function (req, res) {
 				return callback(err);
 			}
 
-			locals.data.reviews = results;
+			locals.data.reviews = JSON.parse(JSON.stringify(results));
+			locals.data.reviews.map(function(item){
+				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
+				 return item
+			})
 
 			keystone.list('Review').model.count({'product':productId}).exec(function (err, results) {
 				if (err) {

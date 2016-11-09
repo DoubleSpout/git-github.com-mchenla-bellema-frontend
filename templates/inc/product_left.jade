@@ -15,7 +15,7 @@
 		h3 Featured Products
 
 			- data.sideProduct.forEach(function(item){	
-				.row
+				.row.hander(onclick="location.href='/product/info?id=#{item._id}'")
 					.col-xs-5.product-img-wrap
 						- if(item.images && item.images[0]){
 							img(src="/upload/#{item.images[0]['filename']}")
