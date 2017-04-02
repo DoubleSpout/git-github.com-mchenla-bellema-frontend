@@ -4194,3 +4194,7 @@ background: url('/img/Product-@2x.png') right bottom no-repeat;
   z-index: 1000;
   display: none;
 }
+
+li img, p img {
+  max-width: 100%;
+}
