@@ -30,7 +30,7 @@ html
 							- data.data[0].images && data.data[0].images.forEach(function(item,i){
 								.product-info-img(class="big-#{i}")
 									a.MagicZoom.MagicThumb(href="/upload/#{item['filename']}")
-										img.product-big-pic(src="/upload/#{item['filename']}")
+										img.product-big-pic(src="/upload/#{item['filename']}", width="420", height="420")
 
 							- })
 
