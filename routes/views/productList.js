@@ -170,6 +170,8 @@ exports = module.exports = function (req, res) {
 			'cat':catName,
 			'sort':sort,
 		}
+
+		locals.title = 'Products|BelleMa'
 		// Render the view
 		view.render('product_list');
 	})

@@ -70,6 +70,31 @@ exports = module.exports = function (req, res) {
 		});
 	});
 
+	//get index intro
+	asyncList.push(function(callback){
+		keystone.list('IndexIntro').model.find({}).sort({'sort':1}).exec(function (err, results) {
+
+			if (err) {
+				return callback(err);
+			}
+			var introData = {}
+			results.forEach(function(item){
+				if(!introData[item.pos]){
+					introData[item.pos] = item
+				}
+			})
+
+			introData['postion-1'] = introData['postion-1'] || {}
+			introData['postion-2'] = introData['postion-2'] || {}
+			introData['postion-3'] = introData['postion-3'] || {}
+			introData['postion-4'] = introData['postion-4'] || {}
+
+			locals.data.indexIntro = introData;
+			//console.log(results)
+			callback()
+		});
+	});
+
 
 	async.parallel(asyncList, function(err){
 		if(err){
@@ -77,6 +102,7 @@ exports = module.exports = function (req, res) {
 			return res.status(500).end();
 		}
 		// Render the view
+		locals.title = 'HOME|BelleMa'
 		view.render('index');
 	})
 	

@@ -122,6 +122,8 @@ exports = module.exports = function (req, res) {
 			return res.status(500).end();
 		}
 
+		locals.title = 'Resources|BelleMa'
+
 		//locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
 		// Render the view
 		view.render('blog_info');

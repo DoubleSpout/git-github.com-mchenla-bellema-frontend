@@ -1,13 +1,13 @@
 .page_nav
 	- if(page.PageList.length>1){
 		-if(page.Prev){
-			a(href="#{page.link}#{page.gap}page=#{page.curPage-1}") <
+			a(href="#{page.link}#{page.gap}page=#{page.curPage-1}&keywords=#{keywords || ''}") <
 		-}
 		-page.PageList.forEach(function(p){
 			-if(p==page.curPage){
-				a(href="#{page.link}#{page.gap}page=#{p}").sel #{p}
+				a(href="#{page.link}#{page.gap}page=#{p}&keywords=#{keywords || ''}").sel #{p}
 			-}else{
-				a(href="#{page.link}#{page.gap}page=#{p}") #{p}
+				a(href="#{page.link}#{page.gap}page=#{p}&keywords=#{keywords || ''}") #{p}
 			-}
 			
 		-})
@@ -15,10 +15,10 @@
 			span ...
 		-}
 		-if(page.LastPage){
-			a(href="#{page.link}#{page.gap}page=#{page.LastPage}") #{page.LastPage}
+			a(href="#{page.link}#{page.gap}page=#{page.LastPage}&keywords=#{keywords || ''}") #{page.LastPage}
 		-}
 		-if(page.Next){
-			a(href="#{page.link}#{page.gap}page=#{page.curPage+1}") >
+			a(href="#{page.link}#{page.gap}page=#{page.curPage+1}&keywords=#{keywords || ''}") >
 		-}
 
 	-}else{

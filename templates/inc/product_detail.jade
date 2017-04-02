@@ -9,6 +9,10 @@
 	
 	.pro-box
 		!{data.data[0].content.extended}
+		-if(data.data[0].videoUrl != ''){
+			p.videoP
+				!{data.data[0].videoUrl}
+		-}
 
 
 	.pro-box(style="display:none;")

@@ -109,6 +109,10 @@ keystone.set('nav', {
 // Start Keystone to connect to your database and initialise the web server
 if(process.env.NODE_ENV == 'production'){
 	keystone.set('port',80)
+	console.log("runing in production listen 80")
+}else{
+	keystone.set('port',3001)
+	console.log("runing in dev listen 3001")
 }
 
 keystone.start();

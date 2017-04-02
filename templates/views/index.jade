@@ -40,17 +40,17 @@ html
 						h3 most important things of a Breastpump
 						.homeMattersBox.row
 							p(class="col-md-6 p1")
-								span Bellema Breast Pump is Safe
-								|Just because a Breast Pump is expensive does not mean it is safe! Bellema offers Insurance Covered Closed System Models with Anti-Back-Flow. Closed System Breast Pump is designed with a barrier between the milk collection kit and the pump mechanism that is not exposed to outside air preventing bacterial contamination. All Bellema breast pumps are FDA Approved and BPA-Free.
+								span #{data.indexIntro['postion-1']['title'] || ""}
+								|#{data.indexIntro['postion-1']['intro'] || ""}
 							p(class="col-md-6 p2")
-								span Bellema Breast Pump is One-Of-A-Kind
-								|Bellema launches Model Effective Pro, the ONLY Breast Pump in the market that has a IDC™ Feature. This Breast Pump Model is by far the only breast pump that offers an Individual Dual Left and Right Suction Controls. Mothers can now pump both breasts and be able to adjust the suction power depending on each breast’s nipple condition and be encouraged to continue breastfeeding while minimizing their pumping time session.  
+								span #{data.indexIntro['postion-2']['title'] || ""}
+								|#{data.indexIntro['postion-2']['intro'] || ""}  
 							p(class="col-md-6 p3")
-								span Bellema Breast Pump is Efficient
-								|A Powerful and Efficient Breast Pump is highly important to mothers who are pumping at work under time constraint.  Bellema has a selection of double electric breast pumps that can easily stimulate a Mother’s MER (Milk Ejection Reflex).  The common problem working mothers encounter on a double breast pump is the suction power reduction when double pumping.  Bellema offers Mothers not just products, but solutions! 
+								span #{data.indexIntro['postion-3']['title'] || ""}
+								|#{data.indexIntro['postion-3']['intro'] || ""}
 							p(class="col-md-6 p4")
-								span Bellema Breast Pump  offers Comfort and Affordability
-								|Bellema Breast Pumps come with comfortable and soft silicone cushions which massage the breasts gently while expressing milk.  Bellema’s Melon Double is designed with a separate Speed and Suction control with 25 customized settings to provide a more comfortable expression. Bellema’s Effective Pro offers 9 adjustable Suction Levels for the Left and Right Pumps and can be controlled separately.  
+								span #{data.indexIntro['postion-4']['title'] || ""}
+								|#{data.indexIntro['postion-4']['intro'] || ""}  
 							
 
 
@@ -79,7 +79,7 @@ html
 
 
 
-			.container-fluid
+			.container-fluid.mustHide
 				.row
 					div(id="homeCustom", class="homeCustom")
 						.homeCustomTitle
@@ -160,6 +160,8 @@ script.
 	        pagination: '.swiper-pagination-banner',
 	        slidesPerView: 1,
 	        paginationClickable: true,
+	        autoplay:4000,
+	        loop:true,
 	        spaceBetween: 0,
 			nextButton: '.swiper-button-next-banner',
 			prevButton: '.swiper-button-prev-banner',

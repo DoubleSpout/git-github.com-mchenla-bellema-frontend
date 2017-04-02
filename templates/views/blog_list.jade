@@ -20,21 +20,36 @@ html
 			.container.container_List.container_blog
 				.row
 					.col-md-8.blog_list_wrap
-						ul.list-unstyled
+						form.form-inline.formBlog(action="")
+							.form-group
+								label.sr-only
+								.input-group
+									.input-group-addon
+										span.glyphicon.glyphicon-search(aria-hidden="true")
+									input.form-control.bolgSearchInp(name="keywords", placeholder="input title",value="#{data.keywords}")
+									button(class="btn btn-primary", type="submit") Search
+						- if(data.data.length > 0){
+							ul.list-unstyled
 
-							- data.data.forEach(function(item){
-								li
-									h2 #{item.title}
-									i Posted on: #{item.publishedDate} By #{item.autorName}
-									img(src="/upload/#{item.cover[0]['filename']}")
-									p #{item.intro}
-									a(href="/blog/info?id=#{item._id}", class="blog_btn") Read More
+								- data.data.forEach(function(item){
+									li
+										h2 #{item.title}
+										i Posted on: #{item.publishedDate} By #{item.autorName}
+										- if(item.cover && item.cover[0]){
+											img(src="/upload/#{item.cover[0]['filename']}")
+										-}
+										p #{item.intro}
+										a(href="/blog/info?id=#{item._id}", class="blog_btn") Read More
 
 
-							-})
-						br
-						br
-						include ../inc/page_nav.jade
+								-})
+							br
+							br
+							include ../inc/page_nav.jade
+							
+						-}else{
+							h2.emptyH2 empty result
+						-}
 
 
 					include ../inc/blog_right.jade

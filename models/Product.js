@@ -32,6 +32,7 @@ Product.add({
 
 	cover:  { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'600 * 600' },
 	images: { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'600 * 600' },
+	videoUrl:{ type: String, default:'' },
 
 	content: {
 		//brief: { type: Types.Html, wysiwyg: true, height: 150 },

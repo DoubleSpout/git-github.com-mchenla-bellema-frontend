@@ -138,7 +138,7 @@ exports = module.exports = function (req, res) {
 			return res.status(500).end();
 		}
 
-
+		locals.title = 'Products|BelleMa'
 
 		// Render the view
 		view.render('product_info');

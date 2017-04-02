@@ -41,6 +41,7 @@ exports = module.exports = function (req, res) {
 		// item in the header navigation.
 		locals.section = 'distributor';
 
+		locals.title = 'Distributor|BelleMa'
 		// Render the view
 		view.render('distributor');
 	})

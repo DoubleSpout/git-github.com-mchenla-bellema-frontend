@@ -60,7 +60,15 @@ exports = module.exports = function (req, res) {
 
 	//count 
 	asyncList.push(function(callback){
-		keystone.list('Blog').model.count({'state':'published'}).exec(function (err, results) {
+		var q = {'state':'published'};
+		var keywords = (req.query.keywords || '').trim()
+
+		if(keywords != ''){
+			q['title'] = {"$regex":req.query.keywords}
+		}
+
+
+		keystone.list('Blog').model.count(q).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -76,18 +84,27 @@ exports = module.exports = function (req, res) {
 	//data List 
 	asyncList.push(function(callback){
 		var skipNum = perPage * (page-1)
-		keystone.list('Blog').model.find({'state':'published'}).sort({'sort':1}).limit(perPage).skip(skipNum).exec(function (err, results) {
+		var q = {'state':'published'};
+		var keywords = (req.query.keywords || '').trim()
+
+		if(keywords != ''){
+			q['title'] = {"$regex":req.query.keywords}
+		}
+
+		keystone.list('Blog').model.find(q).sort({'sort':1}).limit(perPage).skip(skipNum).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
 			}
 
 			locals.data.data = JSON.parse(JSON.stringify(results));
+			locals.data.keywords = keywords
 
 			locals.data.data.map(function(item){
 				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
 				 return item
 			})
+			locals.keywords = keywords
 			//console.log(results)
 			callback()
 		});
@@ -117,6 +134,7 @@ exports = module.exports = function (req, res) {
 		}
 
 		locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
+		locals.title = 'Resources|BelleMa'
 		// Render the view
 		view.render('blog_list');
 	})

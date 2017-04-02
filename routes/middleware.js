@@ -28,7 +28,7 @@ exports.initLocals = function (req, res, next) {
 	];
 
 
-	keystone.list('ProductCategory').model.find().sort({'sort':-1}).limit(50).exec(function (err, results) {
+	keystone.list('ProductCategory').model.find().sort({'sort':1}).limit(50).exec(function (err, results) {
 
 			if (err) {
 				return next(err);

@@ -1,9 +1,12 @@
 doctype html
 html
-
+	
 	include ../inc/head.jade
-
+	//div#mask
 	body
+		link(rel="stylesheet", href="/css/magiczoomplus.css")
+		script(src="/js/mzp-packed.js")
+
 		.page-wrapper.page_wrapper.white_wrapper
 			//inc nav
 			include ../inc/nav.jade
@@ -23,7 +26,16 @@ html
 					.col-md-6
 						.product-info-img-box
 							.product-info-img-innerbox
-							img(src="/upload/#{data.data[0].images[0]['filename']}", class="product-info-img",id="product-big-pic")
+
+							- data.data[0].images && data.data[0].images.forEach(function(item,i){
+								.product-info-img(class="big-#{i}")
+									a.MagicZoom.MagicThumb(href="/upload/#{item['filename']}")
+										img.product-big-pic(src="/upload/#{item['filename']}")
+
+							- })
+
+
+							
 						.product-info-img-box-bottom
 							.row
 								- data.data[0].images && data.data[0].images.forEach(function(item,i){
@@ -32,7 +44,7 @@ html
 										- redBorder = 'redBorder'
 									-}
 									.col-xs-2
-										a(href="javascript:;", class="product-img-sm #{redBorder}")
+										a(href="javascript:;", pos="#{i}", class="product-img-sm #{redBorder}")
 											img(src="/upload/#{item['filename']}")
 
 								- })
@@ -108,19 +120,42 @@ html
 
 
 script.
-	
 	$(function(){
 		window.screenW = $(window).width();
+
+		var allBigLink = $('.product-info-img');
+
+		$
+		$('.MagicZoom').delegate('.MagicZoomPup', 'click', function(){
+				$('#mask').show()
+				return false;
+		})
+
+
+	
 
 		$('.product-img-sm').click(function(){
 
 			$('.product-img-sm').removeClass('redBorder')
 			$(this).addClass('redBorder');
-			var imgSrc = $(this).find('img').eq(0).attr('src');
-			$('#product-big-pic').attr('src', imgSrc)
+			var pos = $(this).attr('pos');
 
+			allBigLink.hide();
+			$('.big-'+pos).show();
+
+			//var imgSrc = $(this).find('img').eq(0).attr('src');
+
+			//$('#product-big-pic').one('load', function(){
+			//	alert(11)	
+			//}).attr('src', imgSrc)
 
 		})
+
+		setTimeout(function(){
+			$('.product-img-sm').eq(0).click()
+			$('.product-info-img-box').css('visibility', 'visible')
+		},500)
+		
 
 
 
@@ -135,6 +170,9 @@ script.
 				prevButton: '.swiper-button-prev-product',
 				spaceBetween: 30
 		    });
+
+	
+
 	    }else{
 	    	var swiper = new Swiper('#homeProductContainer', {
 		        pagination: '.swiper-pagination-product',
