@@ -140,8 +140,8 @@ script.
 			$(this).addClass('redBorder');
 			var pos = $(this).attr('pos');
 
-			allBigLink.hide();
-			$('.big-'+pos).show();
+			allBigLink.css('z-index', '-1');
+			$('.big-'+pos).css('z-index', '9');
 
 			//var imgSrc = $(this).find('img').eq(0).attr('src');
 
@@ -152,7 +152,9 @@ script.
 		})
 
 		setTimeout(function(){
-			$('.product-img-sm').eq(0).click()
+			$('.product-img-sm').each(function(){
+					$(this).click()
+			}).eq(0).click()
 			$('.product-info-img-box').css('visibility', 'visible')
 		},500)
 		
