@@ -12,6 +12,7 @@ exports = module.exports = function (req, res) {
 	var page = (req.query.page || 1)-0;
 	var catName = (req.query.cat || '');
 	var sort = req.query.sort || 'sort';
+	var tagId = req.query.tag || '';
 	var perPage = 12;
 
 	if(isNaN(page)){
@@ -43,36 +44,62 @@ exports = module.exports = function (req, res) {
 				catName = defaultCat
 			}
 
-			//get cat count
-			var catAsyncList = [];
-			locals.data.catData.forEach(function(item, i){
-				var sel = false;
-				if(item.name == catName){
-					sel = true;
-					CatId = item._id;
-					locals.selCatName = item.name;
+			keystone.list('ProductTag').model.find().sort({'sort':1}).limit(1000).exec(function (err, resultsTag) {
+				
+				if (err) {
+					return next(err);
 				}
 
-				catAsyncList.push(function(asyncCb){
-					keystone.list('Product').model.count({'state':'published', categories:{'$in':[item._id]}}).exec(function (err, results) {
-						if(err) return asyncCb(err);
-						locals.data.catData[i] = {
-							'name':item.name,
-							'count':results,
-							'sel':sel,
+				//get cat count
+				var catAsyncList = [];
+				locals.data.catData.forEach(function(item, i){
+					//console.log("========")
+					item['tags'] = [];
+
+					resultsTag.forEach(function(tagItem){
+						if(item['_id'].toString() == tagItem['categories'].toString()){
+							//console.log("========", tagId, tagItem['_id'].toString())
+
+							if(tagId == tagItem['_id'].toString()){
+								tagItem.sel = true
+							}else{
+								tagItem.sel = false
+							}
+							item['tags'].push(tagItem)
 						}
-						asyncCb();
+					})
+
+
+					var sel = false;
+					if(item.name == catName){
+						sel = true;
+						CatId = item._id;
+						locals.selCatName = item.name;
+					}
+
+					catAsyncList.push(function(asyncCb){
+						keystone.list('Product').model.count({'state':'published', categories:{'$in':[item._id]}}).exec(function (err, results) {
+							if(err) return asyncCb(err);
+							locals.data.catData[i] = {
+								'name':item.name,
+								'tags':item.tags,
+								'count':results,
+								'sel':sel,
+							}
+							asyncCb();
+						})
 					})
 				})
-			})
 
-			//end get cat per count
-			async.parallel(catAsyncList, function(err){
-				if(err){
-					callback(err);
-					return
-				}
-				callback();
+				//end get cat per count
+				async.parallel(catAsyncList, function(err){
+					if(err){
+						callback(err);
+						return
+					}
+					callback();
+				})
+
 			})
 
 		});
@@ -114,7 +141,11 @@ exports = module.exports = function (req, res) {
 
 	//count 
 	asyncList.push(function(callback){
-		keystone.list('Product').model.count({'state':'published', categories:{'$in':[CatId]}}).exec(function (err, results) {
+		var qObj = {'state':'published', categories:{'$in':[CatId]}}
+		if(tagId && tagId != ""){
+			qObj['tag'] = tagId;
+		}
+		keystone.list('Product').model.count(qObj).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -138,10 +169,12 @@ exports = module.exports = function (req, res) {
 			sortObj[sort] = -1;
 		}
 		
-
+		var qObj = {'state':'published', categories:{'$in':[CatId]}}
 		//console.log(CatId)
-
-		keystone.list('Product').model.find({'state':'published', categories:{'$in':[CatId]}}).sort(sortObj).limit(perPage).skip(skipNum).exec(function (err, results) {
+		if(tagId && tagId != ""){
+			qObj['tag'] = tagId;
+		}
+		keystone.list('Product').model.find(qObj).sort(sortObj).limit(perPage).skip(skipNum).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);

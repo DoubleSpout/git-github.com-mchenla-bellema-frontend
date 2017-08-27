@@ -41,6 +41,7 @@ Product.add({
 	supportHtml:{type: Types.Html, wysiwyg: true, height: 400,  default:'' },
 	supportPdfUrl:{ type: Types.LocalFiles, dest:global.localFilePath },
 	categories: { type: Types.Relationship, ref: 'ProductCategory', many: true },
+	tag: { type: Types.Relationship, ref: 'ProductTag', many: false },
 	sort:{ type: Number, default:1 },
 });
 
@@ -50,5 +51,5 @@ Product.schema.virtual('content.full').get(function () {
 
 Product.relationship({ ref: 'Review', path: 'product' });
 
-Product.defaultColumns = 'name, status|20%, publishedDate|20%, code|10%, sort|10%, msrp|20%';
+Product.defaultColumns = 'name, status|10%, tag|20%, publishedDate|20%, code|10%, sort|10%, msrp|10%';
 Product.register();

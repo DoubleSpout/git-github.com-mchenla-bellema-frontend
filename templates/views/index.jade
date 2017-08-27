@@ -21,10 +21,18 @@ html
 
 									div(class="swiper-slide")
 										img.bannerImg(src="/upload/#{item.images[0]['filename']}")
-										div(class="textBox")
-											h2 #{item.title}
-											p #{item.content}
-											a.bannerBtn(href="#{item.linkUrl}")
+										-if(item['topRate'] && item['leftRate']){
+											div(class="textBox",style="top:#{item['topRate']}%;left:#{item['leftRate']}%;")
+												h2 #{item.title}
+												p #{item.content}
+												a.bannerBtn(href="#{item.linkUrl}")
+										- } else {
+											div(class="textBox")
+												h2 #{item.title}
+												p #{item.content}
+												a.bannerBtn(href="#{item.linkUrl}")
+										-}
+										
 
 								- })
 								

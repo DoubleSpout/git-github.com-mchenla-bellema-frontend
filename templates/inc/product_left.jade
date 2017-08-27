@@ -4,6 +4,16 @@
 		- data.catData.forEach(function(item){
 			- if(item.sel){
 				a.product-l-link.sel(href="/product/list?cat=#{item.name}") #{item.name} (#{item.count})
+				ul.productTag
+					- item.tags.forEach(function(itemTag){
+						li
+							- if(itemTag.sel){
+								a.sel(href="/product/list?cat=#{item['name']}&tag=#{itemTag['_id']}")|#{itemTag.name}
+							- } else {
+								a(href="/product/list?cat=#{item['name']}&tag=#{itemTag['_id']}")|#{itemTag.name}
+							- }
+					- })
+					
 			- }else{
 				a.product-l-link(href="/product/list?cat=#{item.name}") #{item.name} (#{item.count})
 			- }

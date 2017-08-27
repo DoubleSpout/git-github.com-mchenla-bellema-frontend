@@ -28,15 +28,42 @@ exports.initLocals = function (req, res, next) {
 	];
 
 
-	keystone.list('ProductCategory').model.find().sort({'sort':1}).limit(50).exec(function (err, results) {
+	keystone.list('ProductCategory').model.find().sort({'sort':1}).limit(1000).exec(function (err, results) {
 
 			if (err) {
 				return next(err);
 			}
 
-			res.locals.productMenu = results;
-			res.locals.user = req.user;
-			next();
+			keystone.list('ProductTag').model.find().sort({'sort':1}).limit(1000).exec(function (err, resultsTag) {
+				
+				if (err) {
+					return next(err);
+				}
+
+				for(var j=0;j<results.length;j++){
+					if(!results[j]['tags']){
+						results[j]['tags'] = [];
+					}
+					for(var i=0;i<resultsTag.length;i++){
+						if(results[j]['_id'].toString() == resultsTag[i]['categories'].toString()){
+							results[j]['tags'].push(resultsTag[i])
+						}
+					}
+				}
+				
+
+				res.locals.productMenu = results;
+				res.locals.product1st = results[0]
+				res.locals.user = req.user;
+
+
+				res.locals.navProduct = []
+
+
+				next();
+
+			})
+
 
 	})
 

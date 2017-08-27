@@ -14,49 +14,115 @@ header(class="header-11")
 										|Products
 										span(class="downArrow")
 
+
 									ul(class="dropdown-menu", aria-labelledby="drop1")
+										li
+											.navProdBox								
+												a.btn(href="/product/list?cat=#{product1st.name}")|View All Products
 
-										- productMenu.forEach(function(item){
-											li
-												a(href="/product/list?cat=#{item.name}") #{item.name}
-										- })
+												- for(var i=0;i<3;i++){
+												- if(productMenu[i]){
+													.navProdBlk
+														h3
+															a(href="/product/list?cat=#{productMenu[i].name}")|#{productMenu[i].name}
+														-for(var j=0;j<6;j++){
+														- if(productMenu[i]['tags'][j]){
+															a.link(href="/product/list?cat=#{productMenu[i].name}&tag=#{productMenu[i]['tags'][j]['_id']}")|#{productMenu[i]['tags'][j]['name']}
+														-}
+														-}
+												-}
+												-}
+												
+												.clearFloat
 
+											
+								li.dropdown
+									a(href="javascript:;", class="dropdown-toggle", data-toggle="dropdown",role="button",class="dropdown open",aria-expanded="true")
+										|Get Bellema Pumps
+										span(class="downArrow")
 
-								li
-									a(href="/support")
-										|Support
+									ul(class="dropdown-menu")
+										li
+											a(href="/pump/insurance/list")|Insurance
+										li
+											a(href="/pump/retail")|Retail
 
-								li
-									a(href="/distributor")
-										|Distributor
-				
-
-								li
-									a(href="/blog/list")
-										|Resources
 
 								li.dropdown
-									a(href="javascript:;", id="drop1", class="dropdown-toggle", data-toggle="dropdown",role="button",class="dropdown open",aria-expanded="true")
-										|Follow Us
+									a(href="javascript:;", class="dropdown-toggle", data-toggle="dropdown",role="button",class="dropdown open",aria-expanded="true")
+										|Customer Service
 										span(class="downArrow")
-									ul(class="dropdown-menu", aria-labelledby="drop1")
+
+									ul(class="dropdown-menu")
 										li
-											a(href="https://www.facebook.com/BellemaUSA", target="_blank" class="nav_fb_a")
-												span.nav_fb
-												| Facebook
+											a(href="/customer/registproduct")|Regist Your Product
 										li
-											a(href="https://twitter.com/BellemaUSA",  target="_blank", class="nav_fb_a")
-												span.nav_tw
-												| Twitter
+											a(href="/customer/faq")|FAQ
 										li
-											a(href="https://www.instagram.com/bellemausa",  target="_blank", class="nav_fb_a")
-												span.nav_ins
-												| Instagram		
+											a(href="#")|Customer Service
 										li
-											a(href="https://plus.google.com/101362370657508329799",  target="_blank", class="nav_fb_a")
-												span.nav_gp
-												|Google+
+											a(href="/customer/usermanual")|User Manual
+										li
+											a(href="/customer/troubleshooting/list")|Trouble Shooting
+										li
+											a(href="/customer/helpvideo/list")|Help Video
+
+
+								li.dropdown
+									a(href="javascript:;", class="dropdown-toggle", data-toggle="dropdown",role="button",class="dropdown open",aria-expanded="true")
+										|Breastfeeding Resources
+										span(class="downArrow")
+
+									ul(class="dropdown-menu")
+										li
+											a(href="/breastfeeding/video/list")|Video
+										li
+											a(href="/breastfeeding/pressrealse/list")|Press Realse
+										li
+											a(href="/breastfeeding/tipsolution/list")|Tip Solution
+										li
+											a(href="/breastfeeding/social")|Social Media
 								
-							div(class="navbar-form pull-left", style="visibility: hidden;")
-								a(class="btn btn-info" href="/")|SEARCH
+								li
+									a(href="/contactus")
+										|Contact Us		
+
+								//
+									li
+										a(href="/support")
+											|Support
+
+									li
+										a(href="/distributor")
+											|Distributor
+					
+
+									li
+										a(href="/blog/list")
+											|Resources
+
+									li.dropdown
+										a(href="javascript:;", id="drop1", class="dropdown-toggle", data-toggle="dropdown",role="button",class="dropdown open",aria-expanded="true")
+											|Follow Us
+											span(class="downArrow")
+										ul(class="dropdown-menu", aria-labelledby="drop1")
+											li
+												a(href="https://www.facebook.com/BellemaUSA", target="_blank" class="nav_fb_a")
+													span.nav_fb
+													| Facebook
+											li
+												a(href="https://twitter.com/BellemaUSA",  target="_blank", class="nav_fb_a")
+													span.nav_tw
+													| Twitter
+											li
+												a(href="https://www.instagram.com/bellemausa",  target="_blank", class="nav_fb_a")
+													span.nav_ins
+													| Instagram		
+											li
+												a(href="https://plus.google.com/101362370657508329799",  target="_blank", class="nav_fb_a")
+													span.nav_gp
+													|Google+
+							//	
+								div(class="navbar-form pull-left", style="visibility: hidden;")
+									a(class="btn btn-info" href="/")|SEARCH
 				.header-background

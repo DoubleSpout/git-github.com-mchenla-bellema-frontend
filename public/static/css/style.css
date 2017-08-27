@@ -2402,8 +2402,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 .navbar-nav li a {
     color: #7ce0d3;
-    font-size:18px;
-    padding: 20px 25px;
+    font-size:16px;
+    padding: 20px 20px;
 }
 .dropdown-menu li {
   line-height: 25px;
@@ -4197,4 +4197,85 @@ background: url('/img/Product-@2x.png') right bottom no-repeat;
 
 li img, p img {
   max-width: 100%;
+}
+
+.navProdBox {
+  width: 600px;
+  min-height: 200px;
+  position: relative;
+  clear: both;
+}
+.navProdBox:after{
+  clear: both;
+}
+.navProdBox .navProdBlk {
+  float: left;
+  width: 160px;
+  height: auto;
+  min-height: 100px;
+  overflow: hidden;
+  margin: 15px 20px;
+
+}
+
+.navProdBox .navProdBlk h3 {
+  font-size: 16px;
+  padding: 0 0 10px 0;
+  border-bottom: #ececec 1px solid;
+  color: #84d8d1;
+  font-weight: normal;
+}
+.navProdBox .navProdBlk a{
+    text-align: left;
+    font-weight: normal;
+    padding: 0;
+    font-size: 16px;
+}
+
+
+.navProdBox .navProdBlk .link {
+  display: block;
+  clear: both;
+  width: 160px;
+  font-size: 14px;
+  color: #84d8d1;
+  padding: 5px;
+}
+.navProdBox .navProdBlk .link:hover{
+  background-color: #ececec;
+}
+.navProdBox .btn {
+  display: block;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background-color: #f6bbb7;
+  color: #fff;
+}
+.clearFloat{
+  clear: both; 
+}
+.dropdown-menu .navProdBox .btn {
+    padding: 5px 15px;
+}
+.productTag{
+    padding: 5px 0 5px 0;
+
+}
+.productTag li {
+  margin-left: 20px;
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #f6bbb7;
+}
+.productTag li a {
+    color: #f6bbb7;
+    display: block;
+    padding: 3px 5px 3px 30px;
+}
+.productTag li a.sel{
+    background-color: #f6bbb7;
+    color: #fff;
 }

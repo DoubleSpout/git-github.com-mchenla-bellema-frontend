@@ -53,11 +53,45 @@ exports = module.exports = function (app) {
 
 	app.post('/sub/post', routes.views.sub);
 
-	app.get('/blog/:category?', routes.views.blog);
-	app.get('/blog/post/:post', routes.views.post);
-	app.get('/gallery', routes.views.gallery);
-	app.get('/policy', routes.views.policy);
+	// app.get('/blog/:category?', routes.views.blog);
+	// app.get('/blog/post/:post', routes.views.post);
+	// app.get('/gallery', routes.views.gallery);
+	// app.get('/policy', routes.views.policy);
 	app.all('/contact', routes.views.contact);
+
+
+	//-- 2.0新增路由
+	//pump保险列表页和保险详情页
+	app.get('/pump/insurance/list', routes.views.insuranceList);
+	app.get('/pump/insurance/info', routes.views.insuranceInfo);
+	//pump零售商
+	app.get('/pump/retail', routes.views.retail);
+
+	//custom service客户服务
+	app.get('/customer/registproduct', routes.views.registProduct);//注册产品
+	app.get('/customer/usermanual', routes.views.userManual);//手册
+
+	app.get('/customer/troubleshooting/list', routes.views.troubleshootingList);//麻烦列表
+	app.get('/customer/troubleshooting/info', routes.views.troubleshootingInfo);//麻烦详情
+
+	app.get('/customer/helpvideo/list', routes.views.helpvideoList);//helpvideo列表
+	app.get('/customer/helpvideo/info', routes.views.helpvideoInfo);//helpvideo列表
+	app.get('/customer/faq', routes.views.support);//老的问答
+	//app.get('/customer/service');//help desk
+
+	//母乳喂养
+	app.get('/breastfeeding/video/list', routes.views.bfvideoList);//母乳喂养列表
+	app.get('/breastfeeding/video/info', routes.views.bfvideoInfo);//母乳喂养详情
+
+	app.get('/breastfeeding/pressrealse/list', routes.views.pressrealseList);//博客样式的列表
+	app.get('/breastfeeding/pressrealse/info', routes.views.pressrealseInfo);//博客样式的详情
+
+	app.get('/breastfeeding/tipsolution/list', routes.views.tipsolutionList);//tip列表
+	app.get('/breastfeeding/tipsolution/info', routes.views.tipsolutionInfo);//tip详情
+
+	app.get('/breastfeeding/social', routes.views.social);//媒体详情
+	
+	app.get('/contactus', routes.views.contactus);//联系我们
 
 
 	app.post('/sync/fb/fd6c3f5ad15338e4a3c6b79fca2c8468', syncfb.syncfb)
