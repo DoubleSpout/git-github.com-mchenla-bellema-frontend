@@ -4279,3 +4279,131 @@ li img, p img {
     background-color: #f6bbb7;
     color: #fff;
 }
+.ins-title{
+  background: url(/img/ins-title.png) center center no-repeat;
+  width: 100%;
+  height: 60px;
+}
+
+.ins-title2{
+  color:#83d8d1;
+  font-size: 18px;
+  padding: 15px;
+  border-bottom: #f6bbb5 2px dashed;
+  text-align: center;
+}
+.ins-title3{
+  width: 100%;
+  height: 30px;
+  margin: 50px 0  20px 0;
+  color: #f6bbb5;
+  font-size: 18px;
+  text-align: center;
+}
+
+.ins-sel1{
+    margin: 0 auto;
+    width: 350px;
+}
+.ins-sel1 .filterBtn,.ins-sel1 .dropdown-menu {
+    width: 350px;
+}
+
+.ins-sel2{
+    margin: 0 auto;
+    width: 550px;
+    background-color: #fff;
+}
+.ins-sel2 .filterBtn,.ins-sel2 .dropdown-menu {
+    width: 550px;
+}
+.ins-sel2-box{
+  width: 650px;
+  padding: 20px 50px;
+  margin: 30px auto 50px;
+  background-color: #f1f1f1;
+}
+
+.ins-btn1 {
+  background: url(/img/ins-btn1.png) 0 0 no-repeat;
+  width: 114px;
+  height: 50px;
+  display: block;
+  margin: 15px auto 0;
+}
+
+.ins-list-pic{
+  display: block;
+  margin: 80px auto;
+  width: 1000px;
+}
+
+.ins-info-title{
+    color: #85d7d1;
+    font-size: 24px;
+    padding: 10px 0 15px;
+}
+
+.ins-info-p1{
+    color: #808080;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.ins-info-p2{
+    color: #85d7d1;
+    font-size: 16px;
+    line-height: 30px;
+}
+.ins-info-selbox {
+  display: block;
+  padding: 5px 20px;
+  border:#85d7d1 1px solid;
+  margin-top: 10px;
+}
+
+.ins-info-selbox h2 {
+    font-weight: normal;
+    font-size: 18px;
+    color: #85d7d1;
+    margin: 20px 0 5px;
+}
+
+
+.ins-info-leftsel{
+    width: 100%;
+    background-color: #fff;
+}
+.ins-info-leftsel .filterBtn,.ins-info-leftsel .dropdown-menu {
+    width: 100%;
+}
+
+.ins-info-btn1{
+  background: url(/img/ins-info-left-btn.png) 0 0 no-repeat;
+  width: 108px;
+  height: 45px;
+  display: block;
+  margin: 20px auto 20px;
+}
+
+.ins-info-blk {
+  width: 95%;
+  height: 150px;
+  overflow: hidden;
+  border:#85d7d1 1px solid;
+  padding: 20px 0 5px;
+  text-align: center;
+  color: #85d7d1;
+  box-shadow: 2px 4px 20px #f0faf9;
+  margin-bottom: 20px;
+}
+.ins-info-blk b {
+  display: block;
+  text-align: center;
+  color:#fdb6b2;
+  padding-top: 20px;
+}
+
+.whitebg{
+  background-color: #fff;
+}

@@ -9,11 +9,11 @@ exports = module.exports = function (req, res) {
 	var asyncList = [];
 	var locals = res.locals;
 	locals.data = {};
-	var id = req.query.id || '';
+	var id = req.query.id || '123456789012345678901234';
 
-	if(!id || id.length != 24){
-		return res.status(400).end('invalid id');
-	}
+	// if(!id || id.length != 24){
+	// 	return res.status(400).end('invalid id');
+	// }
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
@@ -85,15 +85,15 @@ exports = module.exports = function (req, res) {
 
 			locals.data.data = JSON.parse(JSON.stringify(results));
 			if(locals.data.data.length == 0){
-				return callback('not found blog');
+				//return callback('not found blog');
 			}
 
 
 
-			locals.data.data.map(function(item){
-				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
-				 return item
-			})
+			// locals.data.data.map(function(item){
+			// 	 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
+			// 	 return item
+			// })
 			//console.log(results)
 			callback()
 		});

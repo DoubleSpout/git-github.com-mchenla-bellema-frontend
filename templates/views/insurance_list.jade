@@ -1,1 +1,70 @@
-insuranceList
+doctype html
+html
+	
+	include ../inc/head.jade
+	//div#mask
+	body
+		link(rel="stylesheet", href="/css/magiczoomplus.css")
+		script(src="/js/mzp-packed.js")
+
+		.page-wrapper.page_wrapper.white_wrapper
+			//inc nav
+			include ../inc/nav.jade
+
+			.product-top
+
+			.container
+				.page-bread-nav
+					a(href="/") Home
+					span.blue_span / 
+					| Insurance
+
+			.container.container_List.container-prod-info
+				.ins-title
+				.ins-title2| xxxxx xcvfsdfsd sdfsfsd
+				.ins-title3| xvxcvcv sfsdfsdfs sd fsdfsd sdd 
+
+				div(class="dropdown product-filter-dropdown ins-sel1")
+					a.filterBtn(href="javascript:;", class="dLabel", type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+						font.page-sort-choose Sort by Auto
+						span(class="glyphicon glyphicon-chevron-down")
+					ul(class="dropdown-menu", aria-labelledby="dLabel")
+						li
+							a(href="javascript:;").product-sort-a Auto
+						li 
+							a(href="javascript:;").product-sort-a Date
+						li
+							a(href="javascript:;").product-sort-a Price
+						li
+							a(href="javascript:;").product-sort-a Name
+
+				.ins-sel2-box
+					div(class="dropdown product-filter-dropdown ins-sel2")
+						a.filterBtn(href="javascript:;", class="dLabel", type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+							font.page-sort-choose Sort by Auto
+							span(class="glyphicon glyphicon-chevron-down")
+						ul(class="dropdown-menu", aria-labelledby="dLabel")
+							li
+								a(href="javascript:;").product-sort-a Auto
+							li 
+								a(href="javascript:;").product-sort-a Date
+							li
+								a(href="javascript:;").product-sort-a Price
+							li
+								a(href="javascript:;").product-sort-a Name
+
+					a.ins-btn1(href="javascript:;")
+
+				img.ins-list-pic(src="/img/ins-list-pic.png")
+
+
+			include ../inc/foot.jade
+
+
+script.
+	$(function(){
+		
+	})
+
+
+
