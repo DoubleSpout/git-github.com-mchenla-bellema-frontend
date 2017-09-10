@@ -1,1 +1,48 @@
-helpvideolist
+doctype html
+html
+	
+	include ../inc/head.jade
+	//div#mask
+	body
+		link(rel="stylesheet", href="/css/magiczoomplus.css")
+		script(src="/js/mzp-packed.js")
+
+		.page-wrapper.page_wrapper.white_wrapper
+			//inc nav
+			include ../inc/nav.jade
+
+			.product-top
+
+			.container
+				.page-bread-nav
+					a(href="/") Home
+					span.blue_span / 
+					| Help Video
+
+			.container.container_List.container-prod-info.retail-container
+				.row
+					- data.data.forEach(function(item){	
+
+						.col-md-3.v-md3
+							a.v-box(href="/customer/helpvideo/info?id=#{item._id}")
+								- if(item.files && item.files[0]){
+									img(src="/upload/#{item.files[0]['filename']}")
+								- } else{
+									img(src="/img/vdemo.png")
+								- }
+								
+							.v-title| #{item.name}
+							//.v-info| #{item.publishedDate}
+				
+					-})
+
+			include ../inc/foot.jade
+
+
+script.
+	$(function(){
+		
+	})
+
+
+

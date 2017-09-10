@@ -14,7 +14,7 @@
 /* styles from flat-ui-free2.0.0-fix.less files */
 body {
   color: #34495e;
-  font-family: 'Arial Rounded MT Bold', Arial, sans-serif,"Helvetica Neue", Helvetica;
+  font-family:  Arial, 'Arial Rounded MT Bold', sans-serif,"Helvetica Neue", Helvetica;
   font-size: 14px;
   line-height: 1.231;
 }
@@ -4340,8 +4340,9 @@ li img, p img {
 
 .ins-info-title{
     color: #85d7d1;
-    font-size: 24px;
+    font-size: 32px;
     padding: 10px 0 15px;
+    font-weight: bolder;
 }
 
 .ins-info-p1{
@@ -4406,4 +4407,203 @@ li img, p img {
 
 .whitebg{
   background-color: #fff;
+}
+.center{
+  text-align: center;
+}
+
+.ins-info-title2{
+    color: #85d7d1;
+    font-size: 18px;
+    padding: 10px 0 35px;
+}
+
+.retailLink {
+  text-align: center;
+  color: #848484;
+  display: block;
+  font-size: 16px;
+  margin-top: 30px;
+}
+.retailLink img{
+  max-width: 100%;
+  height:100%;
+  margin: 0 auto 15px;
+  display: block; 
+}
+
+.retail-container{
+  margin-bottom: 100px;
+}
+.warrantyContainer{
+  width: 80%;
+  margin: 50px auto 0px;
+  min-height: 300px; 
+  background: url(/img/warrantTitle.png) 30px 50px no-repeat;
+  background-color: #fcfcfc;
+  padding: 120px 0 30px;
+  font-size: 16px; 
+  line-height: 30px;
+}
+.txtR{
+  text-align: right;
+}
+.txtRed {
+  color: #e32c2e;
+  padding: 0 3px;
+}
+.form-control {
+  height: 30px;
+  padding: 0 0 0 10px;
+  border: 2px solid #83d8d1;
+  
+}
+.warrantyContainer .row {
+  margin: 10px 0 30px;
+}
+.pinkBtn {
+  background-color: #f6bbb7;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  box-shadow: 2px 4px 20px #f0faf9;
+  margin: 0 auto;
+  color: #fff;
+  display: block;
+  border-radius: 5px;
+}
+
+.pinkBtn:hover{
+  color: #fff;
+  opacity: 0.8;
+}
+
+.manualRow {
+  width: 70%;
+  margin: 30px auto;
+  background-color: #fafafa;
+  padding: 20px 50px 10px;
+}
+.manualRowTxt {
+    color: #5b5b5b;
+    font-size: 20px;
+    text-align:left;
+}
+.pinkBtnLeft {
+  margin: 15px 0 10px
+}
+.manualRowTxt span {
+  padding-right: 10px;
+}
+
+.v-box{
+  height: 150px;
+  overflow: hidden;
+  display: block;
+}
+.v-box img{
+  border-radius: 5px;
+}
+.v-title {
+  padding: 10px 0;
+  text-align: center;
+  color: #85d6cf;
+  left: 30px;
+}
+.v-md3{
+  padding: 0 20px;
+  margin: 20px 0;
+}
+.v-info {
+  color: #242424;
+  line-height: 25px;
+}
+.vinfo-title{
+  font-size: 24px;
+  padding: 10px 0;
+  color: #85d6cf;
+}
+
+.vinfo-date{
+  font-size: 16px;
+  color: #818181;
+}
+.video-info-box{
+    display: block;
+    overflow: hidden;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+.sm-link{
+  clear: both;
+  display: block;
+  text-align: center;
+}
+.sm-link .sm-img{
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+    margin-right: 25px;
+}
+.sm-span {
+    color: #5b5b5b;
+    font-size: 20px;
+    font-weight: normal;
+    text-decoration: underline;
+    line-height: 70px;
+    display: inline-block;
+}
+.contact-title{
+   font-size: 24px;
+   color: #85d6cf;
+   margin: 50px 0 20px;
+}
+.contact-info{
+  width: 70%;
+  color: #8b8b8b;
+  margin: 0 0 80px 0;
+}
+.contact-detail{
+  line-height: 32px;
+  margin-bottom: 100px;
+}
+.contact-detail .row {
+  margin: 0px 0 40px;
+}
+
+.contact-map{
+  background: url(/img/map.jpg) 0 0 no-repeat;
+  min-height: 100px;
+  max-width:310px;
+}
+.contact-map-cover{
+  display: block;
+  max-width: 310px;
+  background-color:rgba(0,0,0,0.6);
+  padding: 10px 0 50px 0;
+}
+
+.cmap-title{
+    color: #85d6cf;
+    font-size: 18px;
+    padding: 5px 30px;
+    line-height: 20px;
+}
+
+.cmap-p {
+     color: #fff;
+     padding: 0 30px 0px 30px;
+}
+
+.cbtn {
+  width: 127px;
+  height: 38px;
+  display: block;
+  margin: 30px auto 0;
+  cursor: pointer;
+  background: url(/img/buttion-show.png) 0 0 no-repeat;
+}
+.cbtn:hover{
+  opacity: 0.8
 }

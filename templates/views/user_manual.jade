@@ -1,1 +1,49 @@
-user_manual
+doctype html
+html
+	
+	include ../inc/head.jade
+	//div#mask
+	body
+		link(rel="stylesheet", href="/css/magiczoomplus.css")
+		script(src="/js/mzp-packed.js")
+
+		.page-wrapper.page_wrapper.white_wrapper
+			//inc nav
+			include ../inc/nav.jade
+
+			.product-top
+
+			.container
+				.page-bread-nav
+					a(href="/") Home
+					span.blue_span / 
+					| User Manuals
+
+			.container.container_List.container-prod-info
+
+				- data.data.forEach(function(item){	
+
+					.manualRow
+						.manualRowTxt
+							span.glyphicon.glyphicon-file(aria-hidden="true")
+							| #{item.name}
+						- if(item.files && item.files[0]){
+							a.pinkBtn.pinkBtnLeft(href="/upload/#{item.files[0]['filename']}", target="_blank")| DownLoad
+						- } else{
+							a.pinkBtn.pinkBtnLeft(href="javascript:;")| DownLoad
+						- }
+						
+				-})
+
+
+
+			include ../inc/foot.jade
+
+
+script.
+	$(function(){
+		
+	})
+
+
+

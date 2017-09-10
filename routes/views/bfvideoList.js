@@ -9,7 +9,7 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 	var asyncList = [];
 	var page = (req.query.page || 1)-0;
-	var perPage = 10;
+	var perPage = 1000;
 
 	if(isNaN(page)){
 		return res.status(400).end('invalid page');
@@ -20,91 +20,91 @@ exports = module.exports = function (req, res) {
 	locals.data = {};
 
 	//get side
-	asyncList.push(function(callback){
-		keystone.list('Blog').model.find({'state':'published', 'putOnSide':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
+	// asyncList.push(function(callback){
+	// 	keystone.list('video').model.find({'state':'published', 'putOnSide':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
 
-			if (err) {
-				return callback(err);
-			}
+	// 		if (err) {
+	// 			return callback(err);
+	// 		}
 
-			locals.data.sideData = JSON.parse(JSON.stringify(results));
-			locals.data.sideData.map(function(item){
-				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
-				 return item
-			})
-			//console.log(results)
-			callback();
-		});
-	});
+	// 		locals.data.sideData = JSON.parse(JSON.stringify(results));
+	// 		locals.data.sideData.map(function(item){
+	// 			 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
+	// 			 return item
+	// 		})
+	// 		//console.log(results)
+	// 		callback();
+	// 	});
+	// });
 
 
 	//recent post
-	asyncList.push(function(callback){
-		keystone.list('Blog').model.find({'state':'published'}).sort({'publishedDate':-1}).limit(3).exec(function (err, results) {
+	// asyncList.push(function(callback){
+	// 	keystone.list('video').model.find({'status':'published'}).sort({'publishedDate':-1}).limit(3).exec(function (err, results) {
 
-			if (err) {
-				return callback(err);
-			}
+	// 		if (err) {
+	// 			return callback(err);
+	// 		}
 
 
-			locals.data.recentData = JSON.parse(JSON.stringify(results));;
-			locals.data.recentData.map(function(item){
-				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
-				 return item
-			})
-			//console.log(results)
-			callback()
-		});
-	});
+	// 		locals.data.recentData = JSON.parse(JSON.stringify(results));;
+	// 		locals.data.recentData.map(function(item){
+	// 			 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
+	// 			 return item
+	// 		})
+	// 		//console.log(results)
+	// 		callback()
+	// 	});
+	// });
 
 
 	//count 
-	asyncList.push(function(callback){
-		var q = {'state':'published'};
-		var keywords = (req.query.keywords || '').trim()
+	// asyncList.push(function(callback){
+	// 	var q = {'state':'published'};
+	// 	var keywords = (req.query.keywords || '').trim()
 
-		if(keywords != ''){
-			q['title'] = {"$regex":req.query.keywords}
-		}
+	// 	if(keywords != ''){
+	// 		q['title'] = {"$regex":req.query.keywords}
+	// 	}
 
 
-		keystone.list('Blog').model.count(q).exec(function (err, results) {
+	// 	keystone.list('Blog').model.count(q).exec(function (err, results) {
 
-			if (err) {
-				return callback(err);
-			}
+	// 		if (err) {
+	// 			return callback(err);
+	// 		}
 
-			locals.data.countData = results;
-			//console.log(results)
-			callback()
-		});
-	});
+	// 		locals.data.countData = results;
+	// 		//console.log(results)
+	// 		callback()
+	// 	});
+	// });
 
 
 	//data List 
 	asyncList.push(function(callback){
 		var skipNum = perPage * (page-1)
-		var q = {'state':'published'};
+		var q = {'status':'published'};
 		var keywords = (req.query.keywords || '').trim()
 
 		if(keywords != ''){
 			q['title'] = {"$regex":req.query.keywords}
 		}
 
-		keystone.list('Blog').model.find(q).sort({'sort':1}).limit(perPage).skip(skipNum).exec(function (err, results) {
+		keystone.list('video').model.find(q).sort({'sort':1}).limit(perPage).skip(skipNum).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
 			}
 
 			locals.data.data = JSON.parse(JSON.stringify(results));
-			locals.data.keywords = keywords
+			// locals.data.keywords = keywords
 
 			locals.data.data.map(function(item){
 				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
 				 return item
 			})
-			locals.keywords = keywords
+			// locals.keywords = keywords
 			//console.log(results)
 			callback()
 		});
@@ -112,20 +112,20 @@ exports = module.exports = function (req, res) {
 
 
 	//data List 
-	asyncList.push(function(callback){
-		var skipNum = perPage * (page-1)
-		keystone.list('Adv').model.find({'showOnBlog':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
+	// asyncList.push(function(callback){
+	// 	var skipNum = perPage * (page-1)
+	// 	keystone.list('Adv').model.find({'showOnBlog':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
 
-			if (err) {
-				return callback(err);
-			}
+	// 		if (err) {
+	// 			return callback(err);
+	// 		}
 
-			locals.data.adv = results;
+	// 		locals.data.adv = results;
 
-			//console.log(results)
-			callback()
-		});
-	});
+	// 		//console.log(results)
+	// 		callback()
+	// 	});
+	// });
 
 	async.parallel(asyncList, function(err){
 		if(err){
@@ -134,7 +134,7 @@ exports = module.exports = function (req, res) {
 		}
 
 		locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
-		locals.title = 'Resources|BelleMa'
+		locals.title = 'Video|BelleMa'
 		// Render the view
 		view.render('bfvideo_list');
 	})

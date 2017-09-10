@@ -14,9 +14,10 @@ Retailers.add({
 	telphone: { type: String, default:'' },
 	homepage: { type: String, default:'' },
 	sort:{ type: Number, default:1 },
+	images: { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'180 * 180' },
 	status: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 });
 
-Retailers.defaultColumns = 'name,telphone |40%, address|40%, sort|20%';
+Retailers.defaultColumns = 'name,telphone |30%, homepage|40%,status|20%, sort|10%';
 Retailers.register();

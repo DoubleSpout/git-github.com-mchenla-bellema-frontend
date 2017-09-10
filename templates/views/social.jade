@@ -1,1 +1,55 @@
-social
+doctype html
+html
+	
+	include ../inc/head.jade
+	//div#mask
+	body
+		link(rel="stylesheet", href="/css/magiczoomplus.css")
+		script(src="/js/mzp-packed.js")
+
+		.page-wrapper.page_wrapper.white_wrapper
+			//inc nav
+			include ../inc/nav.jade
+
+			.product-top
+
+			.container
+				.page-bread-nav
+					a(href="/") Home
+					span.blue_span / 
+					| Social Media
+
+			.container.container_List.container-prod-info.retail-container
+				.ins-info-title.center| Social Media
+				.ins-info-title2.center| You can see our information through the following cantact information
+				
+				.row
+					
+					- data.data.forEach(function(item){				
+						.col-md-6
+							a.retailLink.sm-link(href="#{item.linkUrl}")
+								- if(item.icon && item.icon[0]){
+									img.sm-img(src="/upload/#{item.icon[0]['filename']}", title="#{item.name}")
+								- } else{
+									img.sm-img(src="", title="#{item.name}")
+								- }
+
+								
+								span.sm-span| #{item.name}
+
+					-})
+				
+
+				
+
+
+			include ../inc/foot.jade
+
+
+script.
+	$(function(){
+		
+	})
+
+
+

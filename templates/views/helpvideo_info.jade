@@ -1,1 +1,52 @@
-helpvideo_info
+doctype html
+html
+	
+	include ../inc/head.jade
+	//div#mask
+	body
+		link(rel="stylesheet", href="/css/magiczoomplus.css")
+		script(src="/js/mzp-packed.js")
+
+		.page-wrapper.page_wrapper.white_wrapper
+			//inc nav
+			include ../inc/nav.jade
+
+			.product-top
+
+			.container
+
+				.page-bread-nav
+					a(href="/") Home
+					span.blue_span / 
+					a(href="/customer/helpvideo/list") Help Video
+					span / 
+					| #{data.data[0]['name']}
+
+			.container.container_List.container-prod-info.retail-container
+				.vinfo-title| #{data.data[0]['name']}
+				.vinfo-date| #{data.data[0]['publishedDate']}
+				.row
+					.video-info-box
+						#{data.data[0]['videoScript']}
+						
+
+				
+
+
+
+
+
+
+				
+
+
+			include ../inc/foot.jade
+
+
+script.
+	$(function(){
+		
+	})
+
+
+

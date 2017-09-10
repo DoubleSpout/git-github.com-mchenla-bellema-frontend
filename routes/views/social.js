@@ -12,7 +12,7 @@ exports = module.exports = function (req, res) {
 
 	//data List 
 	asyncList.push(function(callback){
-		keystone.list('FAQs').model.find({'state':'published'}).sort({'sort':1}).limit(1000).exec(function (err, results) {
+		keystone.list('Social').model.find({'status':'published'}).sort({'sort':1}).limit(1000).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -31,19 +31,19 @@ exports = module.exports = function (req, res) {
 
 
 	//data List 
-	asyncList.push(function(callback){
-		keystone.list('Product').model.find({'state':'published'}).sort({'sort':1}).limit(1000).exec(function (err, results) {
+	// asyncList.push(function(callback){
+	// 	keystone.list('Product').model.find({'state':'published'}).sort({'sort':1}).limit(1000).exec(function (err, results) {
 
-			if (err) {
-				return callback(err);
-			}
+	// 		if (err) {
+	// 			return callback(err);
+	// 		}
 
-			locals.data.products = results;
+	// 		locals.data.products = results;
 
-			//console.log(results)
-			callback()
-		});
-	});
+	// 		//console.log(results)
+	// 		callback()
+	// 	});
+	// });
 
 	async.parallel(asyncList, function(err){
 		if(err){
@@ -53,9 +53,9 @@ exports = module.exports = function (req, res) {
 
 		// locals.section is used to set the currently selected
 		// item in the header navigation.
-		locals.section = 'support';
+		// locals.section = 'support';
 
-		locals.title = 'Support|BelleMa'
+		locals.title = 'Social|BelleMa'
 		// Render the view
 		view.render('social');
 	})

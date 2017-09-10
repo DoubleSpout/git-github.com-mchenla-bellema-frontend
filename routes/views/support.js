@@ -53,9 +53,9 @@ exports = module.exports = function (req, res) {
 
 		// locals.section is used to set the currently selected
 		// item in the header navigation.
-		locals.section = 'support';
+		locals.section = 'faq';
 
-		locals.title = 'Support|BelleMa'
+		locals.title = 'faq|BelleMa'
 		// Render the view
 		view.render('support');
 	})

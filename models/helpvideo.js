@@ -6,10 +6,12 @@ var Types = keystone.Field.Types;
  * =============
  */
 
-var helpvideo = new keystone.List('helpvideo ', {});
+var helpvideo = new keystone.List('helpvideo', {});
 
 helpvideo.add({
 	name:  { type: String,  default:'', },
+	info:  { type: String,  default:'', },
+	images: { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'230 * 150' },
 	videoScript: { type: String, default:'' },
 	sort:{ type: Number, default:1 },
 	status: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
@@ -17,5 +19,5 @@ helpvideo.add({
 
 });
 
-helpvideo.defaultColumns = 'name |40%, videoScript|40%, sort|20%';
+helpvideo.defaultColumns = 'name,status |40%, videoScript|40%, sort|20%';
 helpvideo.register();

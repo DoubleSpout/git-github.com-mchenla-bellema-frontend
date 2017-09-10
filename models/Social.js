@@ -6,16 +6,15 @@ var Types = keystone.Field.Types;
  * =============
  */
 
-var Social = new keystone.List('Social', {
-	autokey: { from: 'title', path: 'key', unique: true },
-});
+var Social = new keystone.List('Social', {});
 
 Social.add({
-	title:{ type: String, default:''},
+	name:{ type: String, default:''},
 	linkUrl :{ type: String, default:''},
 	icon: { type: Types.LocalFiles, dest:global.localFilePath, imgSize:'80*80' },
+	status: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
 	publishedDate: { type: Date},
 });
 
-Social.defaultColumns = 'name, branchName|20%, phone|20%, website|20%';
+Social.defaultColumns = 'name, status|20%, linkUrl|20%, publishedDate|20%';
 Social.register();

@@ -1,1 +1,96 @@
-regist_product.jade
+doctype html
+html
+	
+	include ../inc/head.jade
+	//div#mask
+	body
+		link(rel="stylesheet", href="/css/magiczoomplus.css")
+		script(src="/js/mzp-packed.js")
+
+		.page-wrapper.page_wrapper.white_wrapper
+			//inc nav
+			include ../inc/nav.jade
+
+			.product-top
+
+			.container
+				.page-bread-nav
+					a(href="/") Home
+					span.blue_span / 
+					| Warranty Infomation
+
+			.container.container_List.container-prod-info.retail-container
+				.warrantyContainer
+					.row
+						.col-md-3.txtR
+							|Product Model
+							span.txtRed|*
+
+						.col-md-3
+							select.form-control
+								option| xxx
+								option| xxx
+						.col-md-2.txtR
+							|S/N
+							span.txtRed|*
+						.col-md-3
+							input.form-control
+	
+
+					.row
+						.col-md-3.txtR
+							|Purchasing Date
+							span.txtRed|*
+						.col-md-5
+							input.form-control(type="date")
+
+					.row
+						.col-md-3.txtR
+							|Last Name
+							span.txtRed|*
+						.col-md-3
+							input.form-control
+						.col-md-2.txtR
+							|First Name
+							span.txtRed|*
+						.col-md-3
+							input.form-control
+
+					.row
+						.col-md-3.txtR
+							|E-Mail
+							span.txtRed|*
+						.col-md-5
+							input.form-control(type="email")
+
+					.row
+						.col-md-3.txtR
+							|Telephone
+							span.txtRed|*
+						.col-md-5
+							input.form-control(type="email")
+
+					.row
+						.col-md-3.txtR
+							|Home Address
+							span.txtRed|*
+						.col-md-8
+							input.form-control(type="email")
+	
+					.row
+						a.pinkBtn(href="javascript:;")| Continue
+				
+		
+				
+
+
+			include ../inc/foot.jade
+
+
+script.
+	$(function(){
+		
+	})
+
+
+

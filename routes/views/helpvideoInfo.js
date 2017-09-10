@@ -17,67 +17,67 @@ exports = module.exports = function (req, res) {
 
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
-	locals.section = 'blog_info';
+	// locals.section = 'blog_info';
 
 	
 	//get side
-	asyncList.push(function(callback){
-		keystone.list('Blog').model.find({'state':'published', 'putOnSide':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
+	// asyncList.push(function(callback){
+	// 	keystone.list('Blog').model.find({'state':'published', 'putOnSide':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
 
-			if (err) {
-				return callback(err);
-			}
+	// 		if (err) {
+	// 			return callback(err);
+	// 		}
 
-			locals.data.sideData = JSON.parse(JSON.stringify(results));
-			locals.data.sideData.map(function(item){
-				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
-				 return item
-			})
-			//console.log(results)
-			callback()
-		});
-	});
+	// 		locals.data.sideData = JSON.parse(JSON.stringify(results));
+	// 		locals.data.sideData.map(function(item){
+	// 			 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
+	// 			 return item
+	// 		})
+	// 		//console.log(results)
+	// 		callback()
+	// 	});
+	// });
 
 
 	//recent post
-	asyncList.push(function(callback){
-		keystone.list('Blog').model.find({'state':'published'}).sort({'publishedDate':-1}).limit(3).exec(function (err, results) {
+	// asyncList.push(function(callback){
+	// 	keystone.list('Blog').model.find({'state':'published'}).sort({'publishedDate':-1}).limit(3).exec(function (err, results) {
 
-			if (err) {
-				return callback(err);
-			}
+	// 		if (err) {
+	// 			return callback(err);
+	// 		}
 
 
-			locals.data.recentData = JSON.parse(JSON.stringify(results));
-			locals.data.recentData.map(function(item){
-				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
-				 return item
-			})
-			//console.log(results)
-			callback()
-		});
-	});
+	// 		locals.data.recentData = JSON.parse(JSON.stringify(results));
+	// 		locals.data.recentData.map(function(item){
+	// 			 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
+	// 			 return item
+	// 		})
+	// 		//console.log(results)
+	// 		callback()
+	// 	});
+	// });
 
 
 	//count 
-	asyncList.push(function(callback){
-		keystone.list('Blog').model.count({'state':'published'}).exec(function (err, results) {
+	// asyncList.push(function(callback){
+	// 	keystone.list('Blog').model.count({'state':'published'}).exec(function (err, results) {
 
-			if (err) {
-				return callback(err);
-			}
+	// 		if (err) {
+	// 			return callback(err);
+	// 		}
 
-			locals.data.countData = results;
-			//console.log(results)
-			callback()
-		});
-	});
+	// 		locals.data.countData = results;
+	// 		//console.log(results)
+	// 		callback()
+	// 	});
+	// });
 
 
 	//data List 
 	asyncList.push(function(callback){
 	
-		keystone.list('Blog').model.find({'_id':id}).limit(1).exec(function (err, results) {
+		keystone.list('helpvideo').model.find({'_id':id}).limit(1).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -101,20 +101,20 @@ exports = module.exports = function (req, res) {
 
 
 	//data List 
-	asyncList.push(function(callback){
+	// asyncList.push(function(callback){
 
-		keystone.list('Adv').model.find({'showOnBlog':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
+	// 	keystone.list('Adv').model.find({'showOnBlog':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
 
-			if (err) {
-				return callback(err);
-			}
+	// 		if (err) {
+	// 			return callback(err);
+	// 		}
 
-			locals.data.adv = results;
+	// 		locals.data.adv = results;
 
-			//console.log(results)
-			callback()
-		});
-	});
+	// 		//console.log(results)
+	// 		callback()
+	// 	});
+	// });
 
 	async.parallel(asyncList, function(err){
 		if(err){
@@ -122,7 +122,7 @@ exports = module.exports = function (req, res) {
 			return res.status(500).end();
 		}
 
-		locals.title = 'Resources|BelleMa'
+		locals.title = 'HelpVideo|BelleMa'
 
 		//locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
 		// Render the view

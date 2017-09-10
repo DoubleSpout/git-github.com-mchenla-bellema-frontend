@@ -1,1 +1,48 @@
-retail
+doctype html
+html
+	
+	include ../inc/head.jade
+	//div#mask
+	body
+		link(rel="stylesheet", href="/css/magiczoomplus.css")
+		script(src="/js/mzp-packed.js")
+
+		.page-wrapper.page_wrapper.white_wrapper
+			//inc nav
+			include ../inc/nav.jade
+
+			.product-top
+
+			.container
+				.page-bread-nav
+					a(href="/") Home
+					span.blue_span / 
+					| Retail
+
+			.container.container_List.container-prod-info.retail-container
+				.ins-info-title.center| Retail
+				.ins-info-title2.center| You can purchase our products from the following channels
+				
+				.row
+					- data.data.forEach(function(item){				
+						.col-md-3
+							a.retailLink(href="#{item.homepage}")
+								- if(item.images && item.images[0]){
+									img(src="/upload/#{item.images[0]['filename']}", title="#{item.name}")
+								- } else{
+									img(src="", title="#{item.name}")
+								- }
+								
+								| #{item.name}
+					-})
+					
+			include ../inc/foot.jade
+
+
+script.
+	$(function(){
+		
+	})
+
+
+

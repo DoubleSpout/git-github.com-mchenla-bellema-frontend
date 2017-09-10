@@ -11,13 +11,12 @@ var UserManual = new keystone.List('UserManual', {});
 UserManual.add({
 	name:  { type: String,  default:'', },
 	date: 	 { type: Date},
-	info: 	{ type: String,  default:'',},
-	jumpurl: { type: String, default:'' },
+	files: { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'pdf' },
 	sort:{ type: Number, default:1 },
 	status: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 
 });
 
-UserManual.defaultColumns = 'name,date |40%, info|40%, sort|20%';
+UserManual.defaultColumns = 'name |40%, status|40%, sort|20%';
 UserManual.register();
