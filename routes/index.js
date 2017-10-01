@@ -52,6 +52,7 @@ exports = module.exports = function (app) {
 	app.get('/product/info', routes.views.productInfo);
 
 	app.post('/sub/post', routes.views.sub);
+	app.post('/regist/product', routes.views.PostRegistProduct);
 
 	// app.get('/blog/:category?', routes.views.blog);
 	// app.get('/blog/post/:post', routes.views.post);

@@ -19,9 +19,42 @@ exports = module.exports = function (req, res) {
 	locals.section = 'blog_list';
 	locals.data = {};
 
+	var TroubleShooting = '123456789012345678901234';
+	var TipSolution = '123456789012345678901234';
+	var PressRealse = '123456789012345678901234';
+
+
 	//get side
 	asyncList.push(function(callback){
-		keystone.list('Blog').model.find({'state':'published', 'putOnSide':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
+		keystone.list('BlogCategory').model.find().limit(1000).exec(function (err, results) {
+
+			if (err) {
+				return callback(err);
+			}
+
+			results.forEach(function(item){
+				if(item.name == 'TroubleShooting'){
+						TroubleShooting = item._id;
+				}
+				if(item.name == 'TipSolution'){
+						TipSolution = item._id;
+				}
+				if(item.name == 'PressRealse'){
+						PressRealse = item._id;
+				}
+			})
+
+			// console.log(results)
+
+
+			callback();
+		});
+	});
+
+
+	//get side
+	asyncList.push(function(callback){
+		keystone.list('PressRealse').model.find({ 'state':'published', 'putOnSide':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -40,7 +73,7 @@ exports = module.exports = function (req, res) {
 
 	//recent post
 	asyncList.push(function(callback){
-		keystone.list('Blog').model.find({'state':'published'}).sort({'publishedDate':-1}).limit(3).exec(function (err, results) {
+		keystone.list('PressRealse').model.find({'state':'published'}).sort({'publishedDate':-1}).limit(3).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -68,7 +101,7 @@ exports = module.exports = function (req, res) {
 		}
 
 
-		keystone.list('Blog').model.count(q).exec(function (err, results) {
+		keystone.list('PressRealse').model.find({}).count(q).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -91,7 +124,7 @@ exports = module.exports = function (req, res) {
 			q['title'] = {"$regex":req.query.keywords}
 		}
 
-		keystone.list('Blog').model.find(q).sort({'sort':1}).limit(perPage).skip(skipNum).exec(function (err, results) {
+		keystone.list('PressRealse').model.find(q).sort({'sort':1}).limit(perPage).skip(skipNum).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -134,9 +167,11 @@ exports = module.exports = function (req, res) {
 		}
 
 		locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
-		locals.title = 'Resources|BelleMa'
+		locals.title = 'PressRealse|BelleMa'
+		locals.NavTip = 'PressRealse'
+		locals.NavLink = '/customer/pressrealse/info'
 		// Render the view
-		view.render('pressrealse_List');
+		view.render('blog_list');
 	})
 
 

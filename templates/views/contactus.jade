@@ -24,37 +24,37 @@ html
 										
 					.col-md-7
 						.contact-title| Contact Us
-						.contact-info| Contact Us Contact Us Contact Us Contact Us Contact Us Contact Us Contact Us
+						.contact-info| We welcome your request and suggestion to provide a continuous supply of nutrients for Bellema.
 						.contact-detail
 							.row
 								.col-md-1
 									img(src='/img/concact-icon-1.png')
 								.col-md-5
-									| +10-1234567890
+									| #{data.data.telphone}
 								.col-md-1
 									img(src='/img/concact-icon-2.png')
 								.col-md-5
-									| +10-1234567890
+									| #{data.data.email}
 
 							.row
 								.col-md-1
 									img(src='/img/concact-icon-3.png')
 								.col-md-5
-									| +10-1234567890
+									| <a href="#{data.data.twitterUrl}">#{data.data.twitterUrl}</a>
 								.col-md-1
 									img(src='/img/concact-icon-4.png')
 								.col-md-5
-									| +10-1234567890
+									| <a href="#{data.data.googlePlusUrl}">#{data.data.googlePlusUrl}</a>
 
 							.row
 								.col-md-1
 									img(src='/img/concact-icon-5.png')
 								.col-md-5
-									| +10-1234567890
+									| <a href="#{data.data.facebookUrl}">#{data.data.facebookUrl}</a>
 								.col-md-1
 									img(src='/img/concact-icon-6.png')
 								.col-md-5
-									| +10-1234567890
+									| <a href="#{data.data.linkedinUrl}">#{data.data.linkedinUrl}</a>
 
 						
 
@@ -65,19 +65,15 @@ html
 					.col-md-4
 						.contact-map
 							.contact-map-cover
-								h2.cmap-title| 1.Walmart
-								p.cmap-p| 1827 xx dfsd sdf s
+								- data.dataAddr.forEach(function(item, i){
 
-								h2.cmap-title| 1.Walmart
-								p.cmap-p| 1827 xx dfsd sdf s
+									h2.cmap-title| #{i+1}.#{item.name}
+									p.cmap-p| #{item.addr}
 
-								h2.cmap-title| 1.Walmart
-								p.cmap-p| 1827 xx dfsd sdf s
+								- })
+								
 
-								h2.cmap-title| 1.Walmart
-								p.cmap-p| 1827 xx dfsd sdf s
-
-								a.cbtn
+								//a.cbtn
 
 				
 

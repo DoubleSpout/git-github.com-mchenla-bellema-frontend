@@ -21,17 +21,17 @@ exports = module.exports = function (req, res) {
 
 	//get side
 	asyncList.push(function(callback){
-		keystone.list('Blog').model.find({'state':'published', 'putOnSide':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
+		keystone.list('InsuranceState').model.find({'status':'published'}).sort({'sort':1}).limit(10000).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
 			}
 
-			locals.data.sideData = JSON.parse(JSON.stringify(results));
-			locals.data.sideData.map(function(item){
-				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
-				 return item
-			})
+			locals.data.state = results //JSON.parse(JSON.stringify());
+			// locals.data.sideData.map(function(item){
+			// 	 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
+			// 	 return item
+			// })
 			//console.log(results)
 			callback();
 		});
@@ -40,101 +40,50 @@ exports = module.exports = function (req, res) {
 
 	//recent post
 	asyncList.push(function(callback){
-		keystone.list('Blog').model.find({'state':'published'}).sort({'publishedDate':-1}).limit(3).exec(function (err, results) {
+		keystone.list('InsurancePlanList').model.find({'status':'published'}).sort({'sort':1}).limit(10000).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
 			}
 
 
-			locals.data.recentData = JSON.parse(JSON.stringify(results));;
-			locals.data.recentData.map(function(item){
-				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
-				 return item
-			})
+			locals.data.PlanList = results; //JSON.parse(JSON.stringify(results));;
+			// locals.data.recentData.map(function(item){
+			// 	 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
+			// 	 return item
+			// })
 			//console.log(results)
 			callback()
 		});
 	});
 
-
-	//count 
+	//recent post
 	asyncList.push(function(callback){
-		var q = {'state':'published'};
-		var keywords = (req.query.keywords || '').trim()
-
-		if(keywords != ''){
-			q['title'] = {"$regex":req.query.keywords}
-		}
-
-
-		keystone.list('Blog').model.count(q).exec(function (err, results) {
+		keystone.list('InsurancePlanInfo').model.find({'status':'published'}).sort({'sort':1}).limit(10000).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
 			}
 
-			locals.data.countData = results;
+
+			locals.data.PlanInfo = results; //JSON.parse(JSON.stringify(results));;
+			// locals.data.recentData.map(function(item){
+			// 	 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
+			// 	 return item
+			// })
 			//console.log(results)
 			callback()
 		});
 	});
 
-
-	//data List 
-	asyncList.push(function(callback){
-		var skipNum = perPage * (page-1)
-		var q = {'state':'published'};
-		var keywords = (req.query.keywords || '').trim()
-
-		if(keywords != ''){
-			q['title'] = {"$regex":req.query.keywords}
-		}
-
-		keystone.list('Blog').model.find(q).sort({'sort':1}).limit(perPage).skip(skipNum).exec(function (err, results) {
-
-			if (err) {
-				return callback(err);
-			}
-
-			locals.data.data = JSON.parse(JSON.stringify(results));
-			locals.data.keywords = keywords
-
-			locals.data.data.map(function(item){
-				 item.publishedDate = moment(item.publishedDate).format('MM/DD/YYYY HH:SS')
-				 return item
-			})
-			locals.keywords = keywords
-			//console.log(results)
-			callback()
-		});
-	});
-
-
-	//data List 
-	asyncList.push(function(callback){
-		var skipNum = perPage * (page-1)
-		keystone.list('Adv').model.find({'showOnBlog':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
-
-			if (err) {
-				return callback(err);
-			}
-
-			locals.data.adv = results;
-
-			//console.log(results)
-			callback()
-		});
-	});
 
 	async.parallel(asyncList, function(err){
 		if(err){
-			console.log('index.js| async.parallel error', err);
+			console.log('insuranceList.js| async.parallel error', err);
 			return res.status(500).end();
 		}
 
-		locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
-		locals.title = 'Resources|BelleMa'
+		locals.title = 'Insurance|BelleMa'
 		// Render the view
 		view.render('insurance_list');
 	})

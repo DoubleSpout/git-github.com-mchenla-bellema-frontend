@@ -12,18 +12,19 @@ exports = module.exports = function (req, res) {
 
 	//data List 
 	asyncList.push(function(callback){
-		keystone.list('FAQs').model.find({'state':'published'}).sort({'sort':1}).limit(1000).exec(function (err, results) {
+		keystone.list('ProductCategory').model.find().sort({'sort':1}).limit(1000).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
 			}
 
-			locals.data.data = results;
 
-			locals.data.data.map(function(item){
-				 item.publishedDate = moment(item.publishedDate).format('LL')
-				 return item
-			})
+			locals.data.catData = results;
+
+			// locals.data.data.map(function(item){
+			// 	 item.publishedDate = moment(item.publishedDate).format('LL')
+			// 	 return item
+			// })
 			//console.log(results)
 			callback()
 		});
@@ -31,19 +32,19 @@ exports = module.exports = function (req, res) {
 
 
 	//data List 
-	asyncList.push(function(callback){
-		keystone.list('Product').model.find({'state':'published'}).sort({'sort':1}).limit(1000).exec(function (err, results) {
+	// asyncList.push(function(callback){
+	// 	keystone.list('Product').model.find({'state':'published'}).sort({'sort':1}).limit(1000).exec(function (err, results) {
 
-			if (err) {
-				return callback(err);
-			}
+	// 		if (err) {
+	// 			return callback(err);
+	// 		}
 
-			locals.data.products = results;
+	// 		locals.data.products = results;
 
-			//console.log(results)
-			callback()
-		});
-	});
+	// 		//console.log(results)
+	// 		callback()
+	// 	});
+	// });
 
 	async.parallel(asyncList, function(err){
 		if(err){
@@ -53,9 +54,9 @@ exports = module.exports = function (req, res) {
 
 		// locals.section is used to set the currently selected
 		// item in the header navigation.
-		locals.section = 'support';
+		locals.section = 'RegistProduct';
 
-		locals.title = 'Support|BelleMa'
+		locals.title = 'RegistProduct|BelleMa'
 		// Render the view
 		view.render('regist_product');
 	})

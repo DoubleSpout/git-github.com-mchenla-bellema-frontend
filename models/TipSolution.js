@@ -32,9 +32,9 @@ TipSolution.add({
 		extended: { type: Types.Html, wysiwyg: true, height: 400 },
 	},
 	sort:{ type: Number, default:1 },
-	isFacebook:{ type: Types.Select, options: 'no, yes', default: 'no'},
-	facebookId:{type: String, default:'', index: true},
-	categories: { type: Types.Relationship, ref: 'BlogCategory', many: true },
+	// isFacebook:{ type: Types.Select, options: 'no, yes', default: 'no'},
+	// facebookId:{type: String, default:'', index: true},
+	categories: { type: Types.Relationship, ref: 'BlogCategory', many: false },
 });
 
 TipSolution.schema.virtual('content.full').get(function () {

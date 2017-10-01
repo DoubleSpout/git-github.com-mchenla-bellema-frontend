@@ -11,17 +11,16 @@ var InsurancePlanInfo = new keystone.List('InsurancePlanInfo', {
 });
 
 InsurancePlanInfo.add({
-	name: { type: String, required: true, index: true},
 	telphone: { type: String,  default:'' },
 	jumpurl:{ type: String,  default:'' },
 	sort:{ type: Number, default:1 },
-	code:  { type: String,  default:'', label:'Product NO.'},
+	// code:  { type: String,  default:'', label:'Product NO.'},
 	
 	status: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
 
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 
-	insurancestates: { type: Types.Relationship, ref: 'InsuranceState', many: true },
+	//insurancestates: { type: Types.Relationship, ref: 'InsuranceState', many: true },
 	insuranceplanlist: { type: Types.Relationship, ref: 'InsurancePlanList', many: true },
 });
 

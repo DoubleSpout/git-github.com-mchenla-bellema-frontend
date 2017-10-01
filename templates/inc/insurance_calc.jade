@@ -1,0 +1,187 @@
+script.
+	
+	var Get_QueryString_Plus = function(url){
+		var no_q = 1,
+		now_url = url && (url.split('?')[1] || no_q) || document.location.search.slice(1) || no_q;
+		if(now_url === no_q) return false;
+			var q_array = now_url.split('&'),
+			q_o = {},
+			v_array; 
+			for(var i=0;i<q_array.length;i++){
+				v_array = q_array[i].split('=');
+			try{
+				q_o[v_array[0]] = decodeURIComponent(v_array[1]);
+			}
+			catch(e){
+				q_o[v_array[0]] = null;
+			}
+		};
+		return q_o;
+	}
+
+
+	var planState = !{JSON.stringify(data.state)}
+	var planList = !{JSON.stringify(data.PlanList)}
+	var planInfo = !{JSON.stringify(data.PlanInfo)}
+
+	var planAllData = [];
+
+
+	for(var i in planState){
+		var stateItem = planState[i];
+		var tmpStateItem = JSON.parse(JSON.stringify(stateItem))
+		tmpStateItem.dataList = [];
+
+		for(var j in planList){
+			var listItem = planList[j];
+			if(listItem.insurancestates.indexOf(stateItem._id) >= 0){
+				var tmpListItem = JSON.parse(JSON.stringify(listItem))
+				tmpListItem.dataList = []
+
+				for(var k in planInfo){
+					var infoItem = planInfo[k];
+					if(infoItem.insuranceplanlist.indexOf(listItem._id) >= 0){
+						tmpListItem.dataList.push(JSON.parse(JSON.stringify(infoItem)))
+					}
+				}
+
+				tmpStateItem.dataList.push(tmpListItem)
+			}
+		}
+
+		planAllData.push(tmpStateItem)
+	}
+
+
+	window.planAllData = planAllData;
+
+	var qObj = Get_QueryString_Plus();
+	if(qObj.stateid && qObj.stateid.length == 24){
+		window.curStateid = qObj.stateid
+	}
+	if(qObj.listid && qObj.listid.length == 24){
+		window.curListId = qObj.listid
+	}
+
+	$(function(){
+		
+
+		var putState = function(){
+
+			var str = ''
+			for(var i in window.planAllData){
+				var stateItem = window.planAllData[i];
+				str += `<li><a href="javascript:;" val="${stateItem._id}">${stateItem.name}</li>`
+			}
+
+			$('#planStateSel').html(str);
+
+			var pos = 0
+			if(window.curStateid){
+				for(var i in window.planAllData){
+					if(window.planAllData[i]['_id'] == window.curStateid){
+						pos = i;
+						break;
+					}
+				}
+			}
+
+			$('#planStateSel').find('a').eq(pos).click();
+
+
+		}
+
+		var putList = function(){
+
+			var listArray = []
+			for(var i in window.planAllData){
+				var stateItem = window.planAllData[i]
+				if(stateItem._id == window.stateId){
+					listArray = stateItem.dataList;
+					break;
+				}
+			}
+
+			var str = ''
+			for(var j in listArray){
+				var listItem = listArray[j];
+				str += `<li><a href="javascript:;" val="${listItem._id}">${listItem.name}</li>`
+			}
+
+			$('#planListSel').html(str);
+
+			var pos = 0
+			if(window.curListId){
+				for(var i in listArray){
+					if(listArray[i]['_id'] == window.curListId){
+						pos = i;
+						break;
+					}
+				}
+			}
+
+			// alert(pos)
+
+			$('#planListSel').find('a').eq(pos).click();
+			
+			putInfo();
+		}
+
+
+		//把内容详情插入dom
+		var putInfo = function(){
+			if(!window.insuranceInfoPage || !window.curListId) return;
+			var tmpInfoList = [];
+			for(var i in window.planInfo){
+				if(window.planInfo[i]['insuranceplanlist'] && 
+					window.planInfo[i]['insuranceplanlist'].indexOf(window.curListId)>=0){
+					tmpInfoList.push(window.planInfo[i])
+				}
+			}
+
+			var tmpStr = ''
+			for(var i in tmpInfoList){
+				var tmpObj = tmpInfoList[i];
+				tmpStr += `<div class="col-md-3"><a href="${tmpObj.jumpurl}" target="_blank"><div class="ins-info-blk">${tmpObj.name}<b>${tmpObj.telphone}</b></div></a></div>`
+			}
+			
+			$('#ins-info-selbox').html(tmpStr)
+
+
+		}
+		
+
+		$('#planStateSel').delegate('a', 'click', function(){
+				var that = $(this);
+				window.stateId = that.attr('val');
+				var text = that.text();
+				$('#planStateSelText').html(text);
+				putList();
+		})
+
+		$('#planListSel').delegate('a', 'click', function(){
+				var that = $(this);
+				window.listId = that.attr('val');
+				var text = that.text();
+				$('#planListSelText').html(text);
+		})
+
+
+
+		$('#continueBtn').click(function(){
+
+			if(!window.stateId || !window.listId ){
+					location.href = '/pump/insurance/info'
+					return false;
+			}
+
+			location.href = `/pump/insurance/info?stateid=${window.stateId}&listid=${window.listId}`
+			return false;
+
+		})
+
+		putState();
+
+		
+
+	})

@@ -17,6 +17,9 @@ CompanyAddr.add({
 
 	sort:{ type: Number, default:1 },
 
+	status: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
+	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
+
 });
 
 CompanyAddr.defaultColumns = 'name,addr|60%, lat,lng|30%, sort|10%';

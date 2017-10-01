@@ -17,7 +17,7 @@ html
 				.page-bread-nav
 					a(href="/") Home
 					span.blue_span / 
-					| Warranty Infomation
+					| Regist Your Product
 
 			.container.container_List.container-prod-info.retail-container
 				.warrantyContainer
@@ -27,14 +27,20 @@ html
 							span.txtRed|*
 
 						.col-md-3
-							select.form-control
-								option| xxx
+							select.form-control#ProductId
+								option(value="0")| Select Product Model
+								- data.catData.forEach(function(item, i){
+
+									option(value="#{item._id}")| #{item.name}
+
+								- })
+								
 								option| xxx
 						.col-md-2.txtR
 							|S/N
 							span.txtRed|*
 						.col-md-3
-							input.form-control
+							input#SN.form-control
 	
 
 					.row
@@ -42,43 +48,51 @@ html
 							|Purchasing Date
 							span.txtRed|*
 						.col-md-5
-							input.form-control(type="date")
+							input.form-control#PurchasingDate(type="date")
+
+					.row
+						.col-md-3.txtR
+							|Purchasing Address
+							span.txtRed|*
+						.col-md-8
+							input.form-control#PurchasingAddress(type="text")
+
 
 					.row
 						.col-md-3.txtR
 							|Last Name
 							span.txtRed|*
 						.col-md-3
-							input.form-control
+							input.form-control#LastName(type="text")
 						.col-md-2.txtR
 							|First Name
 							span.txtRed|*
 						.col-md-3
-							input.form-control
+							input.form-control#FirstName(type="text")
 
 					.row
 						.col-md-3.txtR
 							|E-Mail
 							span.txtRed|*
 						.col-md-5
-							input.form-control(type="email")
+							input.form-control#Email(type="email")
 
 					.row
 						.col-md-3.txtR
 							|Telephone
 							span.txtRed|*
 						.col-md-5
-							input.form-control(type="email")
+							input.form-control#Telephone(type="text")
 
 					.row
 						.col-md-3.txtR
 							|Home Address
 							span.txtRed|*
 						.col-md-8
-							input.form-control(type="email")
+							input.form-control#HomeAddress(type="text")
 	
 					.row
-						a.pinkBtn(href="javascript:;")| Continue
+						a#regist.pinkBtn(href="javascript:;")| Regist Your Product
 				
 		
 				
@@ -89,7 +103,48 @@ html
 
 script.
 	$(function(){
-		
+			$('#regist').click(function(){
+				var data = {
+					ProductId: ($('#ProductId').val() || '').trim(),
+					SN: ($('#SN').val() || '').trim(),
+					PurchasingDate: ($('#PurchasingDate').val() || '').trim(),
+					PurchasingAddress: ($('#PurchasingAddress').val() || '').trim(),
+					LastName: ($('#LastName').val() || '').trim(),
+					FirstName: ($('#FirstName').val() || '').trim(),
+					Email: ($('#Email').val() || '').trim(),
+					Telephone: ($('#Telephone').val() || '').trim(),
+					HomeAddress: ($('#HomeAddress').val() || '').trim(),
+				}
+
+				if(data.ProductId == '0' || data.ProductId.length !== 24){
+					alert('invalid Porduct Model');
+					return false
+				}
+
+				try{
+					data.PurchasingDate = moment(data.PurchasingDate);
+					data.PurchasingDate = data.PurchasingDate.unix()*1000;
+				}catch(e){
+					alert('invalid Purchasing Date')
+					return false
+				}
+
+
+				$.post('/regist/product',data,function(data){
+					if(data.error){
+						alert(data.error)
+						return false;
+					}
+
+					alert('regist success')
+					setTimeout(function(){
+						location.href = location.href;
+					},1000)
+	
+				},'json')
+
+
+			})
 	})
 
 

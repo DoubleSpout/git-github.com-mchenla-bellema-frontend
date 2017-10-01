@@ -12,18 +12,22 @@ exports = module.exports = function (req, res) {
 
 	//data List 
 	asyncList.push(function(callback){
-		keystone.list('FAQs').model.find({'state':'published'}).sort({'sort':1}).limit(1000).exec(function (err, results) {
+		keystone.list('CompanyAddr').model.find({'status':'published'}).sort({'sort':1}).limit(4).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
 			}
 
-			locals.data.data = results;
+			if(results.length == 0){
+				results = []
+			}
 
-			locals.data.data.map(function(item){
-				 item.publishedDate = moment(item.publishedDate).format('LL')
-				 return item
-			})
+			locals.data.dataAddr = results;
+
+			// locals.data.dataAddr.map(function(item){
+			// 	 item.publishedDate = moment(item.publishedDate).format('LL')
+			// 	 return item
+			// })
 			//console.log(results)
 			callback()
 		});
@@ -32,13 +36,16 @@ exports = module.exports = function (req, res) {
 
 	//data List 
 	asyncList.push(function(callback){
-		keystone.list('Product').model.find({'state':'published'}).sort({'sort':1}).limit(1000).exec(function (err, results) {
+		keystone.list('CompanyInfo').model.find({'status':'published'}).sort({'sort':1}).limit(1).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
 			}
 
-			locals.data.products = results;
+			if(results.length == 0){
+				results = [{}]
+			}
+			locals.data.data = results[0];
 
 			//console.log(results)
 			callback()
@@ -53,9 +60,9 @@ exports = module.exports = function (req, res) {
 
 		// locals.section is used to set the currently selected
 		// item in the header navigation.
-		locals.section = 'support';
+		locals.section = 'ContactUs';
 
-		locals.title = 'Support|BelleMa'
+		locals.title = 'ContactUs|BelleMa'
 		// Render the view
 		view.render('contactus');
 	})

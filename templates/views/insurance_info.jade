@@ -28,111 +28,54 @@ html
 							h2| * I Live In
 							div(class="dropdown product-filter-dropdown ins-info-leftsel")
 								a.filterBtn(href="javascript:;", class="dLabel", type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
-									font.page-sort-choose Sort by Auto
+									font#planStateSelText.page-sort-choose| 
 									span(class="glyphicon glyphicon-chevron-down")
-								ul(class="dropdown-menu", aria-labelledby="dLabel")
-									li
-										a(href="javascript:;").product-sort-a Auto
-									li 
-										a(href="javascript:;").product-sort-a Date
-									li
-										a(href="javascript:;").product-sort-a Price
-									li
-										a(href="javascript:;").product-sort-a Name
+								ul#planStateSel(class="dropdown-menu", aria-labelledby="dLabel")
+									// li
+									// 	a(href="javascript:;").product-sort-a Auto
+									// li 
+									// 	a(href="javascript:;").product-sort-a Date
+									// li
+									// 	a(href="javascript:;").product-sort-a Price
+									// li
+									// 	a(href="javascript:;").product-sort-a Name
 
 							h2| * Insurance Plan
 							div(class="dropdown product-filter-dropdown ins-info-leftsel")
 								a.filterBtn(href="javascript:;", class="dLabel", type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
-									font.page-sort-choose Sort by Auto
+									font#planListSelText.page-sort-choose| 
 									span(class="glyphicon glyphicon-chevron-down")
-								ul(class="dropdown-menu", aria-labelledby="dLabel")
-									li
-										a(href="javascript:;").product-sort-a Auto
-									li 
-										a(href="javascript:;").product-sort-a Date
-									li
-										a(href="javascript:;").product-sort-a Price
-									li
-										a(href="javascript:;").product-sort-a Name
+								ul#planListSel(class="dropdown-menu", aria-labelledby="dLabel")
+									// li
+									// 	a(href="javascript:;").product-sort-a Auto
+									// li 
+									// 	a(href="javascript:;").product-sort-a Date
+									// li
+									// 	a(href="javascript:;").product-sort-a Price
+									// li
+									// 	a(href="javascript:;").product-sort-a Name
 
-							a.ins-info-btn1(href="javascript:;")
+							a#continueBtn.ins-info-btn1(href="javascript:;")
 
 
 					.col-md-9
 						p.ins-info-p1| xcfsdfsdfasdf sdfsdsfd sd fsdf sd sds 
 						p.ins-info-p2| dfsffasdfsdfsd sdfsda 
 
-						.row
-							.col-md-3
-								.ins-info-blk
-									| fsdfsdfsd
-									b| fsdfsdf
-
-							.col-md-3
-								.ins-info-blk
-									| fsdfsdfsd
-									b| fsdfsdf
-
-							.col-md-3
-								.ins-info-blk
-									| fsdfsdfsd
-									b| fsdfsdf
-
-							.col-md-3
-								.ins-info-blk
-									| fsdfsdfsd
-									b| fsdfsdf
-
-							.col-md-3
-								.ins-info-blk
-									| fsdfsdfsd
-									b| fsdfsdf
-
-							.col-md-3
-								.ins-info-blk
-									| fsdfsdfsd
-									b| fsdfsdf
-
-							.col-md-3
-								.ins-info-blk
-									| fsdfsdfsd
-									b| fsdfsdf
-
-							.col-md-3
-								.ins-info-blk
-									| fsdfsdfsd
-									b| fsdfsdf
-
-							.col-md-3
-								.ins-info-blk
-									| fsdfsdfsd
-									b| fsdfsdf
-
-							.col-md-3
-								.ins-info-blk
-									| fsdfsdfsd
-									b| fsdfsdf
-
-							.col-md-3
-								.ins-info-blk
-									| fsdfsdfsd
-									b| fsdfsdf
-
-							.col-md-3
-								.ins-info-blk
-									| fsdfsdfsd
-									b| fsdfsdf
+						.row#ins-info-selbox
+							
 
 
 
 
-
+			script.
+				window.insuranceInfoPage = true;
 
 				
 
 
 			include ../inc/foot.jade
-
+			include ../inc/insurance_calc.jade
 
 script.
 	$(function(){

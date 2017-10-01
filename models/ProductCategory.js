@@ -17,6 +17,7 @@ ProductCategory.add({
 });
 
 ProductCategory.relationship({ ref: 'Product', path: 'categories' });
+ProductCategory.relationship({ ref: 'registproduct', path: 'Model' });
 ProductCategory.relationship({ ref: 'ProductTag', path: 'categories' });
 ProductCategory.defaultColumns = 'name, desc|40%, sort|20%';
 ProductCategory.register();

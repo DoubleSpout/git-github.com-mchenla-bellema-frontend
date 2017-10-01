@@ -4164,6 +4164,7 @@ background: url('/img/Product-@2x.png') right bottom no-repeat;
 }
 .bolgSearchInp{
   width: 50% !important;
+  height: 43px !important;
 }
 .formBlog{
   padding: 40px 0 0 0px;
@@ -4532,7 +4533,9 @@ li img, p img {
 .video-info-box{
     display: block;
     overflow: hidden;
-    max-width: 1000px;
+    /*max-width: 1000px;*/
+    width: 560px;
+    /*border:#7ce0d3 3px solid;*/
     margin: 30px auto;
 }
 .sm-link{
@@ -4574,12 +4577,13 @@ li img, p img {
 
 .contact-map{
   background: url(/img/map.jpg) 0 0 no-repeat;
-  min-height: 100px;
+  min-height: 430px;
   max-width:310px;
 }
 .contact-map-cover{
   display: block;
   max-width: 310px;
+  min-height: 430px;
   background-color:rgba(0,0,0,0.6);
   padding: 10px 0 50px 0;
 }

@@ -13,7 +13,10 @@ InsuranceState.add({
 	name: { type: String, required: true },
 	desc: { type: String, default:'' },
 	//image: { type: Types.CloudinaryImage },
+
 	sort:{ type: Number, default:1 },
+
+	status: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
 });
 
 InsuranceState.relationship({ ref: 'InsurancePlanInfo', path: 'insurancestates' });

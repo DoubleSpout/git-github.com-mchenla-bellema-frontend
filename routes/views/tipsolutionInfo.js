@@ -22,7 +22,7 @@ exports = module.exports = function (req, res) {
 	
 	//get side
 	asyncList.push(function(callback){
-		keystone.list('Blog').model.find({'state':'published', 'putOnSide':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
+		keystone.list('TipSolution').model.find({'state':'published', 'putOnSide':'yes'}).sort({'sort':1}).limit(3).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -41,7 +41,7 @@ exports = module.exports = function (req, res) {
 
 	//recent post
 	asyncList.push(function(callback){
-		keystone.list('Blog').model.find({'state':'published'}).sort({'publishedDate':-1}).limit(3).exec(function (err, results) {
+		keystone.list('TipSolution').model.find({'state':'published'}).sort({'publishedDate':-1}).limit(3).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -61,7 +61,7 @@ exports = module.exports = function (req, res) {
 
 	//count 
 	asyncList.push(function(callback){
-		keystone.list('Blog').model.count({'state':'published'}).exec(function (err, results) {
+		keystone.list('TipSolution').model.count({'state':'published'}).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -77,7 +77,7 @@ exports = module.exports = function (req, res) {
 	//data List 
 	asyncList.push(function(callback){
 	
-		keystone.list('Blog').model.find({'_id':id}).limit(1).exec(function (err, results) {
+		keystone.list('TipSolution').model.find({'_id':id}).limit(1).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
@@ -122,11 +122,12 @@ exports = module.exports = function (req, res) {
 			return res.status(500).end();
 		}
 
-		locals.title = 'Resources|BelleMa'
-
+		locals.title = 'TipSolution|BelleMa'
+		locals.NavTip = 'TipSolution'
+		locals.NavLink = '/customer/tipsolution/list'
 		//locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
 		// Render the view
-		view.render('tipsolution_Info');
+		view.render('blog_Info');
 
 	})
 

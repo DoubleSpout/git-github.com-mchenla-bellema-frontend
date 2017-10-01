@@ -14,6 +14,7 @@ InsurancePlanList.add({
 	desc: { type: String, default:'' },
 	//image: { type: Types.CloudinaryImage },
 	sort:{ type: Number, default:1 },
+	status: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
 	insurancestates: { type: Types.Relationship, ref: 'InsuranceState', many: true },
 });
 
