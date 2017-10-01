@@ -125,6 +125,8 @@ exports = module.exports = function (req, res) {
 		locals.title = 'TroubleShooting|BelleMa'
 		locals.NavTip = 'TroubleShooting'
 		locals.NavLink = '/customer/troubleshooting/list'
+		locals.bannberUrl = '/img/banner3-@2x.png'
+
 		//locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
 		// Render the view
 		view.render('blog_Info');

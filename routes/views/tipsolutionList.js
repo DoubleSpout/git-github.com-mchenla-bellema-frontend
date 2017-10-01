@@ -169,7 +169,8 @@ exports = module.exports = function (req, res) {
 		locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
 		locals.title = 'TipSolution|BelleMa'
 		locals.NavTip = 'TipSolution'
-		locals.NavLink = '/customer/tipsolution/info'
+		locals.NavLink = '/breastfeeding/tipsolution/info'
+		locals.bannberUrl = '/img/banner1-@2x.png'
 		// Render the view
 		view.render('blog_list');
 	})

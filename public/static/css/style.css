@@ -4292,6 +4292,9 @@ li img, p img {
   padding: 15px;
   border-bottom: #f6bbb5 2px dashed;
   text-align: center;
+      max-width: 800px;
+    margin: 0 auto;
+    line-height: 30px;
 }
 .ins-title3{
   width: 100%;
@@ -4610,4 +4613,8 @@ li img, p img {
 }
 .cbtn:hover{
   opacity: 0.8
+}
+.tips_font{
+  padding: 0 10px;
+  color: #fdb6b2;
 }

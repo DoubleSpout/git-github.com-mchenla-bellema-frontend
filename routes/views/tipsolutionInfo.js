@@ -124,7 +124,8 @@ exports = module.exports = function (req, res) {
 
 		locals.title = 'TipSolution|BelleMa'
 		locals.NavTip = 'TipSolution'
-		locals.NavLink = '/customer/tipsolution/list'
+		locals.NavLink = '/breastfeeding/tipsolution/list'
+		locals.bannberUrl = '/img/banner1-@2x.png'
 		//locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
 		// Render the view
 		view.render('blog_Info');

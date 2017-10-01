@@ -124,7 +124,9 @@ exports = module.exports = function (req, res) {
 
 		locals.title = 'PressRealse|BelleMa'
 		locals.NavTip = 'PressRealse'
-		locals.NavLink = '/customer/pressrealse/list'
+		locals.NavLink = '/breastfeeding/pressrealse/list'
+		locals.bannberUrl = '/img/banner2-@2x.png'
+		
 		//locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
 		// Render the view
 		view.render('blog_Info');

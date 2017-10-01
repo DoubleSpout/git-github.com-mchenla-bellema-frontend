@@ -123,7 +123,8 @@ exports = module.exports = function (req, res) {
 		}
 
 		locals.title = 'Resources|BelleMa'
-
+		locals.bannberUrl = '/img/banner-@2x.png'
+		
 		//locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
 		// Render the view
 		view.render('blog_info');

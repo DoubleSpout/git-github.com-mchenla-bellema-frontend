@@ -88,6 +88,7 @@ script.
 
 			$('#planStateSel').find('a').eq(pos).click();
 
+			$('#tips_state').html(planAllData[pos]['name']);
 
 		}
 
@@ -123,6 +124,8 @@ script.
 			// alert(pos)
 
 			$('#planListSel').find('a').eq(pos).click();
+
+			$('#tips_plan').html(listArray[pos]['name']);
 			
 			putInfo();
 		}
@@ -145,7 +148,7 @@ script.
 				tmpStr += `<div class="col-md-3"><a href="${tmpObj.jumpurl}" target="_blank"><div class="ins-info-blk">${tmpObj.name}<b>${tmpObj.telphone}</b></div></a></div>`
 			}
 			
-			$('#ins-info-selbox').html(tmpStr)
+			$('#ins-info-selbox').html(tmpStr);
 
 
 		}

@@ -12,8 +12,8 @@ CompanyAddr.add({
 	name:  { type: String,  default:'', },
 	addr: { type: String, default:'' },
 
-	lat:  { type: String, default:'' },
-	lng:  { type: String, default:''},
+	// lat:  { type: String, default:'' },
+	// lng:  { type: String, default:''},
 
 	sort:{ type: Number, default:1 },
 

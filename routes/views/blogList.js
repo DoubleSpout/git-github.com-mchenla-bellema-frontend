@@ -135,6 +135,8 @@ exports = module.exports = function (req, res) {
 
 		locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
 		locals.title = 'Resources|BelleMa'
+		locals.bannberUrl = '/img/banner-@2x.png'
+		
 		// Render the view
 		view.render('blog_list');
 	})
