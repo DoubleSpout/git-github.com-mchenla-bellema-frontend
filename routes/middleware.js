@@ -45,7 +45,7 @@ exports.initLocals = function (req, res, next) {
 						results[j]['tags'] = [];
 					}
 					for(var i=0;i<resultsTag.length;i++){
-						if(results[j]['_id'].toString() == resultsTag[i]['categories'].toString()){
+						if(results[j]['_id'] && resultsTag[i]['categories'] && results[j]['_id'].toString() == resultsTag[i]['categories'].toString()){
 							results[j]['tags'].push(resultsTag[i])
 						}
 					}
