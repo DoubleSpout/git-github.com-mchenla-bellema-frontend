@@ -57,7 +57,7 @@ exports = module.exports = function (req, res) {
 					item['tags'] = [];
 
 					resultsTag.forEach(function(tagItem){
-						if(item['_id'].toString() == tagItem['categories'].toString()){
+						if(item['_id'] && tagItem['categories'] && item['_id'].toString() == tagItem['categories'].toString()){
 							//console.log("========", tagId, tagItem['_id'].toString())
 
 							if(tagId == tagItem['_id'].toString()){
