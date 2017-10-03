@@ -1,4 +1,4 @@
-var keystone = require('keystone');
+// var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
 /**
@@ -34,7 +34,7 @@ TroubleShooting.add({
 	sort:{ type: Number, default:1 },
 	// isFacebook:{ type: Types.Select, options: 'no, yes', default: 'no'},
 	// facebookId:{type: String, default:'', index: true},
-	categories: { type: Types.Relationship, ref: 'BlogCategory', many: false },
+	// categories: { type: Types.Relationship, ref: 'BlogCategory', many: false },
 });
 
 TroubleShooting.schema.virtual('content.full').get(function () {

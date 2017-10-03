@@ -10,11 +10,11 @@ var UserManual = new keystone.List('UserManual', {});
 
 UserManual.add({
 	name:  { type: String,  default:'', },
-	date: 	 { type: Date},
+	// date: 	 { type: Date},
 	files: { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'pdf' },
 	sort:{ type: Number, default:1 },
 	status: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
-	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
+	// publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 
 });
 
