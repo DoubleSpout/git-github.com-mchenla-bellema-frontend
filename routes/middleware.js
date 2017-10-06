@@ -52,15 +52,28 @@ exports.initLocals = function (req, res, next) {
 				}
 				
 
-				res.locals.productMenu = results;
-				res.locals.product1st = results[0]
-				res.locals.user = req.user;
+				keystone.list('customer_service_url').model.find().sort({'sort':1}).limit(1).exec(function (err, customUrlResult) {
+
+					if (err) {
+						return next(err);
+					}
+
+					var customerUrl = '#'
+					if(customUrlResult.length > 0 && customUrlResult[0] && customUrlResult[0]['linkUrl']){
+						customerUrl = customUrlResult[0]['linkUrl']
+					}
+
+					res.locals.productMenu = results;
+					res.locals.product1st = results[0]
+					res.locals.user = req.user;
+					res.locals.customerUrl = customerUrl;
 
 
-				res.locals.navProduct = []
+					res.locals.navProduct = []
 
 
-				next();
+					next();
+				})
 
 			})
 
