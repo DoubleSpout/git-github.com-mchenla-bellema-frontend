@@ -5,20 +5,20 @@ header(class="header-11")
 						button(type="button",class="navbar-toggle")
 						
 						a(href="/")
-							img(src="/img/new-logo.png",width="183",height="50", class="topLogo")
+							img(src="#{toplogoUrl}",width="183",height="50", class="topLogo")
 								
 						div(class="collapse navbar-collapse pull-right")
 							ul(class="nav navbar-nav navbar-left")
 								li.dropdown
 									a(href="javascript:;", id="drop1", class="dropdown-toggle", data-toggle="dropdown",role="button",class="dropdown open",aria-expanded="true")
 										|Products
-										span(class="downArrow")
+										span(class="downArrow2")
 
 
 									ul(class="dropdown-menu", aria-labelledby="drop1")
 										li
 											.navProdBox								
-												a.btn(href="/product/list?cat=#{product1st.name}")|View All Products
+												a.btn(href="/product/list?cat=all")|View All Products
 
 												- for(var i=0;i<3;i++){
 												- if(productMenu[i]){
@@ -39,7 +39,7 @@ header(class="header-11")
 								li.dropdown
 									a(href="javascript:;", class="dropdown-toggle", data-toggle="dropdown",role="button",class="dropdown open",aria-expanded="true")
 										|Get Bellema Pumps
-										span(class="downArrow")
+										span(class="downArrow2")
 
 									ul(class="dropdown-menu")
 										li
@@ -51,11 +51,11 @@ header(class="header-11")
 								li.dropdown
 									a(href="javascript:;", class="dropdown-toggle", data-toggle="dropdown",role="button",class="dropdown open",aria-expanded="true")
 										|Customer Service
-										span(class="downArrow")
+										span(class="downArrow2")
 
 									ul(class="dropdown-menu")
 										li
-											a(href="/customer/registproduct")|Regist Your Product
+											a(href="/customer/registproduct")|Register your products
 										li
 											a(href="/customer/faq")|FAQ
 										li
@@ -71,13 +71,13 @@ header(class="header-11")
 								li.dropdown
 									a(href="javascript:;", class="dropdown-toggle", data-toggle="dropdown",role="button",class="dropdown open",aria-expanded="true")
 										|Breastfeeding Resources
-										span(class="downArrow")
+										span(class="downArrow2")
 
 									ul(class="dropdown-menu")
 										li
 											a(href="/breastfeeding/video/list")|Video
 										li
-											a(href="/breastfeeding/pressrealse/list")|Press Realse
+											a(href="/breastfeeding/pressrealse/list")|Press Release
 										li
 											a(href="/breastfeeding/tipsolution/list")|Tip Solution
 										li

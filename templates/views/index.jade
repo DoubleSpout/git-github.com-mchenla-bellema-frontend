@@ -18,16 +18,21 @@ html
 
 								- data.banners.forEach(function(item){
 									- item.images[0] = item.images[0] || {}
+									- var showStyle = 'display:none;' 
 
 									div(class="swiper-slide")
 										img.bannerImg(src="/upload/#{item.images[0]['filename']}")
+										-if(item['moreIsShow'] == 'yes'){
+										-	showStyle = 'display:block;'
+										- }
+
 										-if(item['topRate'] && item['leftRate']){
-											div(class="textBox",style="top:#{item['topRate']}%;left:#{item['leftRate']}%;")
+											div(class="textBox",style="top:#{item['topRate']}%;left:#{item['leftRate']}%;#{showStyle}")
 												h2 #{item.title}
 												p #{item.content}
 												a.bannerBtn(href="#{item.linkUrl}")
 										- } else {
-											div(class="textBox")
+											div(class="textBox",style="#{showStyle}")
 												h2 #{item.title}
 												p #{item.content}
 												a.bannerBtn(href="#{item.linkUrl}")

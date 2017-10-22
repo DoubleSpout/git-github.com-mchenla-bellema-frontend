@@ -122,8 +122,8 @@ exports = module.exports = function (req, res) {
 			return res.status(500).end();
 		}
 
-		locals.title = 'PressRealse|BelleMa'
-		locals.NavTip = 'PressRealse'
+		locals.title = 'Press Release|BelleMa'
+		locals.NavTip = 'Press Release'
 		locals.NavLink = '/breastfeeding/pressrealse/list'
 		locals.bannberUrl = '/img/banner2-@2x.png'
 		

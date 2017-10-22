@@ -26,40 +26,54 @@ html
 						.contact-title| Contact Us
 						.contact-info| We welcome your request and suggestion to provide a continuous supply of nutrients for Bellema.
 						.contact-detail
-							.row
-								.col-md-1
-									img(src='/img/concact-icon-1.png')
-								.col-md-5
-									| #{data.data.telphone}
-								.col-md-1
-									img(src='/img/concact-icon-2.png')
-								.col-md-5
-									| #{data.data.email}
+							
+								- data.data.forEach(function(item, i){
+									- if(i%2 != 0) return;
+									- var item = data.data[i];
+									- var item2 = data.data[i+1];
+									- var img = ''
+									- var img2 = ''
+									- if(Array.isArray(item.icons) && item.icons[0] && item.icons[0]['filename']){
+									- img = '/upload/'+item.icons[0]['filename']
+									- }
 
-							.row
-								.col-md-1
-									img(src='/img/concact-icon-3.png')
-								.col-md-5
-									| <a href="#{data.data.twitterUrl}">#{data.data.twitterUrl}</a>
-								.col-md-1
-									img(src='/img/concact-icon-4.png')
-								.col-md-5
-									| <a href="#{data.data.googlePlusUrl}">#{data.data.googlePlusUrl}</a>
+									- if(item2 && Array.isArray(item2.icons) && item2.icons[0] && item2.icons[0]['filename']){
+									- img2 = '/upload/'+item2.icons[0]['filename']
+									- }
 
-							.row
-								.col-md-1
-									img(src='/img/concact-icon-5.png')
-								.col-md-5
-									| <a href="#{data.data.facebookUrl}">#{data.data.facebookUrl}</a>
-								.col-md-1
-									img(src='/img/concact-icon-6.png')
-								.col-md-5
-									| <a href="#{data.data.linkedinUrl}">#{data.data.linkedinUrl}</a>
-
-						
-
-
-
+									.row
+										.col-md-1
+											img(src='#{img}')
+										.col-md-5
+											- if(item.isEmail == 'yes'){
+											a(href="mailto:#{item.text}")
+												| #{item.text}
+											- } else if(item.jumpUrl != ''){
+											a(href="#{item.jumpUrl}", target="_blank")
+												| #{item.text}
+											- } else{
+												| #{item.text}
+											- }
+											
+										- if(item2){
+											.col-md-1
+												img(src='#{img2}')
+											.col-md-5
+												- if(item2.isEmail == 'yes'){
+												a(href="mailto:#{item2.text}")
+													| #{item2.text}
+												- } else if(item2.jumpUrl != ''){
+												a(href="#{item2.jumpUrl}", target="_blank")
+													| #{item2.text}
+												- } else{
+													| #{item2.text}
+												- }
+										-}
+										
+								- })
+	
+								
+	
 					.col-md-1
 
 					.col-md-4

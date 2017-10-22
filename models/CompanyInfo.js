@@ -9,13 +9,14 @@ var Types = keystone.Field.Types;
 var CompanyInfo = new keystone.List('CompanyInfo', {});
 
 CompanyInfo.add({
-	telphone:  { type: String,  default:'', },
-	email: { type: String, default:'' },
+	name:{type: String,  default:'', },
 
-	twitterUrl:  { type: String, default:'' },
-	googlePlusUrl:  { type: String, default:''},
-	facebookUrl:  { type: String, default:'' },
-	linkedinUrl:  { type: String, default:'' },
+	icons: { type: Types.LocalFiles, dest:global.localFilePath,imgSize:'32 * 32' },
+
+	isEmail: { type: Types.Select, options: 'yes, no', default: 'no'},
+
+	text: { type: String, default:'' },
+	jumpUrl:{ type: String, default:'' },
 
 	sort:{ type: Number, default:1 },
 
@@ -24,6 +25,6 @@ CompanyInfo.add({
 
 });
 
-CompanyInfo.defaultColumns = 'telphone|20%, email|50%, sort|30%';
+CompanyInfo.defaultColumns = 'name|20%, text|50%, sort|30%';
 CompanyInfo.register();
 

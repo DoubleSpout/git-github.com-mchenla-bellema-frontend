@@ -77,8 +77,15 @@ exports = module.exports = function (req, res) {
 						locals.selCatName = item.name;
 					}
 
+					// var q = {'state':'published'}
+					// if(catName != 'all'){
+					// 	q = {'state':'published', categories:{'$in':[item._id]}}
+					// }
+
+					var q = {'state':'published', categories:{'$in':[item._id]}}
+
 					catAsyncList.push(function(asyncCb){
-						keystone.list('Product').model.count({'state':'published', categories:{'$in':[item._id]}}).exec(function (err, results) {
+						keystone.list('Product').model.count(q).exec(function (err, results) {
 							if(err) return asyncCb(err);
 							locals.data.catData[i] = {
 								'name':item.name,
@@ -141,7 +148,13 @@ exports = module.exports = function (req, res) {
 
 	//count 
 	asyncList.push(function(callback){
-		var qObj = {'state':'published', categories:{'$in':[CatId]}}
+
+		var q = {'state':'published'}
+		if(catName != 'all'){
+			q = {'state':'published', categories:{'$in':[CatId]}}
+		}
+
+		var qObj = q
 		if(tagId && tagId != ""){
 			qObj['tag'] = tagId;
 		}
@@ -168,8 +181,13 @@ exports = module.exports = function (req, res) {
 		}else{
 			sortObj[sort] = -1;
 		}
+
+		var q = {'state':'published'}
+		if(catName != 'all'){
+			q = {'state':'published', categories:{'$in':[CatId]}}
+		}
 		
-		var qObj = {'state':'published', categories:{'$in':[CatId]}}
+		var qObj = q
 		//console.log(CatId)
 		if(tagId && tagId != ""){
 			qObj['tag'] = tagId;

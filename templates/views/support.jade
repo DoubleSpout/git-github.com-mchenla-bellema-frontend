@@ -23,7 +23,7 @@ html
 				.row
 					.col-md-6.support-box-l
 						.support-box
-							h2 Enter  the  keyword  to  search  for  the  product. For example  "Mango"
+							h2 Enter  the  keyword  to  search  for  the  frequently asked questions. For example  "Mango"
 							.ui-widget
 								.support-box-inp-wrap
 									input(type="text", id="support-search-inp",placeholder="Melon Double Silicone Cushions")
@@ -96,23 +96,47 @@ script.
 	    });
 
 
-	    
-		$('#support-search').click(function(){
-			
-
-			var v = $('#support-search-inp').val().trim();
-			if(!v){
-				sweetAlert("Please enter the keywords.");
+	    var allSupportBlks = $('.support-blk');
+	    var goSearch = function(){
+	    	var v = $('#support-search-inp').val().trim();
+			if(!v || v == ''){
+				//sweetAlert("Please enter the keywords.");
+				allSupportBlks.show();
 				return false
 			}
 
-			var prodId = productMap[v];
-			if(!prodId){
-				sweetAlert("Not found such product.");
-				return false;
-			}
+			allSupportBlks.each(function(){
+				var that = $(this);
+				var h3text = that.find('h3').eq(0).html();
+				var contText = that.find('.support-content').eq(0).html();
+				if(h3text.indexOf(v)>=0 || contText.indexOf(v)>=0){
+					that.show();
+				}else{
+					that.hide();
+				}
+			})
+	    }
 
-			location.href = '/product/info?id='+prodId+'&tab=2';
+	    $('#support-search-inp').keyup(function(){
+
+	    	goSearch()
+
+	    })
+
+		$('#support-search').click(function(){
+			
+				goSearch()
+			
+
+
+
+			// var prodId = productMap[v];
+			// if(!prodId){
+			// 	sweetAlert("Not found such product.");
+			// 	return false;
+			// }
+
+			// location.href = '/product/info?id='+prodId+'&tab=2';
 
 			return false;
 		})

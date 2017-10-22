@@ -167,8 +167,8 @@ exports = module.exports = function (req, res) {
 		}
 
 		locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
-		locals.title = 'PressRealse|BelleMa'
-		locals.NavTip = 'PressRealse'
+		locals.title = 'Press Release|BelleMa'
+		locals.NavTip = 'Press Release'
 		locals.NavLink = '/breastfeeding/pressrealse/info'
 		locals.bannberUrl = '/img/banner2-@2x.png'
 		// Render the view

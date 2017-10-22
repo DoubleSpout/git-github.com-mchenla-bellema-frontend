@@ -21,5 +21,5 @@ Support.add({
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 });
 
-Support.defaultColumns = 'name, publishedDate|20%';
+Support.defaultColumns = 'name, state, publishedDate';
 Support.register();

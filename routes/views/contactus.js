@@ -36,16 +36,16 @@ exports = module.exports = function (req, res) {
 
 	//data List 
 	asyncList.push(function(callback){
-		keystone.list('CompanyInfo').model.find({'status':'published'}).sort({'sort':1}).limit(1).exec(function (err, results) {
+		keystone.list('CompanyInfo').model.find({'status':'published', 'name':{'$exists':true}}).sort({'sort':1}).limit(1000).exec(function (err, results) {
 
 			if (err) {
 				return callback(err);
 			}
 
 			if(results.length == 0){
-				results = [{}]
+				results = []
 			}
-			locals.data.data = results[0];
+			locals.data.data = results;
 
 			//console.log(results)
 			callback()

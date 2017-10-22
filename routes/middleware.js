@@ -54,25 +54,67 @@ exports.initLocals = function (req, res, next) {
 
 				keystone.list('customer_service_url').model.find().sort({'sort':1}).limit(1).exec(function (err, customUrlResult) {
 
-					if (err) {
-						return next(err);
-					}
 
-					var customerUrl = '#'
-					if(customUrlResult.length > 0 && customUrlResult[0] && customUrlResult[0]['linkUrl']){
-						customerUrl = customUrlResult[0]['linkUrl']
-					}
+					keystone.list('SiteSetting').model.find().sort({'sort':1}).limit(1).exec(function (err, settingResult) {
 
-					res.locals.productMenu = results;
-					res.locals.product1st = results[0]
-					res.locals.user = req.user;
-					res.locals.customerUrl = customerUrl;
+							if (err) {
+								return next(err);
+							}
+
+							var toplogoUrl = '/img/footLogo.png';
+							var footlogoUrl = '/img/new-logo.png';
+							var contactBgUrl = '/img/map.jpg'
+
+							// console.log(settingResult)
+
+							if(settingResult.length >0 && settingResult[0] && 
+								Array.isArray(settingResult[0]['topLogo']) &&
+								settingResult[0]['topLogo'].length > 0 &&
+								settingResult[0]['topLogo'][0]['filename']){
+
+								toplogoUrl = '/upload/'+settingResult[0]['topLogo'][0]['filename'];
+
+							}
+
+							if(settingResult.length >0 && settingResult[0] && 
+								Array.isArray(settingResult[0]['footLogo']) &&
+								settingResult[0]['footLogo'].length > 0 &&
+								settingResult[0]['footLogo'][0]['filename']){
+
+								footlogoUrl = '/upload/'+settingResult[0]['footLogo'][0]['filename'];
+
+							}
 
 
-					res.locals.navProduct = []
+							if(settingResult.length >0 && settingResult[0] && 
+								Array.isArray(settingResult[0]['contactBg']) &&
+								settingResult[0]['contactBg'].length > 0 &&
+								settingResult[0]['contactBg'][0]['filename']){
+
+								contactBgUrl = '/upload/'+settingResult[0]['contactBg'][0]['filename'];
+
+							}
 
 
-					next();
+							var customerUrl = '#'
+							if(customUrlResult.length > 0 && customUrlResult[0] && customUrlResult[0]['linkUrl']){
+								customerUrl = customUrlResult[0]['linkUrl']
+							}
+
+							res.locals.productMenu = results;
+							res.locals.product1st = results[0]
+							res.locals.user = req.user;
+							res.locals.customerUrl = customerUrl;
+							res.locals.toplogoUrl = toplogoUrl;
+							res.locals.footlogoUrl = footlogoUrl;
+
+							res.locals.navProduct = []
+
+
+							next();
+
+					})
+
 				})
 
 			})

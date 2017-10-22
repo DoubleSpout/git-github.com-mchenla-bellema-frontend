@@ -2401,7 +2401,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 
 .navbar-nav li a {
-    color: #7ce0d3;
+    color: #666f6e;
     font-size:16px;
     padding: 20px 20px;
 }
@@ -2979,7 +2979,15 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   margin-top: 30px;
   background: url('/img/footRBg.png') 0 0 no-repeat;
   font-family: 'Avenir Next LT Pro Italic';
+  position: relative;
 }
+.footLogoBox{
+  display: block;
+  position: absolute;
+  top: 21px;
+  left: 0px;
+}
+
 .footBox .col-md-6 {
   min-height: 215px;
   margin-top: 100px;
@@ -2989,7 +2997,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 
 .foot-r p {
-  color:#7ce0d3;
+  color:#666f6e;
   font-size: 14px;
   line-height: 20px;
 }
@@ -3029,7 +3037,9 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   font-size: 14px;
   position: relative;
 }
-
+.dropdown-menu li:first-child > a:hover{
+  color:#1abc9c;
+}
 .nav_fb_a{
   padding: 10px 20px 10px 60px !important;  
 }
@@ -4077,6 +4087,14 @@ background: url('/img/Product-@2x.png') right bottom no-repeat;
   background: url('/img/downArrow.png') 6px 3px no-repeat;
 }
 
+.downArrow2{
+  display: inline-block;
+  width: 25px;
+  height: 12px;
+
+  background: url('/img/downArrow2.png') 6px 3px no-repeat;
+}
+
 
 .card-close {
     width: 46px;
@@ -4481,6 +4499,10 @@ li img, p img {
 .pinkBtn:hover{
   color: #fff;
   opacity: 0.8;
+}
+
+.pinkBtnLong {
+  width: 200px;
 }
 
 .manualRow {
