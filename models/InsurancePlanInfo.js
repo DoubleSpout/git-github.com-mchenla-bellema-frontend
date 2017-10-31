@@ -11,6 +11,7 @@ var InsurancePlanInfo = new keystone.List('InsurancePlanInfo', {
 });
 
 InsurancePlanInfo.add({
+	name: { type: String,  required: true },
 	telphone: { type: String,  default:'' },
 	jumpurl:{ type: String,  default:'' },
 	sort:{ type: Number, default:1 },
@@ -22,7 +23,9 @@ InsurancePlanInfo.add({
 
 	//insurancestates: { type: Types.Relationship, ref: 'InsuranceState', many: true },
 	insuranceplanlist: { type: Types.Relationship, ref: 'InsurancePlanList', many: true },
+
 });
+
 
 
 InsurancePlanInfo.defaultColumns = 'name, status|20%, publishedDate|20%, sort|10%, telphone|30%';

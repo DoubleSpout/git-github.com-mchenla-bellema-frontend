@@ -21,5 +21,7 @@ InsuranceState.add({
 
 InsuranceState.relationship({ ref: 'InsurancePlanInfo', path: 'insurancestates' });
 InsuranceState.relationship({ ref: 'InsurancePlanList', path: 'insurancestates' });
+InsuranceState.relationship({ ref: 'InsuranceNotList', path: 'insurancestates' });
+
 InsuranceState.defaultColumns = 'name, desc|40%, sort|20%';
 InsuranceState.register();

@@ -19,5 +19,7 @@ InsurancePlanList.add({
 });
 
 InsurancePlanList.relationship({ ref: 'InsurancePlanInfo', path: 'insuranceplanlist' });
+InsurancePlanList.relationship({ ref: 'InsuranceNotList', path: 'insuranceplanlist' });
+
 InsurancePlanList.defaultColumns = 'name, desc|40%, sort|20%';
 InsurancePlanList.register();

@@ -131,6 +131,10 @@ script.
 		}
 
 
+		window.insNotListed = function(){
+				$('#myModal').modal({});
+		}
+
 		//把内容详情插入dom
 		var putInfo = function(){
 			if(!window.insuranceInfoPage || !window.curListId) return;
@@ -147,6 +151,8 @@ script.
 				var tmpObj = tmpInfoList[i];
 				tmpStr += `<div class="col-md-3"><a href="${tmpObj.jumpurl}" target="_blank"><div class="ins-info-blk">${tmpObj.name}<b>${tmpObj.telphone}</b></div></a></div>`
 			}
+
+			tmpStr += `<div onclick="javascript:window.insNotListed();" class="col-md-3"><a href="javascript:;" target="_blank"><div class="ins-info-blk">help<b>My plan is not listed</b></div></a></div>`
 			
 			$('#ins-info-selbox').html(tmpStr);
 
@@ -188,3 +194,5 @@ script.
 		
 
 	})
+
+			

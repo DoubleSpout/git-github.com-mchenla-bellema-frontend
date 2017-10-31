@@ -12,36 +12,28 @@ exports = module.exports = function (req, res) {
 
 	var data = {
 
-		Model:req.body.ProductId,
+		name:req.body.name,
 
-		SN:req.body.SN,
+		mobile:req.body.mobile,
 
-		buyDate:new Date(req.body.PurchasingDate-0),
-
-		buyAddr:req.body.PurchasingAddress,
-
-		lastName:req.body.LastName,
-
-		firstName:req.body.FirstName,
-
-		email:req.body.Email,
-
-		telphone:req.body.Telephone,
-
-		address:req.body.HomeAddress,
+		desc:req.body.desc,
 
 		clientIp:ip,
 
 		userAgent:ua,
 
-		postDate:now,
+		publishedDate:now,
+
+		insurancestates:req.body.InsuranceStateId,
+
+		insuranceplanlist:req.body.InsurancePlanListId,
 
 	};
 
 
 
 
-	keystone.list('registproduct').model.findOneAndUpdate({'postDate':moment().year(100)}, data, {'upsert':true}).exec(function (err, results) {
+	keystone.list('InsuranceNotList').model.findOneAndUpdate({'publishedDate':moment().year(100)}, data, {'upsert':true}).exec(function (err, results) {
 
 			if (err) {
 				return res.json({'error':err})
@@ -51,3 +43,20 @@ exports = module.exports = function (req, res) {
 		});
 	
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

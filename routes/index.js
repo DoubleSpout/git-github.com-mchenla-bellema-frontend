@@ -91,6 +91,8 @@ exports = module.exports = function (app) {
 	app.get('/breastfeeding/tipsolution/info', routes.views.tipsolutionInfo);//tip详情
 
 	app.get('/breastfeeding/social', routes.views.social);//媒体详情
+
+	app.post('/insurance/plannotlisted', routes.views.plannotlisted);//保险计划没有列出，用户提交表单
 	
 	app.get('/contactus', routes.views.contactus);//联系我们
 

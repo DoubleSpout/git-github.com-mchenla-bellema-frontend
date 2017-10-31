@@ -4640,3 +4640,13 @@ li img, p img {
   padding: 0 10px;
   color: #fdb6b2;
 }
+
+.insInfoContainer{
+  margin: 0 auto;
+  background: none;
+  padding: 40px 20px;
+  width: 90%;
+}
+.form-textarea{
+  height: 100px !important;
+}
