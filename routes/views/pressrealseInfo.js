@@ -129,7 +129,7 @@ exports = module.exports = function (req, res) {
 		
 		//locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
 		// Render the view
-		view.render('blog_Info');
+		view.render('blog_info');
 
 	})
 

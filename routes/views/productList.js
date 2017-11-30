@@ -190,7 +190,7 @@ exports = module.exports = function (req, res) {
 		var qObj = q
 		//console.log(CatId)
 		if(tagId && tagId != ""){
-			qObj['tag'] = tagId;
+			qObj['tag'] = {'$all': tagId};
 		}
 		keystone.list('Product').model.find(qObj).sort(sortObj).limit(perPage).skip(skipNum).exec(function (err, results) {
 

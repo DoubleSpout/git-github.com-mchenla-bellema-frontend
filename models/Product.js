@@ -26,7 +26,7 @@ Product.add({
 	featureTitle:  { type: String,  default:'' },
 	featureContent :  { type: String,  default:'' },
 
-	status: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
+	state: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 
@@ -41,7 +41,7 @@ Product.add({
 	supportHtml:{type: Types.Html, wysiwyg: true, height: 400,  default:'' },
 	supportPdfUrl:{ type: Types.LocalFiles, dest:global.localFilePath },
 	categories: { type: Types.Relationship, ref: 'ProductCategory', many: true },
-	tag: { type: Types.Relationship, ref: 'ProductTag', many: false },
+	tag: { type: Types.Relationship, ref: 'ProductTag', many: true },
 	sort:{ type: Number, default:1 },
 });
 

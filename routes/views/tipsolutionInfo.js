@@ -128,7 +128,7 @@ exports = module.exports = function (req, res) {
 		locals.bannberUrl = '/img/banner1-@2x.png'
 		//locals.page = getPageObj(page, perPage, locals.data.countData, '/blog/list');
 		// Render the view
-		view.render('blog_Info');
+		view.render('blog_info');
 
 	})
 
