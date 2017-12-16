@@ -1,0 +1,13 @@
+{
+  "apps" : [
+      
+      {
+        "name"      : "bellema",
+        "script"    : "/var/git-github.com-mchenla-bellema-frontend/keystone.js",
+        "max_memory_restart" : "400M",
+        "env_production" : {
+          "NODE_ENV": "production"
+        }
+      }
+  ]
+}
