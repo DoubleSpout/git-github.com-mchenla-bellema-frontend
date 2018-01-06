@@ -4650,3 +4650,6 @@ li img, p img {
 .form-textarea{
   height: 100px !important;
 }
+.txt-center{
+  text-align: center !important;
+}

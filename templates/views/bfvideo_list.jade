@@ -23,12 +23,12 @@ html
 				.row
 					- data.data.forEach(function(item){	
 
-						.col-md-3.v-md3
+						.col-md-3.v-md3.txt-center
 							a.v-box(href="/breastfeeding/video/info?id=#{item._id}")
 								- if(item.images && item.images[0]){
-									img(src="/upload/#{item.images[0]['filename']}")
+									img(src="/upload/#{item.images[0]['filename']}", width="230", height="150")
 								- } else{
-									img(src="/img/vdemo.png")
+									img(src="/img/vdemo.png", width="230", height="150")
 								- }
 								
 							.v-title| #{item.name}
